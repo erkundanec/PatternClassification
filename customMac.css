@@ -12,12 +12,12 @@
 }
     div.cell{
         width: 950px;
-        margin-left: 0% !important;
-        margin-right: auto;
+        #margin-left: 0% !important;
+        #margin-right: auto;
     }
     div.text_cell_render{
         font-family: "Ubuntu";
-        line-height: 125%;
+        line-height: 115%;
         font-size: 140%;
         text-align: justify;
         text-justify:inter-word;
@@ -44,8 +44,8 @@
 	#font-style: italic;
         line-height: 100%;
         color:#1f499c;
-        margin-bottom: 0.1em;
-        margin-top: 0.1em;
+        #margin-bottom: 0.1em;
+        #margin-top: 0.1em;
         display: block;
         #white-space: wrap;
         text-align: left;
@@ -59,10 +59,10 @@
         font-weight: 200;
         font-size: 24pt;
         #font-style: italic;
-        line-height: 100%;
+        #line-height: 100%;
         color:#54ad1c;
-        margin-bottom: 0.1em;
-        margin-top: 0.1em;
+        #margin-bottom: 0.1em;
+        #margin-top: 0.1em;
         display: block;
         white-space: wrap;
         text-align: left;
@@ -75,8 +75,8 @@
         font-size: 18pt;
         line-height: 100%;
         color:#b44ff7;
-        margin-bottom: 0.5em;
-        margin-top: 2em;
+        #margin-bottom: 0.5em;
+        #margin-top: 2em;
         display: block;
         white-space: wrap;
         text-align: left;
@@ -88,8 +88,8 @@
         font-weight: 100;
         font-size: 14pt;
         color:#d77c0c;
-        margin-bottom: 0.5em;
-        margin-top: 0.5em;
+        #margin-bottom: 0.5em;
+        #margin-top: 0.5em;
         display: block;
         white-space: nowrap;
     }
@@ -102,8 +102,8 @@
         font-style: normal;
         color: #1d3b84;
         font-size: 16pt;
-        margin-bottom: 0em;
-        margin-top: 0.5em;
+        #margin-bottom: 0em;
+        #margin-top: 0.5em;
         display: block;
         white-space: nowrap;
     }
@@ -118,8 +118,8 @@
         max-height: 5000000px;
     }
     div.output_wrapper{
-        margin-top:0.2em;
-        margin-bottom:0.2em;
+        #margin-top:0.2em;
+        #margin-bottom:0.2em;
 }
 
     code{
@@ -130,30 +130,30 @@
     background-color: transparent;
     }
     ul{
-        margin: 2em;
+        #margin: 2em;
     }
     ul li{
-        padding-left: 0.5em;
-        margin-bottom: 0.5em;
-        margin-top: 0.5em;
+        #padding-left: 0.5em;
+        #margin-bottom: 0.5em;
+        #margin-top: 0.5em;
     }
     ul li li{
-        padding-left: 0.2em;
-        margin-bottom: 0.2em;
-        margin-top: 0.2em;
+        #padding-left: 0.2em;
+        #margin-bottom: 0.2em;
+        #margin-top: 0.2em;
     }
     ol{
-        margin: 2em;
+        #margin: 2em;
     }
     ol li{
-        padding-left: 0.5em;
-        margin-bottom: 0.5em;
-        margin-top: 0.5em;
+        #padding-left: 0.5em;
+        #margin-bottom: 0.5em;
+        #margin-top: 0.5em;
     }
     ul li{
-        padding-left: 0.5em;
-        margin-bottom: 0.5em;
-        margin-top: 0.2em;
+        #padding-left: 0.5em;
+        #margin-bottom: 0.5em;
+        #margin-top: 0.2em;
     }
     a:link{
        color:#447adb;
@@ -200,7 +200,7 @@
       border-left: 5px solid #c76c0c;
       font-family: 'Open sans',verdana,arial,sans-serif;
       width:680px;
-      padding: 10px 10px 10px 10px;
+      #padding: 10px 10px 10px 10px;
       text-align:justify;
       text-justify:inter-word;
       }
