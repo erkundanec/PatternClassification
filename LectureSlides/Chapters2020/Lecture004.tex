@@ -1,0 +1,489 @@
+\title{\fontsize{33}{45}{\Large Signals and Systems\newline \huge Continuous-Time Fourier Series (CTFS)\newline \vspace{8pt} \Large Lecture 04\vspace{-1.1cm}}}
+\author{{\bf Dr. Kundan Kumar}\\ PhD (IIT Kharagpur)\\
+%Associate Professor\\Department of ECE
+\vspace{1.5cm}}
+% - Give the names in the same order as the appear in the paper.
+% - Use the \inst{?} command only if the authors have different
+%   affiliation.
+
+\institute[Indian Institute of Technology Kharagpur] % (optional, but mostly needed)
+{
+%\includegraphics[height=.17\textheight]{SOAlogo.png}\\
+ %Faculty of Engineering (ITER)\\ S`O'A Deemed to be University, Bhubaneswar, India-751030\\
+ \copyright\  2019 Kundan Kumar, All Rights Reserved\\
+  \vspace{-1.1cm}}
+% - Use the \inst command only if there are several affiliations.
+% - Keep it simple, no one is interested in your street address.
+\date{}
+% To remove page number from a perticular slide
+{
+\setbeamertemplate{logo}{}
+\makeatletter
+\setbeamertemplate{footline}{
+        \leavevmode%
+  
+  % First line.
+  \hbox{%
+  \begin{beamercolorbox}[wd=.2\paperwidth,ht=\beamer@decolines@lineup,dp=0pt]{}%
+  \end{beamercolorbox}%
+  \begin{beamercolorbox}[wd=.8\paperwidth,ht=\beamer@decolines@lineup,dp=0pt]{lineup}%
+  \end{beamercolorbox}%
+  } %
+  % Second line.
+  \hbox{%
+  \begin{beamercolorbox}[wd=\paperwidth,ht=\beamer@decolines@linemid,dp=0pt]{linemid}%
+  \end{beamercolorbox}%
+  } %
+  % Third line.
+  \hbox{%
+  \begin{beamercolorbox}[wd=.1\paperwidth,ht=\beamer@decolines@linebottom,dp=0pt]{}%
+  \end{beamercolorbox}%
+  \begin{beamercolorbox}[wd=.9\paperwidth,ht=\beamer@decolines@linebottom,dp=0pt]{linebottom}%
+  \end{beamercolorbox}%
+  }%
+        }
+\makeatother
+\begin{frame}
+\titlepage
+\end{frame}
+}
+
+\section{Introduction}
+\subsection{}
+\begin{frame}{Contents}
+\tableofcontents
+\end{frame}
+
+
+\begin{frame}[label=Lec04_Intro]{Introduction}
+\begin{itemize}
+\item The Fourier series is a representation for {\color{red}periodic} signals.
+\item With a Fourier series, a signal is represented as a {\color{red}linear combination of complex sinusoids}.
+\item The use of complex sinusoids is desirable due to their numerous attractive
+properties.
+\item For example, complex sinusoids are \hyperlink{Lec04_Differentiable}{\color{slidecolor}continuous and differentiable}. They
+are also easy to integrate and differentiate.
+\item Perhaps, most importantly, complex sinusoids are {\color{red}eigenfunctions} of LTI
+systems.
+\end{itemize}
+\end{frame}
+
+\section{CT Fourier Series}
+\subsection{}
+\begin{frame}{}
+\begin{variableblock}{\centering \Large \textbf{\vspace{4pt}\newline Fourier Series\vspace{4pt}}}{bg=slidecolor,fg=white}{bg=slidecolor,fg=white}
+\end{variableblock}
+\end{frame}
+
+\begin{frame}{Harmonically-Related Complex Sinusoids}
+\begin{itemize}
+\item A set of complex sinusoids is said to be {\color{red}harmonically related} if there exists some constant $\omega_0$ such that the fundamental frequency of each complex sinusoid is an integer multiple of
+$\omega_0$.
+\item Consider the set of harmonically-related complex sinusoids given by
+\[\boxed{\phi_k(t)=e^{jk\omega_0t}}~~\text{for all integer}~k\]
+\item The fundamental frequency of the $k$th complex sinusoid $k\omega_0$, integer multiple of $\omega_0$.
+\item Since the fundamental frequency of each of the harmonically-related complex sinusoids is an integer multiple of $\omega_0$, a linear combination of these complex sinusoids must be periodic.
+\item More specifically, a linear combination of these complex sinusoids is periodic with period $T=\frac{2\pi}{\omega_0}$.
+\end{itemize}
+\end{frame}
+
+\begin{frame}[allowframebreaks]{CT Fourier Series}
+\begin{itemize}
+\begin{small}
+\item A periodic complex signal $x$ with fundamental period $T$ and fundamental frequency $\omega_0 = \frac{2\pi}{T}$ can be represented as a linear combination of harmonically-related complex sinusoids as
+\[\boxed{x(t)=\sum_{k=-\infty}^{\infty} c_k e^{jk\omega_0 t}.}~~~~\Rightarrow\text{\color{blue}Synthesis equation}\]
+\item Such a representation is known as (the {\color{blue}complex exponential} form of) a
+(CT) {\color{red}Fourier series}, and the $c_k$ are called {\color{red}Fourier series coefficients}.
+\item The above formula for $x$ is often referred to as the {\color{blue}Fourier series synthesis equation}.
+\item The terms in the summation for $k = K$ and $k = -K$ are called the $K$th {\color{red}harmonic components}, and have the fundamental frequency $K\omega_0$.
+\item To denote that a signal $x$ has the Fourier series coefficient sequence $c_k$, we write
+\[x(t) \xleftrightarrow{\text{  CTFS  }} c_k\]
+\item The periodic signal $x$ with fundamental period $T$ and fundamental
+frequency $\omega_0 = \frac{2\pi}{T}$ has the Fourier series coefficients $c_k$ given by
+\[\boxed{{c_k} = \frac{1}{T}\int\limits_T {x(t){e^{ - jk{\omega _0}t}}dt}} ~~~~\Rightarrow\text{\color{blue}Analysis equation}\]
+where $\int\limits_T$ denotes integration over an arbitrary interval of length $T$ (i.e., one period of $x$).
+\item The above equation for $c_k$ is often referred to as the {\color{blue}Fourier series analysis equation}.
+\end{small}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Trigonometric Forms of a Fourier Series}
+\begin{itemize}
+\begin{small}
+\item Consider the periodic signal $x$ with the Fourier series coefficients $c_k$.
+\item If {\color{blue}$x$ is real}, then its Fourier series can be rewritten in two other forms, known as the {\color{red}combined trigonometric} and {\color{red}trigonometric} forms.
+\item The {\color{blue}combined trigonometric form} of a Fourier series has the appearance
+\[\boxed{x(t) = {c_0} + 2\sum\limits_{k = 1}^\infty  {\left| {{c_k}} \right|\cos (k{\omega _0}t + {\theta _k})}} \]
+where $\theta_k=\arg c_k$.
+\item The {\color{blue}trigonometric form} of a Fourier series has the appearance
+\[\boxed{x(t) = {c_0} + \sum\limits_{k = 1}^\infty  {\left[ {{\alpha _k}\cos k{\omega _0}t + {\beta _k}\sin k{\omega _0}t} \right]}, }\]
+where $\alpha_k=2~Re(c_k)$ and $\beta_k=-2~Im(c_k)$.
+\item Note that the trigonometric forms contain only {\color{red}real} quantities.
+\end{small}
+\end{itemize}
+\end{frame}
+
+\section{Convergence of FS}
+\subsection{}
+\begin{frame}{}
+\begin{variableblock}{\centering \Large \textbf{\vspace{4pt}\newline Convergence Properties of Fourier Series\vspace{4pt}}}{bg=slidecolor,fg=white}{bg=slidecolor,fg=white}
+\end{variableblock}
+\end{frame}
+
+\begin{frame}{Convergence of Fourier Series}
+\begin{itemize}
+\begin{footnotesize}
+\item Since a Fourier series can have an infinite number of terms, and an infinite sum may or may not converge, we need to consider the {\color{red}issue of convergence}.
+\item That is, {\color{blue}when we claim that a periodic signal $x(t)$ is equal to the Fourier series $\sum_{k=-\infty}^{\infty}c_ke^{jk\omega_0t}$, is this claim actually correct?}
+\item Consider a periodic signal $x$ that we wish to represent with the Fourier series
+\[\boxed{x(t)=\sum_{k=-\infty}^{\infty}c_ke^{jk\omega_0t}}\]
+\item Let $x_N$ denote the Fourier series truncated after the $N$th harmonic components as given by
+\[\boxed{x_{N}(t)=\sum_{k=-N}^{N}c_ke^{jk\omega_0t}.}\]
+\item Here, we are interested in whether {\color{red}$\lim_{N\rightarrow \infty} x_N(t)$} is equal (in some sense) to $x(t)$.
+\end{footnotesize}
+\end{itemize}
+\end{frame}
+
+%\begin{frame}
+%\begin{figure}
+%\centering
+%\includegraphics[width=0.9\textwidth]{ss027.pdf}
+%\end{figure}
+%\end{frame}
+
+\begin{frame}{Convergence of Fourier Series (Continued)}
+\begin{itemize}
+\begin{small}
+\item The {\color{red}error} in approximating $x(t)$ by $x_N(t)$ is given by
+\[e_N(t)=x(t)-x_N(t),\]
+and the corresponding mean-squared error (MSE) (i.e., energy of the error) is given by
+\[\boxed{E_N=\frac{1}{T}\int_{T}\left|e_N(t)\right|^2dt.}\]
+\item If {\color{red}$\lim_{N\rightarrow \infty} e_N(t)=0$} for all $t$ (i.e., the error goes to zero at every point), the Fourier series is said to {\color{blue}convergence pointwise} to $x(t)$.
+\item If convergence is pointwise and the rate of convergence is the same everywhere, the convergence is said to be {\color{orange}uniform}.
+\item If {\color{red}$\lim_{N\rightarrow \infty} E_N(t)=0$} (i.e., the energy of the error goes to zero), the Fourier series is said to converge to $x$ in the {\color{blue}MSE sense}.
+\item Pointwise convergence implies MSE convergence, but converse is not true. Thus pointwise convergence is a much stronger condition than MSE convergence.
+\end{small}
+\end{itemize}
+\end{frame}
+
+%\begin{frame}
+%\begin{figure}
+%\centering
+%\includegraphics[width=0.9\textwidth]{ss028.pdf}
+%\end{figure}
+%\end{frame}
+
+\begin{frame}{Convergence of Fourier Series: Continuous Case}
+\begin{itemize}
+\item If a periodic signal $x$ is {\color{red}continuous} and its Fourier series coefficients $c_k$ are {\color{red}absolutely summable} (i.e., $\sum_{k=-\infty}^{\infty}|c_{k}|<\infty$), then the Fourier series representation of $x$ converges {\color{red}uniformly} (i.e., {\color{blue}pointwise at the same rate everywhere}).
+\item Since, in practice, we often encounter signals with discontinuities (e.g., a square wave), the above result is of somewhat limited value.
+\end{itemize}
+\end{frame}
+
+%\begin{frame}
+%\begin{figure}
+%\centering
+%\includegraphics[width=0.9\textwidth]{ss029.pdf}
+%\end{figure}
+%\end{frame}
+
+\begin{frame}{Convergence of Fourier Series: Finite-Energy Case}
+\begin{itemize}
+\item If a periodic signal $x$ has finite energy in a single period (i.e., $\int_{T} \left|x(t)\right|^2dt<\infty)$, the Fourier series converges in the MSE sense.
+\item Since, in situation of practice interest, the finite-energy condition in the above theorem is typically satisfied, the theorem is usually applicable.
+\item It is important to note, however, that MSE convergence (i.e., $E=0$) does not necessarily imply pointwise convergence (i.e., $\tilde{x}(t)=x(t)$ for all $t$).
+\item Thus, the above convergence theorem does not provide much useful information regarding the value of $\tilde{x}(t)$ at specific values to  $t$.
+\item Consequently, the above theorem is typically most useful for simply determining if the Fourier series convergences.
+\end{itemize}
+\end{frame}
+
+%\begin{frame}
+%\begin{figure}
+%\centering
+%\includegraphics[width=0.9\textwidth]{ss030.pdf}
+%\end{figure}
+%\end{frame}
+
+\begin{frame}{Convergence of Fourier Series: Dirichlet Case}
+\begin{itemize}
+\begin{footnotesize}
+\item The {\color{red}Dirichlet conditions} for the periodic signal $x$ are as follows:
+\begin{itemize}
+\begin{footnotesize}
+\item Over a single period, $x$ is {\color{blue}absolutely integrable} (i.e., $\int_{T} \left|x(t)\right|dt<\infty)$).
+\item Over a single period, $x$ has a finite number of maxima and minima (i.e., $x$ is of {\color{blue}bounded variation}).
+\item Over any finite interval, $x$ has a {\color{blue}finite number of discontinuities}, each of which is {\color{blue}finite}.
+\end{footnotesize}
+\end{itemize}
+\item If a periodic signal $x$ satisfies the {\color{red}Dirichlet conditions}, then:
+\begin{itemize}
+\begin{footnotesize}
+\item The Fourier series converges pointwise everywhere to $x$, except at the point of discontinuity of $x$.
+\item At each point $t=t_a$ of discontinuity of $x$, the Fourier series $\tilde{x}$ converges to 
+\[\boxed{\tilde x({t_a}) = \frac{1}{2}\left[ {x\left( {t_a^ - } \right) + x\left( {t_a^ + } \right)} \right]}\]
+where $x\left( {t_a^ - } \right)$ and $x\left( {t_a^ + } \right)$ denote the values of the signal $x$ on the left- and right-hand sides of the discontinuity, respectively.
+\end{footnotesize}
+\end{itemize}
+\item Since most signals tend to satisfy the Dirichlet conditions and the above convergence result specifies the value of the Fourier series at every point, this result is often very useful in practice.
+\end{footnotesize}
+\end{itemize}
+\end{frame}
+
+%\begin{frame}
+%\begin{figure}
+%\centering
+%\includegraphics[width=0.9\textwidth]{ss031.pdf}
+%\end{figure}
+%\end{frame}
+
+\begin{frame}{Examples of Functions Violating the Dirichlet Conditions}
+\begin{figure}
+\centering
+\includegraphics[width=0.6\textwidth]{ss032.pdf}
+\end{figure}
+\end{frame}
+
+\begin{frame}{Gibbs Phenomenon}
+\begin{itemize}
+\item In practice, we frequently encounter signals with discontinuities.
+\item When a signal $x$ has discontinuities, the Fourier series representation of $x$ does not converge uniformly (i.e., at the same rate everywhere).
+\item Th rate of convergence is much slower at point in the vicinity of a discontinuity.
+\item Furthermore, in the vicinity of a discontinuity, the truncated Fourier series $x_N$ exhibits ripples, where the peak amplitude of the ripples does not seem to decrease with increasing $N$.
+\item As it turns out, as $N$ increases, the ripples get compressed towards discontinuity, but, for any finite $N$, the peak amplitude of the ripples remains approximately constant.
+\item This behavior is known as {\color{red}Gibbs phenomenon}.
+\item The above behavior is one of he weaknesses of Fourier series (i.e., Fourier series converge very slowly near discontinuities.)
+\end{itemize}
+\end{frame}
+
+%\begin{frame}
+%\begin{figure}
+%\centering
+%\includegraphics[width=0.9\textwidth]{ss033.pdf}
+%\end{figure}
+%\end{frame}
+
+\begin{frame}{Gibbs Phenomenon: Periodic Square Wave Example}
+\begin{figure}
+\centering
+\includegraphics[width=0.9\textwidth]{ss034.pdf}
+\end{figure}
+\end{frame}
+
+
+\section{Properties of FS}
+\subsection{}
+\begin{frame}{}
+\begin{variableblock}{\centering \Large \textbf{\vspace{4pt}\newline Properties of Fourier Series\vspace{4pt}}}{bg=slidecolor,fg=white}{bg=slidecolor,fg=white}
+\end{variableblock}
+\end{frame}
+
+\begin{frame}{Properties of CT Fourier Series}
+\begin{figure}
+\centering
+\includegraphics[width=0.7\textwidth]{ss036.pdf}
+\end{figure}
+\end{frame}
+
+\begin{frame}{Linearity}
+\begin{itemize}
+\item Let $x$ and $y$ be two periodic signals with same period. If $x(t) \xleftrightarrow{\text{CTFS}} a_k$ and $y(t) \xleftrightarrow{\text{CTFS}} b_k$ then
+\[\boxed{\alpha x(t)+\beta y(t)\xleftrightarrow{\text{CTFS}}\alpha a_k+\beta b_k}\]
+where $\alpha$ and $\beta$ are complex contants.
+\item That is, a linear combination of signals produces the same linear combination of their Fourier series coefficients.
+\end{itemize}
+\end{frame}
+
+%\begin{frame}
+%\begin{figure}
+%\centering
+%\includegraphics[width=0.9\textwidth]{ss037.pdf}
+%\end{figure}
+%\end{frame}
+
+\begin{frame}{Time Shifting (Translation)}
+\begin{itemize}
+\item Let $x$ denote a periodic signals with period $T$ and the corresponding frequency $\omega_0 = \frac{2\pi}{T}$. If $x(t) \xleftrightarrow{\text{CTFS}} c_k$, then
+\[\boxed{x(t-t_0)\xleftrightarrow{\text{CTFS}}e^{-jk\omega_0t_0}c_k=e^{-jk(2\pi/T)t_0}c_k}\]
+where $t_0$ is a real contant.
+\item In other words, time shifting a periodic signal changes the argument (but not magnitude) of its Fourier series coefficients.
+\end{itemize}
+\end{frame}
+
+%\begin{frame}
+%\begin{figure}
+%\centering
+%\includegraphics[width=0.9\textwidth]{ss038.pdf}
+%\end{figure}
+%\end{frame}
+
+\begin{frame}{Time Reversal (Reflection)}
+\begin{itemize}
+\item Let $x$ denote a periodic signals with period $T$ and the corresponding frequency $\omega_0 = \frac{2\pi}{T}$. If $x(t) \xleftrightarrow{\text{CTFS}} c_k$, then
+\[\boxed{x(-t)\xleftrightarrow{\text{CTFS}} c_{-k}}\]
+\item That is, time reversal of a signal results in a time reversal of its Fourier series coefficients.
+\end{itemize}
+\end{frame}
+
+%\begin{frame}
+%\begin{figure}
+%\centering
+%\includegraphics[width=0.9\textwidth]{ss039.pdf}
+%\end{figure}
+%\end{frame}
+
+\begin{frame}{Conjugation}
+\begin{figure}
+\centering
+\includegraphics[width=1\textwidth]{ss040.pdf}
+\end{figure}
+\end{frame}
+
+
+\begin{frame}{Even and Odd Symmetry}
+\begin{figure}
+\centering
+\includegraphics[width=1\textwidth]{ss041.pdf}
+\end{figure}
+\end{frame}
+
+
+\begin{frame}{Real Signals}
+\vspace{-4pt}
+\begin{figure}
+\centering
+\includegraphics[width=1\textwidth]{ss042.pdf}
+\end{figure}
+\end{frame}
+
+
+\begin{frame}{Other Properties of Fourier Series}
+\begin{figure}
+\centering
+\includegraphics[width=1\textwidth]{ss043.pdf}
+\end{figure}
+\end{frame}
+
+\section{FS and Frequency Spectra}
+\subsection{}
+\begin{frame}{}
+\begin{variableblock}{\centering \Large \textbf{\vspace{4pt}\newline Fourier Series and Frequency Spectra\vspace{4pt}}}{bg=slidecolor,fg=white}{bg=slidecolor,fg=white}
+\end{variableblock}
+\end{frame}
+
+\begin{frame}{A new perspective on Signals: The Frequency Domain}
+\begin{figure}
+\centering
+\includegraphics[width=1\textwidth]{ss045.pdf}
+\end{figure}
+\end{frame}
+
+\begin{frame}{Fourier Series and Frequncy Spcetra}
+\begin{figure}
+\centering
+\includegraphics[width=1\textwidth]{ss046.pdf}
+\end{figure}
+\end{frame}
+
+\begin{frame}{Fourier Series and Frequncy Spcetra (Continued)}
+\begin{figure}
+\centering
+\includegraphics[width=1\textwidth]{ss047.pdf}
+\end{figure}
+\end{frame}
+
+\section{FS and LTI Systems}
+\subsection{}
+\begin{frame}{}
+\begin{variableblock}{\centering \Large \textbf{\vspace{4pt}\newline Fourier Series and LTI Systems\vspace{4pt}}}{bg=slidecolor,fg=white}{bg=slidecolor,fg=white}
+\end{variableblock}
+\end{frame}
+
+
+\begin{frame}{Frequency Response}
+\begin{figure}
+\centering
+\includegraphics[width=0.9\textwidth]{ss050.pdf}
+\end{figure}
+\end{frame}
+
+\begin{frame}{Fourier Series and LTI Systems}
+\begin{figure}
+\centering
+\includegraphics[width=1\textwidth]{ss051.pdf}
+\end{figure}
+\end{frame}
+
+\begin{frame}{Filtering}
+\begin{figure}
+\centering
+\includegraphics[width=1\textwidth]{ss052.pdf}
+\end{figure}
+\end{frame}
+
+\begin{frame}{Ideal Lowpass Filter}
+\begin{figure}
+\centering
+\includegraphics[width=0.95\textwidth]{ss053.pdf}
+\end{figure}
+\end{frame}
+
+\begin{frame}{Ideal Highpass Filter}
+\begin{figure}
+\centering
+\includegraphics[width=0.9\textwidth]{ss054.pdf}
+\end{figure}
+\end{frame}
+
+\begin{frame}{Ideal Bandpass Filter}
+\begin{figure}
+\centering
+\includegraphics[width=0.9\textwidth]{ss055.pdf}
+\end{figure}
+\end{frame}
+
+
+\section{Appendix}
+\subsection{}
+%\begin{frame}[allowframebreaks]{References}
+%\linespread{1}
+%\footnotesize
+%\printbibliography[heading=none]
+%\end{frame}
+{
+\setbeamertemplate{logo}{}
+\makeatletter
+\setbeamertemplate{footline}{
+        \leavevmode%
+  
+  % First line.
+  \hbox{%
+  \begin{beamercolorbox}[wd=.2\paperwidth,ht=\beamer@decolines@lineup,dp=0pt]{}%
+  \end{beamercolorbox}%
+  \begin{beamercolorbox}[wd=.8\paperwidth,ht=\beamer@decolines@lineup,dp=0pt]{lineup}%
+  \end{beamercolorbox}%
+  } %
+  % Second line.
+  \hbox{%
+  \begin{beamercolorbox}[wd=\paperwidth,ht=\beamer@decolines@linemid,dp=0pt]{linemid}%
+  \end{beamercolorbox}%
+  } %
+  % Third line.
+  \hbox{%
+  \begin{beamercolorbox}[wd=.1\paperwidth,ht=\beamer@decolines@linebottom,dp=0pt]{}%
+  \end{beamercolorbox}%
+  \begin{beamercolorbox}[wd=.9\paperwidth,ht=\beamer@decolines@linebottom,dp=0pt]{linebottom}%
+  \end{beamercolorbox}%
+  }%
+        }
+\makeatother
+
+\begin{frame}
+\centering
+\includegraphics[width=0.4\paperwidth]{queries.jpg}\\
+\includegraphics[width=0.5\paperwidth]{thank_you.png}
+\end{frame}
+}
+
+\begin{frame}[label = Lec04_Differentiable]{Slide}
+\hyperlink{Lec04_Intro}{\beamerbutton{main}}
+\end{frame}
