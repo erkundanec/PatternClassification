@@ -1,0 +1,380 @@
+%Execuation Instruction: (1) Bib (2) PdfLatex (3) Viewpdf
+
+\documentclass[handout]{beamer}
+%\documentclass[plain]{beamer}
+\usetheme[pageofpages=of,% String used between the current page and the
+                         % total page count.
+          bullet=square,% Use circles instead of squares/circle for bullets.
+          titleline=true,% Show a line below the frame title.
+          alternativetitlepage=true,% Use the fancy title page.
+          titlepagelogo=iitlogogray,% Logo for the first page.
+          %watermark=iit_logoPNG,% Watermark used in every page.
+          watermarkheight=100px,% Height of the watermark.
+          watermarkheightmult=4,% The watermark image is 4 times bigger
+                                % than watermarkheight.
+]{Torino}
+\usepackage{graphicx}
+\graphicspath{{./Figures/}}
+\definecolor{chameleongreen5}{rgb}{0.04, 0.07725, 0.18667}
+\setbeamercolor{section in head/foot}{fg=white, bg=chameleongreen5}
+\useoutertheme[]{miniframes}
+\usefonttheme[onlymath]{serif}
+\usepackage{url}
+\usepackage{multicol}
+\usepackage{etex}
+\usepackage{tikz}
+\usetikzlibrary{arrows, positioning, automata}
+\usepackage{changepage}
+\usepackage{multicol}
+\usepackage{mathtools}
+
+\usepackage{pgf,tikz,pgfplots}
+%\pgfplotsset{compat=1.15}
+\usepackage{mathrsfs}
+\usetikzlibrary{arrows}
+\usepackage{verbatim}
+\usepackage{comment}
+
+% put color to \boxed math command
+\usepackage{tikz}
+\newcommand*{\boxcolor}{slidecolor}
+\makeatletter
+\renewcommand{\boxed}[1]{\textcolor{\boxcolor}{%
+\tikz[baseline={([yshift=-1ex]current bounding box.center)}] \node [rectangle, minimum width=2ex,rounded corners,draw,fill=slidecolor!25] {\normalcolor\m@th$\displaystyle#1$};}}
+ \makeatother
+
+\renewenvironment{comment}{}{}%
+
+%\useoutertheme{theme name}
+%default
+%infolines
+%miniframes
+%smoothbars
+%sidebar
+%split
+%shadow
+%tree
+%smoothtree
+%\setbeamercolor{background canvas}{bg=white} 
+%\usecolortheme{crane} 
+%\useinnertheme{circles}
+
+
+
+
+
+
+%\logo{\pgfimage[height=0.65cm]{SOAlogo.png}}
+%\author{Marco Barisione}
+
+%\title{Torino, a pretty theme for \LaTeX{} Beamer}
+%\author[ITER, S`O'A Deemed to be University, BBSR]{{\textbf{Dr. Kundan Kumar}}\\ Ph.D. (IIT Kharagpur)\\~Associate Professor\\~ECE Department (Cabin - E139)}
+%
+%\institute{\vspace{-12pt}\\\pgfimage[height=1.5cm]{SOAlogo.png}\\Institute of Technical Education \& Research (ITER)\\S`O'A Deemed to be University, Bhubaneswar, Odisha, India-751030\\
+%\copyright\ 2018 Kundan Kumar, All Rights Reserved}
+%%\date{}
+
+
+
+%\author{{\bf Kundan Kumar\inst{1}}\\ \bf (11EC91R02)}
+%\institute{{Under the guidance of}\vspace{3pt} \\{\small {\bf Prof. P. K. Biswas}} \vspace{10pt}\\ Department of Electronics and Electrical Communication Engineering\\ Indian Institute of Technology Kharagpur, India}
+%%\date{25 Sep 2014}
+%\date{}
+%\institute{Politecnico di Torino}
+%\date{September 30, 2015}
+\newenvironment{variableblock}[3]{%
+  \setbeamercolor{block body}{#2}
+  \setbeamercolor{block title}{#3}
+  \begin{block}{#1}}{\end{block}}
+  \DeclareGraphicsExtensions{.pdf,.png,.jpg}
+\usepackage{multimedia}  % to include movies
+\setbeamertemplate{bibliography item}{\insertbiblabel}  % to asign numbered labels to bibliography items
+\usepackage{appendixnumberbeamer}
+\definecolor{slidecolor}{rgb}{0.20706, 0.29725, 0.42667}
+\definecolor{sc}{rgb}{0.20706, 0.29725, 0.42667}
+\usepackage{booktabs}
+\usepackage{subfigure}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Table parameter
+\usepackage{array}
+\newcolumntype{J}[1]{>{\arraybackslash}p{#1}}
+\newcolumntype{P}[1]{>{\centering\arraybackslash}p{#1}}
+\newcolumntype{L}[1]{>{\raggedright\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+\newcolumntype{C}[1]{>{\centering\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+\newcolumntype{R}[1]{>{\raggedleft\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+\newcommand{\forceindent}{\leavevmode{\parindent=1.5em\indent}}
+\usepackage{multirow}
+%\hypersetup{
+%  colorlinks,
+%  citecolor=green,
+%  linkcolor=green
+%}
+
+\setbeamertemplate{blocks}[rounded][shadow=true]
+\setbeamercolor{footnote}{fg=red}
+\setbeamercolor{footnote mark}{fg=red}
+\let\otp\titlepage
+\renewcommand{\titlepage}{\otp\addtocounter{framenumber}{-1}}
+\setbeamerfont{caption}{size=\scriptsize}
+%\setlength{\itemindent}{-.5in}
+\setbeamertemplate{frametitle continuation}{} % How to remove partitioned frame title number
+
+\usepackage[backend=bibtex,refsection=section]{biblatex}
+\bibliography{Bibliography.bib}
+\setbeamertemplate{footnote}{%
+  \tiny%
+  \parindent 1em\noindent%
+  \raggedright
+  \hbox to 1.8em{\hfil\insertfootnotemark}\insertfootnotetext\par%
+}%
+\setlength\footnotesep{0pt}
+\renewcommand\refname{}
+\usepackage{pgfpages}
+%\setbeameroption{show notes} %un-comment to see the notes
+%\setbeameroption{show notes on second screen}
+\usepackage{xcolor,colortbl}
+%\definecolor{green}{rgb}{0.1,0.1,0.1}
+\newcommand{\cellsc}{\cellcolor{sc!25}}  %{0.9}
+\newcommand{\hcyan}[1]{{\color{teal} #1}}
+
+\usetikzlibrary{matrix,chains,decorations.pathreplacing,arrows}
+
+\usepackage{amsmath, amssymb, latexsym}
+
+\usepackage{sidecap}
+\usetikzlibrary{fadings}
+\usepackage{xcolor}
+\definecolor{olivegreen}{rgb}{0,0.6,0}
+\definecolor{fc}{HTML}{1E90FF}
+\definecolor{h}{HTML}{228B22}
+\definecolor{bias}{HTML}{87CEFA}
+\definecolor{noise}{HTML}{8B008B}
+\definecolor{conv}{HTML}{FFA500}
+\definecolor{pool}{HTML}{B22222}
+\definecolor{up}{HTML}{B22222}
+\definecolor{view}{HTML}{FFFFFF}
+\definecolor{bn}{HTML}{FFD700}
+\tikzset{fc/.style={black,draw=black,fill=fc,rectangle,minimum height=1cm}}
+\tikzset{h/.style={black,draw=black,fill=h,rectangle,minimum height=1cm}}
+\tikzset{bias/.style={black,draw=black,fill=bias,rectangle,minimum height=1cm}}
+\tikzset{noise/.style={black,draw=black,fill=noise,rectangle,minimum height=1cm}}
+\tikzset{conv/.style={black,draw=black,fill=conv,rectangle,minimum height=1cm}}
+\tikzset{pool/.style={black,draw=black,fill=pool,rectangle,minimum height=1cm}}
+\tikzset{up/.style={black,draw=black,fill=up,rectangle,minimum height=1cm}}
+\tikzset{view/.style={black,draw=black,fill=view,rectangle,minimum height=1cm}}
+\tikzset{bn/.style={black,draw=black,fill=bn,rectangle,minimum height=1cm}}
+
+\newcommand{\ImageWidth}{11cm}
+\usetikzlibrary{decorations.pathreplacing,positioning, arrows.meta}
+
+\definecolor{cyan}{rgb}{0.0, 0.72, 0.92}
+\definecolor{darkcyan}{rgb}{0.0, 0.55, 0.55}
+\usepackage{chronology}
+\definecolor{brightmaroon}{rgb}{0.76, 0.13, 0.28}
+\definecolor{maroon}{rgb}{0.5, 0, 0}
+\definecolor{mycolor1}{rgb}{1.0, 0.25, 0.39}
+\definecolor{mycolor2}{rgb}{0.62, 0.0, 0.77}
+\definecolor{mycolor3}{rgb}{0.31, 0.78, 0.47}
+\definecolor{mycolor4}{rgb}{0.0, 0.45, 0.73}
+
+%\newcounter{step}\newcounter{stepstart}\newcounter{stepstop}%
+%\newcounter{yearstart}\newcounter{yearstop}\newcounter{deltayears}%
+%\newlength{\xstart}\newlength{\xstop}%
+%\newlength{\unit}\newlength{\timelinewidth}%
+%\newsavebox{\timelinebox}%
+
+\renewenvironment{chronology}[5][5]{%
+  \setcounter{step}{#1}%
+  \setcounter{yearstart}{#2}\setcounter{yearstop}{#3}%
+  \setcounter{deltayears}{\theyearstop-\theyearstart}%
+  \setlength{\unit}{#4}%
+  \setlength{\timelinewidth}{#5}%
+  \pgfmathsetcounter{stepstart}%
+    {\theyearstart+\thestep-mod(\theyearstart,\thestep)}%
+  \pgfmathsetcounter{stepstop}{\theyearstop-mod(\theyearstop,\thestep)}%
+  \addtocounter{step}{\thestepstart}%
+  \begin{lrbox}{\timelinebox}%
+    \begin{tikzpicture}[baseline={(current bounding box.north)}]%
+      \draw [|->] (0,0) -- (\thedeltayears*\unit+\unit, 0);%
+      \foreach \x in {1,...,\thedeltayears}%
+        \draw[xshift=\x*\unit] (0,-.1\unit) -- (0,.1\unit);%
+      \addtocounter{deltayears}{1}%
+      \foreach \x in {\thestepstart,\thestep,...,\thestepstop}{%
+        \pgfmathsetlength\xstop{(\x-\theyearstart)*\unit}%
+        \draw[xshift=\xstop] (0,-.3\unit) -- (0,.3\unit);%
+        \node at (\xstop,0) [below=.2\unit] {};}%
+         %\node at (\xstop,0) [below=.2\unit] {\x};}%
+}
+{%
+    \end{tikzpicture}%
+  \end{lrbox}%
+  \raisebox{2ex}{\resizebox{\timelinewidth}{!}{\usebox{\timelinebox}}}}%
+\renewcommand{\event}[3][e]{%
+  \pgfmathsetlength\xstop{(#2-\theyearstart)*\unit}%
+    \pgfmathsetlength\xstart{(#1-\theyearstart)*\unit}%
+    \draw[fill=black,draw=none,opacity=0.5,rounded corners=.2\unit]%
+      (\xstart,-.2\unit) rectangle%
+      node[opacity=1,rotate=45,right=.5\unit] {#3} (\xstop,.2\unit);%
+}%
+
+\newcommand{\myaction}[3][e]{%
+    \pgfmathsetlength\xstop{(#2-\theyearstart)*\unit}%
+    \ifx #1e%
+        \draw[fill=red,draw=none,opacity=0.5]%
+            (\xstop, 0) circle (.2\unit)%
+            node[opacity=1,rotate=0] {#3};%
+    \else%
+        \pgfmathsetlength\xstart{(#1-\theyearstart)*\unit}%
+        \draw[fill=red,draw=none,opacity=0.5,rounded corners=.2\unit]%
+            (\xstart,-.2\unit) rectangle%
+            node[opacity=1,rotate=0,above=.0\unit] {#3} (\xstop,.2\unit);%
+    \fi}%
+
+\newcommand{\upevent}[3][e]{%
+    \pgfmathsetlength\xstop{(#2-\theyearstart)*\unit}%
+    \ifx #1e%
+        \draw[fill=black,draw=none,opacity=0.5]%
+            (\xstop, 0) circle (.2\unit)%
+            node[opacity=1,rotate=0] {#3};%
+    \else%
+        \pgfmathsetlength\xstart{(#1-\theyearstart)*\unit}%
+        \draw[fill=black,draw=black,opacity=0.5,rounded corners=.2\unit]%
+            (\xstart,-.2\unit) rectangle%
+            node[opacity=1,rotate=0,above=8\unit] (auxnode) {#3} (\xstop,.2\unit);% <------ inserted nodes name
+       \draw[->, shorten >=0cm] (auxnode.south) -- (\xstop,0);% <- draws a vertical line from event to date
+    \fi}%
+    
+    \newcommand{\adjustupevent}[4][e]{%
+    \pgfmathsetlength\xstop{(#2-\theyearstart)*\unit}%
+    \ifx #1e%
+        \draw[fill=black,draw=none,opacity=0.5]%
+            (\xstop, 0) circle (.2\unit)%
+            node[opacity=1,rotate=0] {#4};%
+    \else%
+        \pgfmathsetlength\xstart{(#1-\theyearstart)*\unit}%
+        \draw[fill=black,draw=black,opacity=0.5,rounded corners=.2\unit]%
+            (\xstart,-.2\unit) rectangle%
+            node[opacity=1,rotate=0,above=#3\unit] (auxnode) {#4} (\xstop,.2\unit);% <------ inserted nodes name
+       \draw[->, shorten >=0cm] (auxnode.south) -- (\xstop,0);% <- draws a vertical line from event to date
+    \fi}%
+
+    \newcommand{\adjustdownevent}[5][e]{%
+    \pgfmathsetlength\xstop{(#2-\theyearstart)*\unit}%
+    \ifx #1e%
+        \draw[fill=black,draw=none,opacity=0.5]%
+            (\xstop, 0) circle (.2\unit)%
+            node[opacity=1,rotate=0] {#5};%
+    \else%
+        \pgfmathsetlength\xstart{(#1-\theyearstart)*\unit}%
+        \draw[fill=black,draw=black,opacity=0.5,rounded corners=.2\unit]%
+            (\xstart,-.2\unit) rectangle%
+            node[inner sep=2pt,outer sep=0pt,draw=black,rounded corners=0.2cm,opacity=1,rotate=0,below=#4\unit] (auxnode) {#5} (\xstop,.2\unit);% <------ inserted nodes name
+       \draw[->, shorten >=#3\unit] (auxnode.north) -- (\xstop,0);% <- draws a vertical line from event to date
+    \fi}%
+    
+\newcommand{\downevent}[3][e]{%
+    \pgfmathsetlength\xstop{(#2-\theyearstart)*\unit}%
+    \ifx #1e%
+        \draw[fill=black,draw=none,opacity=0.5]%
+            (\xstop, 0) circle (.2\unit)%
+            node[opacity=1,rotate=0] {#3};%
+    \else%
+        \pgfmathsetlength\xstart{(#1-\theyearstart)*\unit}%
+        \draw[fill=black,draw=black,opacity=0.5,rounded corners=.2\unit]%
+            (\xstart,-.2\unit) rectangle%
+            node[opacity=1,rotate=0,below=3\unit] (auxnode) {#3} (\xstop,.2\unit);% <------ inserted nodes name
+       \draw[->, shorten >=0cm] (auxnode.north) -- (\xstop,0);% <- draws a vertical line from event to date
+    \fi}%
+
+\newcommand{\upyear}[3][e]{%
+    \pgfmathsetlength\xstop{(#2-\theyearstart)*\unit}%
+    \ifx #1e%
+        \draw[fill=black,draw=none,opacity=0.5]%
+            (\xstop, 0) circle (.2\unit)%
+            node[opacity=1,rotate=0, draw] {#3};%
+    \else%
+        \pgfmathsetlength\xstart{(#1-\theyearstart)*\unit}%
+        \draw[fill=black,draw=none,opacity=0.5,rounded corners=.2\unit]%
+            (\xstart,-.2\unit) rectangle%
+            node[opacity=1,rotate=0,below=1.0\unit] {#3} (\xstop,.2\unit);%
+    \fi}%
+    
+    
+
+\newcommand{\downyear}[3][e]{%
+    \pgfmathsetlength\xstop{(#2-\theyearstart)*\unit}%
+    \ifx #1e%
+        \draw[fill=black,draw=none,opacity=0.5]%
+            (\xstop, 0) circle (.2\unit)%
+            node[opacity=1,rotate=0, draw] {#3};%
+    \else%
+        \pgfmathsetlength\xstart{(#1-\theyearstart)*\unit}%
+        \draw[fill=black,draw=none,opacity=0.5,rounded corners=.2\unit]%
+            (\xstart,-.2\unit) rectangle%
+            node[opacity=1,rotate=0,above=1.0\unit] {#3} (\xstop,.2\unit);%
+    \fi}%
+
+\usepackage{tcolorbox}
+\usepackage{setspace}
+
+%\definecolor{UBCblue}{rgb}{0.04706, 0.13725, 0.26667} % UBC Blue (primary)
+%\definecolor{UBCgrey}{rgb}{0.3686, 0.5255, 0.6235} % UBC Grey (secondary)
+%\setbeamercolor{palette primary}{bg=UBCblue,fg=white}
+%\setbeamercolor{palette secondary}{bg=UBCblue,fg=white}
+%\setbeamercolor{palette tertiary}{bg=UBCblue,fg=white}
+%\setbeamercolor{palette quaternary}{bg=UBCblue,fg=white}
+%\setbeamercolor{structure}{fg=UBCblue} % itemize, enumerate, etc
+%\setbeamercolor{section in toc}{fg=UBCblue} % TOC sections
+%% Override palette coloring with secondary
+%\setbeamercolor{subsection in head/foot}{bg=UBCgrey,fg=white}
+
+\definecolor{chameleongreen1}{rgb}{0.09706, 0.18725, 0.31667}
+\definecolor{chameleongreen2}{rgb}{0.33706, 0.42725, 0.55667}
+\definecolor{chameleongreen3}{rgb}{0.20706, 0.29725, 0.42667}
+\definecolor{chameleongreen4}{rgb}{0.04706, 0.13725, 0.26667}
+
+\setbeamercolor*{palette primary}{fg=white,bg=chameleongreen2}
+\setbeamercolor*{palette secondary}{fg=white,bg=chameleongreen3}
+\setbeamercolor*{palette tertiary}{fg=white,bg=chameleongreen4}
+\setbeamercolor*{palette quaternary}{fg=white,bg=chameleongreen1}
+%\setbeamercolor{section in toc shaded}{fg=red}
+\setbeamercolor*{section in toc}{fg=chameleongreen3}
+\setbeamercolor*{caption name}{fg=white,fg=chameleongreen3}
+\setbeamercolor*{bibliography entry author}{fg=white,fg=chameleongreen3}
+\setbeamercolor*{bibliography entry title}{fg=white,fg=chameleongreen3}
+\setbeamercolor*{bibliography entry location}{fg=white,fg=chameleongreen3}
+\setbeamercolor*{bibliography entry note}{fg=white,fg=chameleongreen3}
+\setbeamercolor*{bibliography item}{fg=white,fg=chameleongreen3}
+
+%\definecolor{beamer@blendedblue}{rgb}{0.5,0.5,0.3} % changed this
+\setbeamercolor{normal text}{fg=chameleongreen4,bg=white}
+%\setbeamercolor{structure}{fg=beamer@blendedblue}
+\setbeamercolor{background canvas}{parent=normal text}
+\setbeamercolor{background}{parent=background canvas}
+\definecolor{brown(web)}{rgb}{0.35, 0.26, 0.16}
+
+
+
+\setbeamercolor*{titlelike}{bg=chameleongreen3}
+\setbeamercolor*{frametitle}{bg=black,fg=black}
+\setbeamercolor*{part title}{bg=black,fg=black}
+\setbeamercolor*{item}{fg=chameleongreen3}
+
+\setbeamercolor*{separation line}{}
+\setbeamercolor*{fine separation line}{}
+
+
+
+\begin{document}
+\input{./Chapters2020/Lec01_Introduction}
+%\input{./Chapters2020/Ch2_FeatureExtraction}
+%\input{./Chapters2020/Ch3_BayesDecision}
+%\input{./Chapters2020/Ch4_MaximumLikelihood}
+%\input{./Chapters2020/Ch5_DimenProblem.tex}
+%\input{./Chapters2020/Ch6_LinearDiscriminant.tex}
+%\input{./Chapters2020/Ch7_BackPropagation.tex}
+%\input{./Chapters2020/Ch8_Clustering.tex}
+%\input{./Chapters2020/Ch9_SupportVectorMachine.tex}
+\end{document}
+
