@@ -16,50 +16,6 @@
   {}
 \endgroup
 
-\entry{Omer2018}{misc}{}
-  \name{author}{1}{}{%
-    {{}%
-     {CELEBI}{C.}%
-     {Omer~Cengiz}{O.~C.}%
-     {}{}%
-     {}{}}%
-  }
-  \strng{namehash}{COC1}
-  \strng{fullhash}{COC1}
-  \field{sortinit}{C}
-  \field{howpublished}{https://www.byclb.com/TR/Tutorials/neural\_networks/Index.aspx}
-  \field{title}{Neural Networks and Pattern Recognition [Online, Last accessed
-  on 26 Dec 2019]}
-\endentry
-
-\entry{duda2012pattern}{book}{}
-  \name{author}{3}{}{%
-    {{}%
-     {Duda}{D.}%
-     {Richard~O}{R.~O.}%
-     {}{}%
-     {}{}}%
-    {{}%
-     {Hart}{H.}%
-     {Peter~E}{P.~E.}%
-     {}{}%
-     {}{}}%
-    {{}%
-     {Stork}{S.}%
-     {David~G}{D.~G.}%
-     {}{}%
-     {}{}}%
-  }
-  \list{publisher}{1}{%
-    {John Wiley \& Sons}%
-  }
-  \strng{namehash}{DROHPESDG1}
-  \strng{fullhash}{DROHPESDG1}
-  \field{sortinit}{D}
-  \field{title}{Pattern classification}
-  \field{year}{2012}
-\endentry
-
 \lossort
 \endlossort
 
