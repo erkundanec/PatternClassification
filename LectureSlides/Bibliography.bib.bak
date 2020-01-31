@@ -1,0 +1,124 @@
+% Encoding: UTF-8
+@book{duda2012pattern,
+  title={Pattern classification},
+  author={Duda, Richard O and Hart, Peter E and Stork, David G},
+  year={2012},
+  publisher={John Wiley \& Sons}
+}
+
+https://www.byclb.com/TR/Tutorials/neural_networks/
+
+@article{gose1997pattern,
+  title={Pattern recognition and image analysis},
+  author={Gose, Earl},
+  year={1997},
+  publisher={PHI}
+}
+
+@Misc{Omer2018,
+  author              = {Omer Cengiz CELEBI},
+  title               = {Neural Networks and Pattern Recognition [Online, Last accessed on 26 Dec 2019]},
+  howpublished        = {https://www.byclb.com/TR/Tutorials/neural\_networks/Index.aspx},
+  citeulike-linkout-0 = {https://www.byclb.com/TR/Tutorials/neural\_networks/},
+}
+
+@misc{gonzalez2002digital,
+  title={Digital image processing},
+  author={Gonzalez, Rafael C and Woods, Richard E and others},
+  year={2002},
+  publisher={Prentice hall New Jersey}
+}
+
+@Misc{wikiVisualCortex,
+  title        = {Visual Cortex},
+  howpublished = {Wikipedia, the free encyclopedia, {https://en.wikipedia.org/wiki/Visual\_cortex}},
+  level        = {l},
+}
+
+@Article{Daugman1985,
+  author    = {Daugman, John G},
+  title     = {Uncertainty relation for resolution in space, spatial frequency, and orientation optimized by two-dimensional visual cortical filters},
+  journal   = {JOSA A},
+  year      = {1985},
+  volume    = {2},
+  number    = {7},
+  pages     = {1160--1169},
+  publisher = {Optical Society of America},
+}
+
+@Article{Petkov1995,
+  author    = {Petkov, Nikolay},
+  title     = {Biologically motivated computationally intensive approaches to image pattern recognition},
+  journal   = {Future Generation Computer Systems},
+  year      = {1995},
+  volume    = {11},
+  number    = {4-5},
+  pages     = {451--465},
+  publisher = {North-Holland},
+}
+
+@Article{Petkov1997,
+  author    = {Petkov, Nikolai and Kruizinga, Peter},
+  title     = {Computational models of visual neurons specialised in the detection of periodic and aperiodic oriented visual stimuli: bar and grating cells},
+  journal   = {Biological cybernetics},
+  year      = {1997},
+  volume    = {76},
+  number    = {2},
+  pages     = {83--96},
+  publisher = {Springer},
+}
+
+@InProceedings{Kruizinga1999,
+  author       = {Kruizinga, Peter and Petkov, Nicolai and Grigorescu, Simona E},
+  title        = {Comparison of texture features based on Gabor filters},
+  booktitle    = {Image analysis and processing, 1999. Proceedings. International conference on},
+  year         = {1999},
+  pages        = {142--147},
+  organization = {IEEE},
+}
+
+@Article{Grigorescu2002,
+  author    = {Grigorescu, Simona E and Petkov, Nicolai and Kruizinga, Peter},
+  title     = {Comparison of texture features based on Gabor filters},
+  journal   = {IEEE Transactions on Image processing},
+  year      = {2002},
+  volume    = {11},
+  number    = {10},
+  pages     = {1160--1167},
+  publisher = {IEEE},
+}
+
+@Article{Petkov2003,
+  author    = {Petkov, Nicolai and Westenberg, Michel A},
+  title     = {Suppression of contour perception by band-limited noise and its relation to nonclassical receptive field inhibition},
+  journal   = {Biological cybernetics},
+  year      = {2003},
+  volume    = {88},
+  number    = {3},
+  pages     = {236--246},
+  publisher = {Springer},
+}
+
+@Article{Grigorescu2003,
+  author    = {Grigorescu, Cosmin and Petkov, Nicolai and Westenberg, Michel A},
+  title     = {Contour detection based on nonclassical receptive field inhibition},
+  journal   = {IEEE Transactions on image processing},
+  year      = {2003},
+  volume    = {12},
+  number    = {7},
+  pages     = {729--739},
+  publisher = {IEEE},
+}
+
+@Article{Jain1991,
+  author    = {Jain, Anil K and Farrokhnia, Farshid},
+  title     = {Unsupervised texture segmentation using Gabor filters},
+  journal   = {Pattern recognition},
+  year      = {1991},
+  volume    = {24},
+  number    = {12},
+  pages     = {1167--1186},
+  publisher = {Elsevier},
+}
+
+@Comment{jabref-meta: databaseType:bibtex;}
