@@ -838,25 +838,23 @@ where $P_j$ is decimal equivalent of binary sequence $b_j$.
 \item feature extraction,
 \item texture analysis, etc.
 \end{itemize}   
-\item The kernel  mask of these filters is created by multiplying a Gaussian envelop function with a complex oscillation.
+\item In the spatial domain, a 2D Gabor filter is a Gaussian kernel function modulated by a sinusoidal wave. 
 \begin{equation}
 {g_{\lambda ,\theta ,\varphi ,\sigma ,\gamma }}(x,y) = \exp \left( { - \frac{{x{'^2} + {\gamma ^2}y{'^2}}}{{2{\sigma ^2}}}} \right)\exp \left( i\left({2\pi \frac{{x'}}{\lambda } + \varphi }\right) \right)\nonumber
 \end{equation}
 where $x'=x\cos\theta+y\sin \theta$ and $y'=-\sin \theta+y\cos \theta$.
-\item It has been shown by several researchers that the profile of simple-cell receptive fields in the mammalian visual cortex can by described by oriented two-dimensional Gabor functions.
+\item It has been shown by several researchers that the profile of simple-cell receptive fields in the mammalian visual cortex can by described by oriented 2D-Gabor functions.
 \end{itemize}
 \end{frame}
 
 \begin{frame}{2D-Gabor filters: Visual System}
 \begin{itemize}
-\item In the spatial domain, a 2D Gabor filter is a Gaussian kernel function modulated by a sinusoidal plane wave. 
-\item Some authors claim that simple cells in the visual cortex of mammalian brains can be modelled by Gabor functions.
 \item Simple cells respond to bars and gratings of given
 orientation.
-\begin{figure}
-\includegraphics[scale=0.52]{Figures/visualSystem.png}
-\end{figure}
 \end{itemize}
+\begin{figure}
+\includegraphics[scale=0.59]{Figures/visualSystem.png}
+\end{figure}
 \end{frame}
 
 \begin{frame}{2D Gabor Functions}
