@@ -617,6 +617,8 @@ where
 \end{frame}
 
 
+
+
 \begin{frame}{Case 2: $\Sigma_i=\Sigma$}
 \begin{itemize}
 \item Discriminant functions are
@@ -702,8 +704,43 @@ w_{i0}=&-\frac{1}{2}\mu_i^T\Sigma_i^{-1}\mu_i-\frac{1}{2}\ln |\Sigma_i|+\ln P(w_
 %%\end{figure}
 %%\end{frame}
 %
-\begin{frame}{Problem}
-Example 1: Find the decision boundary between $\omega_1$ and $\omega_2$ where
+
+\begin{frame}{Example to solve}
+\textbf{\color{blue}Question:}\\
+For a 2-class problem, the prior probabilities are: $P(w_1)={1}/{4}$
+and $P(w_2)={3}/{4}$. The class conditional distribution for ${\rm x}=x$,  that is ${\rm x}$ has only a single attribute, are
+$p(x/w_1)=N(0,1)$ and 
+$p(x/w_2)=N(1,1)$.
+\begin{itemize}
+\item[(a)] Calculate the threshold boundary value $x_t$ which gives the probability of minimum error.
+\item[(b)] If the loss matrix is 
+\begin{equation*}
+{\lambda _{ij}} = \left[ {\begin{array}{*{20}{c}}
+  0&1 \\ 
+  {{\raise0.7ex\hbox{$1$} \!\mathord{\left/
+ {\vphantom {1 2}}\right.\kern-\nulldelimiterspace}
+\!\lower0.7ex\hbox{$2$}}}&0 
+\end{array}} \right],
+\end{equation*}
+find the threshold boundary value $x_t$ for minimum risk.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Example to solve}
+\textbf{\color{blue} Question:}\\
+Two normal distribution are characterized by: $P(w_1)=P(w_2)=0.5$ and
+\[{\mu _1} = \left( {\begin{array}{*{20}{c}}
+  0 \\ 
+  1 
+\end{array}} \right),{\mu _2} = \left( {\begin{array}{*{20}{c}}
+  0 \\ 
+  { - 1} 
+\end{array}} \right)\]
+Sketch the Bayes decision boundary for $\Sigma_1=\Sigma_2=I$.
+\end{frame}
+
+\begin{frame}{Example to solve}
+\textbf{\color{blue} Question:}\\Find the decision boundary between $\omega_1$ and $\omega_2$ where
 \begin{columns}
 \begin{column}{5cm}
 \begin{footnotesize}
@@ -857,7 +894,7 @@ probabilities are known.
 \end{itemize}
 \end{frame}
 
-\section{BDT-Discrete Features}
+\section{BDT-Discrete}
 \subsection{}
 \begin{frame}{}
 \begin{variableblock}{\centering \Large \textbf{\vspace{4pt}\newline Bayes Decision Theory - Discrete Features\vspace{4pt}}}{bg=slidecolor,fg=white}{bg=slidecolor,fg=white}
