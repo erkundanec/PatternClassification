@@ -2,6 +2,14 @@
 \defcounter {refsection}{0}\relax 
 \beamer@endinputifotherversion {3.33pt}
 \defcounter {refsection}{0}\relax 
-\beamer@sectionintoc {1}{Parametric Estimation}{2}{0}{1}
+\beamer@sectionintoc {1}{Bayesian Decision Theory}{2}{0}{1}
 \defcounter {refsection}{0}\relax 
-\beamer@sectionintoc {2}{References}{5}{0}{2}
+\beamer@sectionintoc {2}{Disc. Functions}{25}{0}{2}
+\defcounter {refsection}{0}\relax 
+\beamer@sectionintoc {3}{Normal Density}{31}{0}{3}
+\defcounter {refsection}{0}\relax 
+\beamer@sectionintoc {4}{Evaluation}{53}{0}{4}
+\defcounter {refsection}{0}\relax 
+\beamer@sectionintoc {5}{BDT-Discrete}{60}{0}{5}
+\defcounter {refsection}{0}\relax 
+\beamer@sectionintoc {6}{References}{67}{0}{6}
