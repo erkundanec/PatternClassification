@@ -44,6 +44,24 @@
   \field{year}{2012}
 \endentry
 
+\entry{gose1997pattern}{article}{}
+  \name{author}{1}{}{%
+    {{}%
+     {Gose}{G.}%
+     {Earl}{E.}%
+     {}{}%
+     {}{}}%
+  }
+  \list{publisher}{1}{%
+    {PHI}%
+  }
+  \strng{namehash}{GE1}
+  \strng{fullhash}{GE1}
+  \field{sortinit}{G}
+  \field{title}{Pattern recognition and image analysis}
+  \field{year}{1997}
+\endentry
+
 \lossort
 \endlossort
 
