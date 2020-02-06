@@ -814,25 +814,34 @@ Assuming that samples in $\omega_1$ and $\omega_2$ following Normal distribution
 \end{variableblock}
 \end{frame}
 
-\begin{frame}{Confusion Matrix}
-\begin{itemize}
-\item Consider the two-category case and define
-\begin{itemize}
-\item $w_1$: target is present
-\item $w_2$: target is not present
-\end{itemize}
-\begin{figure}
-\includegraphics[scale=0.7]{Bayes26}
-\end{figure}
-\item Mis-detection is also called false negative or Type II error.
-\item False alarm is also called false positive or Type I error.
-\end{itemize}
-\end{frame}
+%\begin{frame}{Confusion Matrix}
+%\begin{itemize}
+%\item Consider the two-category case and define
+%\begin{itemize}
+%\item $w_1$: target is present
+%\item $w_2$: target is not present
+%\end{itemize}
+%\begin{figure}
+%\includegraphics[scale=0.7]{Bayes26}
+%\end{figure}
+%\item Mis-detection is also called false negative or Type II error.
+%\item False alarm is also called false positive or Type I error.
+%\end{itemize}
+%\end{frame}
 
 \begin{frame}{Confusion Matrix}
 \begin{itemize}
+
+\item For a two class-problem, a table of confusion (sometimes also called a confusion matrix), is a table with two rows and two columns that reports the number of
+\begin{itemize}
+\item  \textit{\color{mycolor2}false positives (FP)}, 
+\item \textit{\color{mycolor2} false negatives (FN)}, 
+\item \textit{\color{mycolor2}true positives (TP)}, and 
+\item \textit{\color{mycolor2}true negatives(TN)}
+\end{itemize}
+
+%\footnote{\color{red}\url{https://en.wikipedia.org/wiki/Confusion_matrix}}
 \item In statistical classification, a confusion matrix, also known as an error matrix.
-\item For a two class-problem, a table of confusion (sometimes also called a confusion matrix), is a table with two rows and two columns that reports the number of \textit{\color{mycolor2}false positives}, \textit{\color{mycolor2} false negatives}, \textit{\color{mycolor2}true positives}, and \textit{\color{mycolor2}true negatives}.\footnote{\url{https://en.wikipedia.org/wiki/Confusion_matrix}}
 \begin{figure}
 \includegraphics[scale=0.3]{ConfusionMatrix.png}
 \end{figure}
@@ -847,19 +856,18 @@ Assuming that samples in $\omega_1$ and $\omega_2$ following Normal distribution
 \item True negative rate (TNR), also called Specificity
 \end{itemize}
 \begin{figure}
-\includegraphics[scale=0.45]{SensSpec.png}
+\includegraphics[scale=0.45]{SensSpec.png}\\
+\includegraphics[scale=0.2]{Accuracy.png}
 \end{figure}
 \end{frame}
+
 
 \begin{frame}{Receiver Operating Characteristics}
 \begin{columns}
 \begin{column}{5cm}
 \begin{itemize}
 \item If we use a parameter (e.g.,
-a threshold) in our
-decision, the plot of these
-rates for different values of
-the parameter is called the
+a threshold) in our decision, the plot of TPR vs FPR for different values of the parameter is called the
 \textit{\color{mycolor2}receiver operating
 characteristic (ROC)} curve.
 \item The ROC curve is created by plotting the \textit{\color{mycolor2}true positive rate (TPR)} against the \textit{\color{mycolor2}false positive rate (FPR)} at various threshold settings.
@@ -867,16 +875,18 @@ characteristic (ROC)} curve.
 \end{column}
 \begin{column}{5cm}
 \begin{figure}
-\includegraphics[scale=1]{Bayes32}
+\includegraphics[width=5cm]{ROCplot}
 \caption{Example receiver operating characteristic (ROC) curves for different setting of the system}
 \end{figure}
 \end{column}
 \end{columns}
 \end{frame}
 
+
+
 \begin{frame}{Receiver Operating Characteristics}
 \begin{figure}
-\includegraphics[scale=0.34]{ROCClass.png}
+\includegraphics[scale=0.38]{ROCClass.png}
 \end{figure}
 \end{frame}
 
