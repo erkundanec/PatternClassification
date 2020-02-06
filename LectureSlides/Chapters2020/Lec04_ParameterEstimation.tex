@@ -1,0 +1,814 @@
+\graphicspath{{Figures/}}
+
+\title{\fontsize{33}{45}{\huge Pattern Classification (EET 3035)\newline \vspace{8pt} \Large Lecture 04\vspace{-1.1cm}}}
+\author{\vspace{-0.4cm}\\\normalsize{\bf Dr. Kundan Kumar}\\ PhD (IIT Kharagpur)\\
+Associate Professor\\Department of ECE}
+% - Give the names in the same order as the appear in the paper.
+% - Use the \inst{?} command only if the authors have different
+%   affiliation.
+
+\institute[Indian Institute of Technology Kharagpur] % (optional, but mostly needed)
+{
+\includegraphics[height=.17\textheight]{SOAlogo.png}\\
+ Faculty of Engineering (ITER)\\ S`O'A Deemed to be University, Bhubaneswar, India-751030\\
+ \copyright\  2020 Kundan Kumar, All Rights Reserved\\
+  \vspace{-1.1cm}}
+% - Use the \inst command only if there are several affiliations.
+% - Keep it simple, no one is interested in your street address.
+\date{}
+% To remove page number from a perticular slide
+{
+\setbeamertemplate{logo}{}
+\makeatletter
+\setbeamertemplate{footline}{
+        \leavevmode%
+  
+  % First line.
+  \hbox{%
+  \begin{beamercolorbox}[wd=.2\paperwidth,ht=\beamer@decolines@lineup,dp=0pt]{}%
+  \end{beamercolorbox}%
+  \begin{beamercolorbox}[wd=.8\paperwidth,ht=\beamer@decolines@lineup,dp=0pt]{lineup}%
+  \end{beamercolorbox}%
+  } %
+  % Second line.
+  \hbox{%
+  \begin{beamercolorbox}[wd=\paperwidth,ht=\beamer@decolines@linemid,dp=0pt]{linemid}%
+  \end{beamercolorbox}%
+  } %
+  % Third line.
+  \hbox{%
+  \begin{beamercolorbox}[wd=.1\paperwidth,ht=\beamer@decolines@linebottom,dp=0pt]{}%
+  \end{beamercolorbox}%
+  \begin{beamercolorbox}[wd=.9\paperwidth,ht=\beamer@decolines@linebottom,dp=0pt]{linebottom}%
+  \end{beamercolorbox}%
+  }%
+        }
+\makeatother
+\begin{frame}
+\titlepage
+\end{frame}
+}
+
+\section{Parametric Estimation}
+\subsection{}
+
+\begin{frame}{}
+\begin{variableblock}{\centering \Large \textbf{\vspace{4pt}\newline Parametric Estimation Techniques\vspace{4pt}}}{bg=slidecolor,fg=white}{bg=slidecolor,fg=white}
+\end{variableblock}
+\end{frame}
+
+\begin{frame}{Introduction}
+\begin{itemize}
+\item Data availability in a Bayesian framework
+\begin{itemize}
+\item We could design an optimal classifier if we know
+\begin{itemize}
+\item $P(w_j)$ (priors)
+\item $p({\rm x}|w_j)$ (class-conditional densities)
+\end{itemize}
+Unfortunately, we rarely have this complete information.
+\end{itemize}
+\item Design a classifier from training samples
+\begin{itemize}
+\item No problem with prior estimation
+\item Samples are often too small for class-conditional estimation (large dimension of feature space)
+\end{itemize}
+\item Some priori information about the problem should be known.
+\begin{itemize}
+\item Normality of $p({\rm x}|w_j)$
+\begin{equation}
+p({\rm x}|w_j)\sim N(\mu_j,\Sigma_j)\nonumber
+\end{equation}
+\end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Introduction}
+\begin{itemize}
+\item Parametric estimation techniques
+\begin{itemize}
+\item \textit{\color{mycolor2}Maximum-Likelihood Estimation (MLE)} and 
+\item \textit{Bayesian Estimations}
+\end{itemize}
+\item Some other approaches for parameter estimation
+\begin{itemize}
+\item {\color{mycolor2} Histogram based technique}
+\item {\color{mycolor2}Parzen-Rosenblatt window technique} (Kernel/Window based technique)
+\end{itemize}
+\item Results are nearly identical, but approaches are different
+\item Parameters in MLE are fixed but unknown.
+\item Best parameters are obtained by maximizing the probability of obtaining the samples observed.
+\item Bayesian methods view the parameters as random variables having some known distribution
+\item In either approach, we use $P(w_i |{\rm x})$ for our classification rule.
+\end{itemize}
+\end{frame}
+
+
+
+\begin{frame}{Difference between ML and Bayesian estimation}
+\begin{itemize}
+\item \textit{\color{mycolor2}Maximum-Likelihood Estimation (MLE)} 
+\begin{itemize}
+\item Views the parameters as quantities whose values are fixed but unknown.
+\item We Estimate these values by maximizing the probability of obtaining the samples observed.
+\end{itemize}
+\item \textit{\color{mycolor2}Bayesian Estimations}
+\begin{itemize}
+\item Views the parameters as random variables having some known prior distribution.
+\item We observe new samples and converts the prior to a posterior density.
+\end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{}
+\begin{variableblock}{\centering \Large \textbf{\vspace{4pt}\newline Maximum Likelihood Estimation\vspace{4pt}}}{bg=slidecolor,fg=white}{bg=slidecolor,fg=white}
+\end{variableblock}
+\end{frame}
+
+\begin{frame}{Maximum Likelihood Estimation}
+\begin{itemize}
+\item $C\rightarrow$ no. of classes
+\item $\mathcal{D}_1,\mathcal{D}_2,\mathcal{D}_3,\ldots,\mathcal{D}_C$ (set of features for different classes)
+\item $p({\rm x}|w_j)\rightarrow$ known parametric form
+\begin{equation}
+p({\rm x}|w_j)\sim N(\mu_j,\Sigma_j)\nonumber
+\end{equation}
+where $\mu_j$ is the mean vector, and $\Sigma_j$ is the co-variance matrix.
+\item For parameter vector $\theta_j = \left[\mu_j,
+\Sigma_j\right]^T$, the {\color{mycolor1}parametric probability distribution function} as
+\begin{equation}
+p({\rm x}|w_j)\equiv p({\rm x}|w_j,\theta_j)=p({\rm x}|\theta_j)\nonumber
+\end{equation}
+\item Here our objective is to use the information from the training samples in set $\mathcal{D}_j$ to obtain good estimates for the unknown parameter vector $\theta_j$.
+\item We can apply MLE on individual set to estimate the parameters.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Maximum Likelihood Estimation}
+\begin{small}
+\begin{itemize}
+\item Let us assume the set $\mathcal{D}_j = \{{\rm x}_1,{\rm x}_2,\ldots,{\rm x}_n\}$ of independent
+and identically distributed (i.i.d.) samples drawn from the
+density $p({\rm x}|\theta_j)$ 
+\item That means $\mathcal{D}_i$ does not provide any information about the parameter vector $\theta_j$ for $i\neq j$, \textit{i.e.}, samples from one class do not provide any information of the parameter vector of the \textit{\color{mycolor1}probability density function} of another class.
+\item Thus, we can work with each class separately and omit the class labels ($j$), so that we write the probability density as  $p({\rm x}|\theta)$.
+\item Thus, the probability of observing $\mathcal{D} =\{{\rm x}_1,{\rm x}_2,\ldots,{\rm x}_n\}$ is
+\begin{equation}
+p(\mathcal{D}| \theta ) =p({\rm x}_1|\theta)*p({\rm x}_2|\theta)*\cdots*p({\rm x}_n|\theta) = \prod\limits_{k = 1}^n {p({{\rm x}_k}|\theta )}\nonumber
+\end{equation}
+where $n$ is the number of data samples in set $\mathcal{D}$.
+\item $p(\mathcal{D}|\theta)$ is also called the likelihood of $\theta$ with respect to the set of samples $\mathcal{D}$.
+\end{itemize}
+\end{small}
+\end{frame}
+
+\begin{frame}{{Maximum Likelihood Estimation}}
+\begin{itemize}
+\item The \textit{\color{mycolor1}maximum-likelihood estimation} of $\theta$ is, by definition, the value $\hat{\theta}$ that maximizes $p(\mathcal{D}|\theta)$.
+\end{itemize}
+\vspace{-12pt}
+\begin{columns}
+\begin{column}{6cm}
+\vspace{-12pt}
+\begin{figure}
+\includegraphics[scale=0.58]{Ch0301}
+\end{figure}
+\end{column}
+\begin{column}{5cm}
+\begin{equation}
+p(\mathcal{D}| \theta ) = \prod\limits_{k = 1}^n {p({{\rm x}_k}|\theta )}\nonumber
+\end{equation}
+\begin{align}
+l(\theta)&=\ln p(\mathcal{D}|\theta)\nonumber\\
+&=\sum\limits_{k = 1}^n {{\mathop{\rm \ln } \nolimits}~p({{\rm x}_k}|\theta )}\nonumber
+\end{align}
+{\color{mycolor2}Solution}\\
+\begin{equation}
+\hat \theta  = \arg \mathop {\max }\limits_\theta  l(\theta )\nonumber
+\end{equation}
+\end{column}
+\end{columns}
+\end{frame}
+
+\begin{frame}{Maximum Likelihood Estimation: Optimal estimation}
+\begin{itemize}
+\item Let $\theta=(\theta_1,\theta_2,\ldots,\theta_p)^T$, and $\nabla_{\theta}$ be the gradient operator
+\begin{equation}
+{\nabla _\theta } = \left[ {\begin{array}{*{20}{c}}
+{\frac{\partial }{{\partial {\theta _1}}}}\\
+ \vdots \\
+{\frac{\partial }{{\partial {\theta _p}}}}
+\end{array}} \right]\nonumber
+\end{equation}
+\item $\nabla_{\theta}l(\theta)=0$
+\item {\color{mycolor1}Example of a specific case}: Gaussian distribution
+\item Multivariate normal population with $(\mu,\Sigma)$
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Gaussian case: Unknown $\mu$}
+\begin{itemize}
+\item $\sigma^2$ is known, only $\mu$ is unknown.
+\begin{figure}
+\includegraphics[scale=1]{Ch0302}\\
+\includegraphics[scale=1]{Ch0303}~~~~~~~~~
+\end{figure}
+\item The maximum likelihood estimate for $\mu$ must satisfy
+\begin{figure}
+\includegraphics[scale=1]{Ch0304}
+\end{figure}
+\item Each of the $d$ component of $\hat{\mu}$ must vanish.
+\begin{figure}
+\begin{figure}
+\includegraphics[scale=1]{Ch0305}
+\end{figure}
+\end{figure}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Gaussian case: Unknown $\mu$ and $\Sigma$}
+\begin{itemize}
+\item $\theta_1 = \mu$ and $\theta_2=\sigma^2$ are unknown.
+\item The log-likelihood of a single point is
+\begin{figure}
+\includegraphics[scale=1]{Ch0306}
+\end{figure}
+\item Derivative is
+\begin{figure}
+\includegraphics[scale=1]{Ch0307}
+\end{figure}
+\item After simplification
+\begin{figure}
+\includegraphics[scale=1]{Ch0308}~~~~~
+\includegraphics[scale=1]{Ch0309}
+\end{figure}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Example to be solved}
+\begin{itemize}
+\item Estimate optimal parameter $\hat{\theta}$
+\begin{equation}
+p(x|\theta ) = \left\{ {\begin{array}{*{20}{c}}
+{\theta {e^{ - \theta x}}}&{x \ge 0}\\
+0&{otherwise}
+\end{array}} \right.\nonumber
+\end{equation}
+using log-maximum likelihood estimation approach.
+
+\vspace{0.5cm}
+Solution: $\hat{\theta}=\frac{1}{\frac{1}{n}\sum_{k=1}^{n}x_k}=\frac{1}{\mu}$
+\end{itemize}
+\end{frame}
+
+\section{Non-parametric estimation}
+\subsection{}
+
+\begin{frame}{}
+\begin{variableblock}{\centering \Large \textbf{\vspace{4pt}\newline Non-parametric parameter estimation\vspace{4pt}}}{bg=slidecolor,fg=white}{bg=slidecolor,fg=white}
+\end{variableblock}
+\end{frame}
+
+\begin{frame}{Introduction}
+\begin{itemize}
+\setlength{\itemsep}{12pt}
+\item We have already seen that for statistical pattern classification, density function are to be known for each class.
+\item The type of density function, such as the Normal or Poisson, are to be known to estimate the parameters of the densities called \textit{\color{mycolor1}parametric estimation}.
+\item In most real problems, even the types of the density functions of interest are unknown.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Introduction}
+\begin{itemize}
+\setlength{\itemsep}{8pt}
+\item Looking at histograms, scatter plots or tables of the data may suggest that a particular type of class density may be used or {\color{mycolor2}some arbitrary density} can be used.
+\item Arbitrary density function can be estimated from the data samples using \textit{\color{mycolor1}nonparametric methods}.
+\item  In addition, most of the classical parametric densities are
+{\color{mycolor2}unimodal}, whereas many practical problems involve {\color{mycolor2}multimodal} densities.
+\item Non-parametric methods can be used with arbitrary
+distributions and without the assumption that the forms of
+the underlying densities are known.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Non-parametric Methods}
+\begin{figure}
+\includegraphics[scale=0.9]{splitNonParametric}
+\end{figure}
+\end{frame}
+
+\begin{frame}{}
+\begin{variableblock}{\centering \Large \textbf{\vspace{4pt}\newline Histogram Method\vspace{4pt}}}{bg=slidecolor,fg=white}{bg=slidecolor,fg=white}
+\end{variableblock}
+\end{frame}
+
+
+\begin{frame}{Histogram Method}
+\vspace{-0.5cm}
+\begin{columns}
+\begin{column}{5cm}
+\begin{footnotesize}
+\begin{itemize}
+\item A very simple method is to
+partition the space into a
+number of equally-sized
+cells (bins) and compute a
+histogram.
+\end{itemize}
+\end{footnotesize}
+\end{column}
+\begin{column}{5cm}
+\begin{figure}
+\includegraphics[scale=0.7]{npe05}
+\caption{Histogram in one dimension}
+\end{figure}
+\end{column}
+\end{columns}
+\begin{footnotesize}
+\begin{itemize}
+\item The estimate of the density at a point ${\rm x}$ becomes
+\begin{equation}
+p({\rm x})=\frac{k}{nV} \nonumber
+\end{equation}
+where $n$ is the total number of samples, $k$ is the number of samples in the bin that includes ${\rm x}$, and $V$ is the volume of that cell.
+\item For 1-D feature, $V$ is width of bin. Similarly for 2-D feature, $V$ is the area of the bin.
+\item Thumb rule to choose the number of intervals (bins) to be equal to the square root of the number of samples.
+\end{itemize}
+\end{footnotesize}
+\end{frame}
+
+\begin{frame}{Histogram Method}
+\begin{figure}
+\includegraphics[height=5.5cm]{binHist}
+\caption{{\scriptsize (a) The true normal density from which 50 random numbers were chosen. (b) A histogram of 50 normally distributed random numbers with three intervals.  (c) A histogram of 50 normally distributed random numbers with six intervals. (d) A histogram of 50 normally distributed random numbers with 24 intervals.}}
+\end{figure}
+\end{frame}
+
+\begin{frame}{Example to be solved}
+\begin{footnotesize}
+\textit{\color{mycolor1}Question:} Classification of samples using histograms and Bayesian decision rule\\
+Use the following data to classify a sample with $x=7.5$, given that $P(A)=P(B)=0.5$. The following data are the values of feature $x$ for 60 randomly chosen samples from \\
+Class A:
+\begin{table}
+\begin{scriptsize}
+\begin{tabular}{cccccccccc}
+0.80& 0.91& 0.93& 0.95& 1.32& 1.53& 1.57& 1.63& 1.67& 1.74\\
+     2.01& 2.18& 2.27& 2.31& 2.40& 2.61& 2.64& 2.64& 2.67& 2.85\\
+     2.96& 2.97& 3.17& 3.17& 3.38& 3.67& 3.73& 3.83& 3.99& 4.06\\
+     4.10& 4.12& 4.18& 4.20& 4.23& 4.27& 4.27& 4.39& 4.40& 4.46\\
+     4.47& 4.61& 4.64& 4.89& 4.96& 5.12& 5.15& 5.33& 5.33& 5.47\\
+     5.64& 5.85& 5.99& 6.29& 6.42& 6.53& 6.70& 6.78& 7.18& 7.22\\
+\end{tabular}
+\end{scriptsize}
+\end{table}
+
+Class B:
+\begin{table}
+\begin{scriptsize}
+\begin{tabular}{cccccccccc}
+3.54& 3.88& 4.24& 4.30& 4.30& 4.70& 4.75& 4.97& 5.21& 5.42\\
+     5.60& 5.77& 5.87& 5.94& 5.95& 6.04& 6.05& 6.15& 6.19& 6.21\\
+     6.33& 6.41& 6.43& 6.49& 6.52& 6.58& 6.60& 6.63& 6.65& 6.75\\
+     6.90& 6.92& 7.03& 7.08& 7.18& 7.29& 7.33& 7.41& 7.41& 7.46\\
+     7.61& 7.67& 7.68& 7.68& 7.78& 7.96& 8.03& 8.12& 8.20& 8.22\\
+     8.33& 8.36& 8.44& 8.45& 8.49& 8.75& 8.76& 9.14& 9.20& 9.86
+\end{tabular}
+\end{scriptsize}
+\end{table}
+\end{footnotesize}
+\end{frame}
+
+\begin{frame}{Example to be solved}
+\begin{figure}
+\includegraphics[height=2.8cm]{binHist01}\\
+\includegraphics[height=2.8cm]{binHist02}
+\end{figure}
+$P(A|7.5)=0.125$ and $P(B|7.5)=0.875$, so the sample should be classified into class $B$.
+\end{frame}
+
+\begin{frame}{2-D Histogram Method}
+\begin{itemize}
+\item Histograms are not restricted to one-dimensional densities, but can be used in any number of dimensions.
+\item $p(x,y)$ can be approximated by dividing both $x$ and $y$ into intervals, and determining the number of samples that fall within each rectangular histogram bin with dimensions $\Delta x$ and $\Delta y$.
+\item The volume under the surface of this two-dimensional histogram is to be normalized to equal one, to yield an estimate of the density function $p(x,y)$.
+\item The histogram technique becomes impractical for spaces of high dimension.
+\item The square root rule of thumb can be generalized to produce an \textit{\color{mycolor1}equal precision rule}. When there are $n$ features, the $(n+1)st$ root is used.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{}
+\begin{variableblock}{\centering \Large \textbf{\vspace{4pt}\newline Kernel and Window Methods\vspace{4pt}}}{bg=slidecolor,fg=white}{bg=slidecolor,fg=white}
+\end{variableblock}
+\end{frame}
+
+
+\begin{frame}{Kernel and Window Estimators}
+\begin{itemize}
+\item The samples gives a very rough approximation to the true density function, namely a set of spikes or delta functions, one at each sample value, each with a very small width and a very large height.
+\item The combined area of all the spikes is one.
+\item Histogram based density approximation to  a continuous density function is not useful in decision making.
+\item If the delta functions at each sample point are replaced by other function called \textit{\color{mycolor2}Kernels} -- such as \textit{\color{mycolor2}rectangles}, \textit{\color{mycolor2}triangles}, or \textit{\color{mycolor2}normal density functions}, which have been scaled so that their combined area equals one-their sum produces a smoother, more satisfactory estimate.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Example to be solved}
+\textit{\color{mycolor1}Question:} Using a triangle kernel.\\
+Consider the data set with one feature $x$ and three samples at $x=1,2$, and $4$. We have decided to use a triangular kernel with a base of three units. Plot the estimated density function $p(x)$.\nocite{duda2012pattern}\nocite{gose1997pattern}
+\begin{figure}
+\includegraphics[scale=0.15]{hist09.JPG}
+\end{figure}
+\end{frame}
+
+
+\begin{frame}{Example to be solved}
+\textit{Question:} Following sets of 2-D feature vectors from classes A and B are given
+\begin{footnotesize}
+\begin{equation}
+\left\{ {\left( {\begin{array}{*{20}{c}}
+1\\
+1
+\end{array}} \right),\left( {\begin{array}{*{20}{c}}
+1\\
+3
+\end{array}} \right),\left( {\begin{array}{*{20}{c}}
+2\\
+1
+\end{array}} \right),\left( {\begin{array}{*{20}{c}}
+2\\
+1
+\end{array}} \right),\left( {\begin{array}{*{20}{c}}
+{2.5}\\
+2
+\end{array}} \right),\left( {\begin{array}{*{20}{c}}
+3\\
+3
+\end{array}} \right),\left( {\begin{array}{*{20}{c}}
+4\\
+1
+\end{array}} \right),\left( {\begin{array}{*{20}{c}}
+4\\
+2
+\end{array}} \right)} \right\} \in A \nonumber
+\end{equation}
+\begin{equation}
+\left\{ {\left( {\begin{array}{*{20}{c}}
+3\\
+2
+\end{array}} \right),\left( {\begin{array}{*{20}{c}}
+4\\
+3
+\end{array}} \right),\left( {\begin{array}{*{20}{c}}
+4\\
+3
+\end{array}} \right),\left( {\begin{array}{*{20}{c}}
+4.5\\
+3
+\end{array}} \right),\left( {\begin{array}{*{20}{c}}
+{4}\\
+4
+\end{array}} \right),\left( {\begin{array}{*{20}{c}}
+6\\
+3
+\end{array}} \right),\left( {\begin{array}{*{20}{c}}
+4\\
+6
+\end{array}} \right),\left( {\begin{array}{*{20}{c}}
+7\\
+3
+\end{array}} \right)} \right\} \in B \nonumber
+\end{equation}
+\end{footnotesize}
+Using rectangular window of size $3\times 3$, compute $p((3.5,3)^t|A)$ and $p((3.5,3)^t|B)$. Classify $(3.5,3)^t$ if $P(A)=1/3$ and $P(B)=2/3$.
+\end{frame}
+
+%\begin{frame}{Non-parametric Density Estimation}
+%\begin{itemize}
+%\item Suppose that $n$ samples ${\rm x}_1,{\rm x}_2,\ldots,{\rm x}_n$ are drawn i.i.d. according to the distribution $p({\rm x})$.
+%\item The probability $P$ that a vector ${\rm x}$ will fall in a region $\mathcal{R}$ is given by
+%\[P = \int\limits_\mathcal{R} {p({\rm x}')d{\rm x}'} \]
+%\item The probability that $k$ of the $n$ will fall in $\mathcal{R}$ is given by the binomial law
+%\[{P_k} = \left( {\begin{array}{*{20}{c}}
+%n\\
+%k
+%\end{array}} \right){P^k}{(1 - P)^{n - k}}.\]
+%\item The expected value of $k$  is $E[k]=nP$ and the MLE for $P$ is $\hat{P}=\frac{k}{n}$.
+%\end{itemize}
+%\end{frame}
+
+%\begin{frame}{Non-parametric Density Estimation}
+%\begin{itemize}
+%\item If we assume that  $p({\rm x})$ is continuous and $\mathcal{R}$ is small enough so that $p({\rm x})$ does not vary significantly in it, we can get the approximation
+%\[\int\limits_\mathcal{R} {p({\rm x}')d{\rm x}' \simeq p({\rm x})V} \]
+%where ${\rm x}$ is a point in $\mathcal{R}$ and $V$ is the volume of $\mathcal{R}$.
+%\item Then, the density estimate becomes
+%\[p({\rm x}) \simeq \frac{{k/n}}{V}.\]
+%\end{itemize}
+%\end{frame}
+
+%\begin{frame}{Non-parametric Density Estimation}
+%\begin{itemize}
+%\item Let $n$ be the number of samples used, $\mathcal{R}_n$ be the region with $n$ samples, $V_n$ be the volume of $\mathcal{R}_n$, $k_n$ be the number of samples falling in $\mathcal{R}_n$, and $p_n({\rm x})=\frac{k_n/n}{V_n}$ be the estimate for $p({\rm x})$.
+%\item If $p_n({\rm x})$ is to converge to $p({\rm x})$, three conditions are required:
+%\[\lim_{n\rightarrow\infty} V_n=0\]
+%\[\lim_{n\rightarrow\infty} k_n=\infty\]
+%\[\lim_{n\rightarrow\infty} \frac{k_n}{n}=0\]
+%\end{itemize}
+%\end{frame}
+
+
+
+%\begin{frame}{Non-parametric Density Estimation}
+%\vspace{-0.5cm}
+%\begin{itemize}
+%\item Other methods for obtaining the regions for estimation:
+%\begin{itemize}
+%\item Shrink regions as some function of $n$, such as $V_n=1|\sqrt{n}$.
+%This is the \textit{\color{mycolor1} Parzen window} estimation
+%\item Specify $k_n$ as some function of $n$, such as $k_n=\sqrt{n}$. This is the \textit{\color{mycolor1}$k$-nearest neighbor} estimation
+%\end{itemize}
+%\begin{figure}
+%\includegraphics[scale=1]{npe06}
+%\end{figure}
+%\end{itemize}
+%\end{frame}
+
+%\begin{frame}{Parzen Window}
+%\begin{figure}
+%\includegraphics[scale=0.9]{npe07}
+%\end{figure}
+%\end{frame}
+%
+%\begin{frame}{Parzen Window}
+%\vspace{-0.5cm}
+%\begin{figure}
+%\includegraphics[scale=0.9]{npe08}
+%\end{figure}
+%\end{frame}
+%
+%\begin{frame}{Parzen Window}
+%\vspace{-0.5cm}
+%\begin{figure}
+%\includegraphics[scale=0.9]{npe09}
+%\end{figure}
+%\end{frame}
+
+%\begin{frame}{Parzen Window}
+%\begin{figure}
+%\includegraphics[scale=0.8]{npe10}
+%\end{figure}
+%\end{frame}
+%\begin{frame}{Parzen Window}
+%\begin{figure}
+%\includegraphics[scale=0.8]{npe11}
+%\end{figure}
+%\end{frame}
+%
+%\begin{frame}{Parzen Window}
+%\begin{figure}
+%\includegraphics[scale=0.8]{npe12}
+%\end{figure}
+%\end{frame}
+
+%\begin{frame}{Parzen Window}
+%\vspace{-0.2cm}
+%\begin{figure}
+%\includegraphics[scale=0.9]{npe13}
+%\end{figure}
+%\end{frame}
+%
+%\begin{frame}{$k-$Nearest Neighbors}
+%\begin{figure}
+%\includegraphics[scale=0.9]{npe14}
+%\end{figure}
+%\end{frame}
+%
+%\begin{frame}{$k-$Nearest Neighbors}
+%\begin{figure}
+%\includegraphics[scale=0.85]{npe15}
+%\end{figure}
+%\end{frame}
+
+%\begin{frame}{$k-$Nearest Neighbors}
+%\begin{figure}
+%\includegraphics[scale=0.9]{npe16}
+%\end{figure}
+%\end{frame}
+%
+%\begin{frame}{Non-parametric Methods}
+%\begin{figure}
+%\includegraphics[scale=0.9]{npe17}
+%\end{figure}
+%\end{frame}
+
+\section{Nearest Neighbor Classification}
+\subsection{}
+
+\begin{frame}{}
+\begin{variableblock}{\centering \Large \textbf{\vspace{4pt}\newline Nearest Neighbor Classification\vspace{4pt}}}{bg=slidecolor,fg=white}{bg=slidecolor,fg=white}
+\end{variableblock}
+\end{frame}
+
+\begin{frame}{The Nearest Neighbor Classifier}
+\begin{itemize}
+\item We have been using Bayesian classifiers that make decisions according to the posterior probabilities.
+􏰂\item We have discussed parametric and non-parametric methods for learning classifiers by estimating the probabilities using training data.
+􏰂\item We will study new techniques that use training data to learn the classifiers directly without estimating any probabilistic structure.
+􏰂\item In particular, we will study the $k$-nearest neighbour classifier, linear discriminant functions, and support vector machines.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{The Nearest Neighbor Classifier}
+\begin{itemize}
+\item Given the training data $\mathcal{D} = \{{\rm x}_1,\cdots,{\rm x}_n\}$ as a set of $n$ labeled examples, the {\color{mycolor2}nearest neighbor classifier} assigns a test point ${\rm x}$ the label associated with its closest neighbor in $\mathcal{D}$.
+􏰂\item Closeness is defined using a distance function.
+􏰂\item Given the distance function, the nearest neighbor classifier partitions the feature space into cells consisting of all points closer to a given training point than to any other training points.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{The Nearest Neighbor Classifier}
+\begin{itemize}
+\item All points in such a cell are labeled by the class of the training point, forming a {\color{mycolor2} Voronoi tesselation} of the feature space
+\end{itemize}
+\begin{figure}
+\includegraphics[scale=0.9]{knn04}
+\caption{In two dimensions, the nearest neighbor algorithm leads to a partitioning of the input space into Voronoi cells, each labeled by the class of the training point it contains. In three dimensions, the cells are three-dimensional, and the decision boundary resembles the surface of a crystal.}
+\end{figure}
+\end{frame}
+
+\begin{frame}{Example to be solved}
+
+{\bf \color{mycolor2}Question:} Consider the following set of seven 2-dimensional feature vectors:
+\begin{equation}
+X_1=(1,0)^t,~X_2=(0,1)^t,~X_3=(0,-1)^t, \nonumber
+\end{equation}
+\begin{equation}
+ ~X_4=(0,0)^t,~X_5=(0,2)^t,~X_6=(0,-2)^t, ~X_7=(-2,0)^t\nonumber
+\end{equation}
+If $X_1,X_2,X_3\in \omega_1$ and $X_4,X_5,X_6,X_7\in \omega_2$, sketch the decision boundary resulting from the nearest neighbor rule.
+\begin{figure}
+\includegraphics[scale=0.4]{kNearestAssign.png}
+\end{figure}
+\end{frame}
+
+\begin{frame}{Nearest Neighbor Algorithm}
+
+{\color{mycolor2}Learning Algorithm:}
+\begin{itemize}
+\item Store training examples
+\end{itemize}
+{\color{mycolor2}Prediction Algorithm:}
+\begin{itemize}
+\item To classify a new example ${\rm x}$ by finding the training example $({\rm x}_i,y_i)$ that is nearest to ${\rm x}$
+\item Guess the class $y =y_i$
+\end{itemize}
+\end{frame}
+
+\begin{frame}{$k$-Nearest Neighbor Classifier}
+\begin{itemize}
+\item To classify a new input vector ${\rm x}$, examine the $k$-closest training data points to ${\rm x}$ and assign the object to the most frequently occurring class
+\item In other words, a decision is made by examining the labels on the $k$-nearest neighbors and taking a vote.
+\begin{figure}
+\includegraphics[scale=0.45]{knn01}
+\end{figure}
+\item common values for $k$: 3, 5
+\end{itemize}
+\end{frame}
+
+
+
+\begin{frame}{$k$-Nearest Neighbor Classifier}
+\begin{itemize}
+\item The computational complexity of the nearest neighbor algorithm -- both in space (storage) and time (search) -- has received a great deal of analysis.
+\item In the most straightforward approach, we inspect each stored training point one by one, calculate its distance to ${\rm x}$, and keep a list of the $k$ closest ones.
+􏰂\item There are some parallel implementations and algorithmic techniques for reducing the computational load in nearest neighbor searches.
+\end{itemize}
+\end{frame}
+
+%\begin{frame}{The k-Nearest Neighbor Classifier}
+%\begin{figure}
+%\includegraphics[scale=0.9]{knn07}
+%\end{figure}
+%\end{frame}
+
+\section{Distance Functions}
+\subsection{}
+
+\begin{frame}{}
+\begin{variableblock}{\centering \Large \textbf{\vspace{4pt}\newline Distance Functions\vspace{4pt}}}{bg=slidecolor,fg=white}{bg=slidecolor,fg=white}
+\end{variableblock}
+\end{frame}
+
+\begin{frame}{Distance Functions}
+\begin{itemize}
+\item The nearest neighbor classifier relies on a {\color{mycolor2}metric} or a {\color{mycolor2}distance function} between points.
+\item For all points ${\rm x}$, ${\rm y}$, and ${\rm z}$, a metric $D(\cdot,\cdot)$ must satisfy the following properties:
+\begin{itemize}
+\item Non-negativity: $D({\rm x},{\rm y})\geq 0$.
+\item Reflexivity: $D({\rm x},{\rm y}) = 0$ if and only if ${\rm x}={\rm y}$.
+\item Symmetry: $D({\rm x},{\rm y})=D({\rm y},{\rm x})$.
+\item Triangle inequality: $D({\rm x},{\rm y})+D({\rm y},{\rm z})\geq D({\rm x},{\rm z})$.
+\end{itemize}
+\item If the second property is not satisfied, $D(\cdot,\cdot)$ is called a pseudometric.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Distance Functions}
+\begin{itemize}
+\item A general class of metrics for $d$-dimensional patterns is the {\color{mycolor2}Minkowski metric}
+\begin{figure}
+\includegraphics[scale=1]{knn09a}
+\end{figure}
+also referred to as the $L_p$ norm.
+\item The {\color{mycolor2}Euclidean distance} is the $L_2$ norm
+\begin{figure}
+\includegraphics[scale=1]{knn09b}
+\end{figure}
+\item The {\color{mycolor2}Manhattan} or {\color{mycolor2}city block} distance is the $L_1$ norm
+\begin{figure}
+\includegraphics[scale=1]{knn09c}
+\end{figure}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Distance Functions}
+\begin{itemize}
+\item The $L_{\infty}$ norm is the maximum of the distances along individual coordinate axes
+\end{itemize}
+\begin{figure}
+\includegraphics[scale=0.9]{knn10}
+\caption{Each colored shape consists of points at a distance 1.0 from the origin, measured using different values of $p$ in the Minkowski $L_p$ metric.}
+\end{figure}
+\end{frame}
+
+
+\begin{frame}{Feature Normalization}
+\begin{itemize}
+\item We should be careful about scaling of the coordinate axes when we compute these metrics.
+􏰂\item When there is great difference in the range of the data along different axes in a multidimensional space, these metrics implicitly assign more weighting to features with large ranges than those with small ranges.
+􏰂\item {\color{mycolor2}Feature normalization} can be used to approximately equalize ranges of the features and make them have approximately the same effect in the distance computation.
+􏰂\item The following methods can be used to independently normalize each feature.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Feature Normalization}
+\begin{itemize}
+\item {\color{mycolor2}Min-max normalization} or Linear scaling to unit range:\\
+\[\tilde{\rm x} = \frac{{{\rm x} - \min }}{{\max  - \min }}\]
+results in$ \tilde{\rm x}$ being in the $[0,1]$ range, where ${\rm x}\in \mathbb{R}$
+\item  {\color{mycolor2}Standardization} or Linear scaling to unit variance:\\
+A feature ${\rm x}\in \mathbb{R}$ can be transformed to a random variable with zero mean and unit variance as
+\[\tilde{\rm x} = \frac{{{\rm x} - \mu }}{\sigma }\]
+where $\mu$ and $\sigma$ are the sample mean and the sample standard deviation of that feature, respectively.
+\end{itemize}
+\end{frame}
+
+
+
+%\begin{frame}{Feature Normalization}
+%\begin{figure}
+%\includegraphics[scale=0.9]{knn13}
+%\end{figure}
+%\end{frame}
+
+
+\section{References}
+\subsection{}
+\begin{frame}[allowframebreaks]{References}
+\linespread{1}
+\footnotesize
+\printbibliography[heading=none]
+\end{frame}
+{
+\setbeamertemplate{logo}{}
+\makeatletter
+\setbeamertemplate{footline}{
+        \leavevmode%
+  
+  % First line.
+  \hbox{%
+  \begin{beamercolorbox}[wd=.2\paperwidth,ht=\beamer@decolines@lineup,dp=0pt]{}%
+  \end{beamercolorbox}%
+  \begin{beamercolorbox}[wd=.8\paperwidth,ht=\beamer@decolines@lineup,dp=0pt]{lineup}%
+  \end{beamercolorbox}%
+  } %
+  % Second line.
+  \hbox{%
+  \begin{beamercolorbox}[wd=\paperwidth,ht=\beamer@decolines@linemid,dp=0pt]{linemid}%
+  \end{beamercolorbox}%
+  } %
+  % Third line.
+  \hbox{%
+  \begin{beamercolorbox}[wd=.1\paperwidth,ht=\beamer@decolines@linebottom,dp=0pt]{}%
+  \end{beamercolorbox}%
+  \begin{beamercolorbox}[wd=.9\paperwidth,ht=\beamer@decolines@linebottom,dp=0pt]{linebottom}%
+  \end{beamercolorbox}%
+  }%
+        }
+\makeatother
+
+\begin{frame}
+\centering
+\includegraphics[width=0.4\paperwidth]{queries.jpg}\\
+\includegraphics[width=0.5\paperwidth]{thank_you.png}
+\end{frame}
+}
