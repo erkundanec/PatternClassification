@@ -121,4 +121,9 @@ https://www.byclb.com/TR/Tutorials/neural_networks/
   publisher = {Elsevier},
 }
 
+@Misc{conf2020,
+  title        = {Confusion Matrix},
+  howpublished = {https://en.wikipedia.org/wiki/Confusion_matrix},
+}
+
 @Comment{jabref-meta: databaseType:bibtex;}
