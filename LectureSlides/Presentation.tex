@@ -1,7 +1,7 @@
 %Execuation Instruction: (1) Bib (2) PdfLatex (3) Viewpdf
 
-\documentclass[handout]{beamer}
-%\documentclass[plain]{beamer}
+%\documentclass[handout]{beamer}
+\documentclass[plain]{beamer}
 \usetheme[pageofpages=of,% String used between the current page and the
                          % total page count.
           bullet=square,% Use circles instead of squares/circle for bullets.
@@ -13,6 +13,7 @@
           watermarkheightmult=4,% The watermark image is 4 times bigger
                                 % than watermarkheight.
 ]{Torino}
+
 \usepackage{graphicx}
 \graphicspath{{./Figures/}}
 \definecolor{chameleongreen5}{rgb}{0.04, 0.07725, 0.18667}
@@ -33,6 +34,8 @@
 \usepackage{mathrsfs}
 \usetikzlibrary{arrows}
 \usepackage{verbatim}
+
+%\usepackage{listings}
 \usepackage{comment}
 
 % put color to \boxed math command
@@ -368,11 +371,12 @@
 
 
 \begin{document}
+\input{./Chapters2020/Extra02_Anaconda}
 %\input{./Chapters2020/Lec01_Introduction}
 %\input{./Chapters2020/Lec02_FeatureExtraction}
 %\input{./Chapters2020/Extra01_2DGaborFilters}
 %\input{./Chapters2020/Lec03_BayesDecision}
-\input{./Chapters2020/Lec04_ParameterEstimation}
+%\input{./Chapters2020/Lec04_ParameterEstimation}
 %\input{./Chapters2020/Ch5_DimenProblem.tex}
 %\input{./Chapters2020/Ch6_LinearDiscriminant.tex}
 %\input{./Chapters2020/Ch7_BackPropagation.tex}
