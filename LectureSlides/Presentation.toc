@@ -2,12 +2,10 @@
 \defcounter {refsection}{0}\relax 
 \beamer@endinputifotherversion {3.33pt}
 \defcounter {refsection}{0}\relax 
-\beamer@sectionintoc {1}{Parametric Estimation}{2}{0}{1}
+\beamer@sectionintoc {1}{Introduction}{2}{0}{1}
 \defcounter {refsection}{0}\relax 
-\beamer@sectionintoc {2}{Non-parametric estimation}{14}{0}{2}
+\beamer@sectionintoc {2}{Installation And Setup}{3}{0}{2}
 \defcounter {refsection}{0}\relax 
-\beamer@sectionintoc {3}{Nearest Neighbor Classification}{28}{0}{3}
+\beamer@sectionintoc {3}{Install Anaconda}{5}{0}{3}
 \defcounter {refsection}{0}\relax 
-\beamer@sectionintoc {4}{Distance Functions}{36}{0}{4}
-\defcounter {refsection}{0}\relax 
-\beamer@sectionintoc {5}{References}{42}{0}{5}
+\beamer@sectionintoc {4}{Open Jupyter-Notebook}{13}{0}{4}
