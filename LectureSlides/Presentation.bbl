@@ -16,52 +16,6 @@
   {}
 \endgroup
 
-\entry{duda2012pattern}{book}{}
-  \name{author}{3}{}{%
-    {{}%
-     {Duda}{D.}%
-     {Richard~O}{R.~O.}%
-     {}{}%
-     {}{}}%
-    {{}%
-     {Hart}{H.}%
-     {Peter~E}{P.~E.}%
-     {}{}%
-     {}{}}%
-    {{}%
-     {Stork}{S.}%
-     {David~G}{D.~G.}%
-     {}{}%
-     {}{}}%
-  }
-  \list{publisher}{1}{%
-    {John Wiley \& Sons}%
-  }
-  \strng{namehash}{DROHPESDG1}
-  \strng{fullhash}{DROHPESDG1}
-  \field{sortinit}{D}
-  \field{title}{Pattern classification}
-  \field{year}{2012}
-\endentry
-
-\entry{gose1997pattern}{article}{}
-  \name{author}{1}{}{%
-    {{}%
-     {Gose}{G.}%
-     {Earl}{E.}%
-     {}{}%
-     {}{}}%
-  }
-  \list{publisher}{1}{%
-    {PHI}%
-  }
-  \strng{namehash}{GE1}
-  \strng{fullhash}{GE1}
-  \field{sortinit}{G}
-  \field{title}{Pattern recognition and image analysis}
-  \field{year}{1997}
-\endentry
-
 \lossort
 \endlossort
 
