@@ -705,6 +705,11 @@ w_{i0}=&-\frac{1}{2}\mu_i^T\Sigma_i^{-1}\mu_i-\frac{1}{2}\ln |\Sigma_i|+\ln P(w_
 %%\end{frame}
 %
 
+\begin{frame}{Example to solve: rejection}
+\textbf{\color{blue}Question:}\\
+In many pattern classification problems one has the option either to assign the pattern to one of $c$ classes,
+\end{frame}
+
 \begin{frame}{Example to solve}
 \textbf{\color{blue}Question:}\\
 For a 2-class problem, the prior probabilities are: $P(w_1)={1}/{4}$
@@ -782,7 +787,7 @@ Sketch the Bayes decision boundary for $\Sigma_1=\Sigma_2=I$.
 \end{column}
 \end{columns}
 Assuming that samples in $\omega_1$ and $\omega_2$ following Normal distribution.
-\onslide<2->{\textit{\color{mycolor2}Solution:} $x_2=3.514-1.125x_1+0.1875x_2$}
+\onslide<2->{\textit{\color{mycolor2}Solution:} $1.5x_1^2-9x_1-8x_2+28.1137=0$}
 \end{frame}
 %
 %%\section{Error Prob}
@@ -841,7 +846,7 @@ Assuming that samples in $\omega_1$ and $\omega_2$ following Normal distribution
 \end{itemize}
 
 %\footnote{\color{red}\url{https://en.wikipedia.org/wiki/Confusion_matrix}}
-\item In statistical classification, a confusion matrix, also known as an error matrix.
+\item In statistical classification, a confusion matrix, also known as an error matrix\nocite{conf2020}.
 \begin{figure}
 \includegraphics[scale=0.3]{ConfusionMatrix.png}
 \end{figure}
@@ -921,19 +926,14 @@ Let ${\rm x}=[x_1,x_2,\ldots,x_d]^t$ where each $x_i$ is either 0 or 1, with pro
 ~~~~~~~~~~~~$q_i=P(x_i=1|\omega_2)$\\
 $p_i>q_i\Rightarrow x_i$ is more likely to have value 1 if ${\rm x}\in \omega_1$
 \item Class conditional probabilities
-\begin{figure}
-\includegraphics[scale=1]{BayesD01}~~~~
-\includegraphics[scale=1]{BayesD02}
-\end{figure}
+\[\boxed{p({\rm x}|{\omega _1}) = \prod\limits_{i = 1}^d {p_i^{{x_i}}{{\left( {1 - {p_i}} \right)}^{1 - {x_i}}}}} ~~~~~~\boxed{p({\rm x}|{\omega _2}) = \prod\limits_{i = 1}^d {q_i^{{x_i}}{{\left( {1 - {q_i}} \right)}^{1 - {x_i}}}} }\]
 \end{itemize}
 \end{frame}
 
 \begin{frame}{Bayes Decision Theory - Discrete Features}
 \begin{itemize}
 \item Then the likelihood ratio is given by
-\begin{figure}
-\includegraphics[scale=1]{BayesD03}
-\end{figure}
+\[\frac{{p({\rm x}|{\omega _1})}}{{p({\rm x}|{\omega _2})}} = \prod\limits_{i = 1}^d {{{\left( {\frac{{{p_i}}}{{{q_i}}}} \right)}^{{x_i}}}{{\left( {\frac{{1 - {p_i}}}{{1 - {q_i}}}} \right)}^{1 - {x_i}}}} \]
 \item we know that
 \begin{figure}
 \includegraphics[scale=1]{DB03a}
@@ -965,7 +965,8 @@ $p_i>q_i\Rightarrow x_i$ is more likely to have value 1 if ${\rm x}\in \omega_1$
 \end{itemize}
 \end{frame}
 
-\begin{frame}{Example 01}
+\begin{frame}{Example to solve}
+\textbf{\color{blue} Question:}\\
 \textit{\color{mycolor2}Compute Bayesian decision for three-dimensional binary features}\\
 Suppose two categories consist of independent binary features in three dimensions
 with known feature probabilities. Let us construct the Bayesian decision boundary if
@@ -976,9 +977,11 @@ $P(\omega_1 ) = P(\omega_2 )=0.5$ and the individual components obey:
 {{q_i} = 0.5}
 \end{array}} \right.~~~~~~i = 1,2,3\nonumber
 \end{equation}
+\vspace{2.5cm}
 \end{frame}
 
-\begin{frame}{Example 02}
+\begin{frame}{Example to solve}
+\textbf{\color{blue} Question:}\\
 \textit{\color{mycolor2}Compute Bayesian decision for three-dimensional binary features}\\
 Suppose two categories consist of independent binary features in three dimensions
 with known feature probabilities. Let us construct the Bayesian decision boundary if
@@ -989,8 +992,22 @@ $P(\omega_1 ) = P(\omega_2 )=0.5$ and the individual components obey:
 {{q_1} = {q_2} = {q_3} = 0.5}
 \end{array}} \right.\nonumber
 \end{equation}
+\vspace{2.5cm}
 \end{frame}
 
+
+\begin{frame}{Addition Examples:}
+\textbf{\color{blue} Question:}\\
+\begin{figure}
+\includegraphics[width=\textwidth]{Question001.pdf}
+\end{figure}
+\textbf{\color{blue} Question:}\\
+What is the inverse of $\left[ {\begin{array}{*{20}{c}}
+  4&4 \\ 
+  1&2 
+\end{array}} \right]$?
+ 
+\end{frame}
 \section{References}
 \subsection{}
 \begin{frame}[allowframebreaks]{References}
