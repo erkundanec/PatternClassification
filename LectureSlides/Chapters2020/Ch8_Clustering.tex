@@ -1,17 +1,23 @@
-\graphicspath{{../PR2018/Figures/}}
+\graphicspath{{Figures/}}
 
-\title{\fontsize{33}{45}{\huge Pattern Classification (EET 3035)\newline \vspace{8pt} \Large Lecture 08\vspace{-1.1cm}}}
-\author{\vspace{-0.4cm}\\\normalsize{\bf Dr. Kundan Kumar}\\ PhD (IIT Kharagpur)\\
-Associate Professor\\Department of ECE}
+\title{\fontsize{33}{45}{\huge Pattern Classification\newline \vspace{8pt} \Large \vspace{-1.1cm}}}
+
+\vspace{0.5cm}
+\author{\vspace{0.4cm}\\\large{\bf Kundan Kumar\\\url{https://github.com/erkundanec/PatternClassification}}
+%Associate Professor\\Department of ECE}
+}
 % - Give the names in the same order as the appear in the paper.
 % - Use the \inst{?} command only if the authors have different
 %   affiliation.
-
+%\vspace{1cm}
 \institute[Indian Institute of Technology Kharagpur] % (optional, but mostly needed)
 {
-\includegraphics[height=.17\textheight]{SOAlogo.png}\\
- Faculty of Engineering (ITER)\\ S`O'A Deemed to be University, Bhubaneswar, India-751030\\
- \copyright\  2019 Kundan Kumar, All Rights Reserved\\
+\vspace{1.8cm}
+%\includegraphics[height=.17\textheight]{SOAlogo.png}\\
+% Faculty of Engineering (ITER)\\ S`O'A Deemed to be University, Bhubaneswar, India-751030\\
+
+
+ \copyright\  2020 Kundan Kumar, All Rights Reserved\\
   \vspace{-1.1cm}}
 % - Use the \inst command only if there are several affiliations.
 % - Keep it simple, no one is interested in your street address.
@@ -49,7 +55,7 @@ Associate Professor\\Department of ECE}
 \end{frame}
 }
 
-\section{Clustering}
+\section{Introduction}
 \subsection{}
 \begin{frame}{}
 \begin{variableblock}{\centering \Large \textbf{\vspace{4pt}\newline Unsupervised Learning: Clustering\vspace{4pt}}}{bg=slidecolor,fg=white}{bg=slidecolor,fg=white}
@@ -58,10 +64,10 @@ Associate Professor\\Department of ECE}
 
 \begin{frame}{Introduction}
 \begin{itemize}
-\item In previous lectures, we have seen that how samples are classified if a training set is available to used in the design of a classifier.
+\item In previous lectures, we have seen that how samples are classified if a training set is available along with class labels to design a classifier.
 \item In many situations, class labels are not known for the training samples.
-\item The area of pattern classification which cluster/group the data samples based on some similarity is known as clustering.
-\item Clustering refers to the process of grouping samples so that the samples are similar within each group. The groups are called \textit{\color{slidecolor}cluster}.
+\item The area of pattern classification which {\color{mycolor1}cluster / group the data samples} based on some {\color{mycolor1}similarity} is known as {\color{mycolor2}clustering}.
+\item Clustering refers to the process of grouping samples so that the samples are similar within each group. The groups are called \textit{\color{mycolor2}clusters}.
 \end{itemize}
 \end{frame}
 
