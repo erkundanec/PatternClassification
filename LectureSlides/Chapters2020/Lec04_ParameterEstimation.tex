@@ -261,6 +261,25 @@ Solution: $\hat{\theta}=\frac{1}{\frac{1}{n}\sum_{k=1}^{n}x_k}=\frac{1}{\mu}$
 \end{itemize}
 \end{frame}
 
+\begin{frame}{Example to be solved}
+The random variable $x$ follows the following pdf
+\begin{equation*}
+p(x|\theta ) = \left\{ {\begin{array}{*{20}{c}}
+  {{\theta ^2}x{e^{ - \theta x}}}&{x \geqslant 0} \\ 
+  0&{otherwise} 
+\end{array}} \right.
+\end{equation*}
+Derive the maximum likelihood estimate of $\hat{\theta}$ given $N$ measurements $x_1,x_2,\ldots, x_N$.
+\end{frame}
+
+\begin{frame}{Example to be solved}
+Lex ${\rm x}$  be a $d$-dimensional binary (0 or 1) vector with a multivariate Bernoulli distribution
+\[P(\boldsymbol{\rm  x}/{\rm {\boldsymbol\theta} }) = \prod\limits_{i = 1}^d {\theta _i^{{x_i}}{{(1 - {\theta _i})}^{1 - {x_i}}}} \]
+where $\boldsymbol\theta = (\theta_1,\ldots,\theta_d)^t$ is an unknown parameter vector, $\theta_i$ being the probability that $x_i=1$. Show that the maximum-likelihood estimate for $\boldsymbol\theta$ is
+
+\[\boldsymbol{\hat{\theta}}=\frac{1}{n}\sum_{k=1}^{n}x_k\]
+\end{frame}
+
 \section{Non-parametric estimation}
 \subsection{}
 
@@ -383,7 +402,7 @@ Class B:
 \includegraphics[height=2.8cm]{binHist01}\\
 \includegraphics[height=2.8cm]{binHist02}
 \end{figure}
-$P(A|7.5)=0.125$ and $P(B|7.5)=0.875$, so the sample should be classified into class $B$.
+$P(A|7.5)=0.033$ and $P(B|7.5)=0.233$, so the sample should be classified into class $B$.
 \end{frame}
 
 \begin{frame}{2-D Histogram Method}
@@ -392,7 +411,7 @@ $P(A|7.5)=0.125$ and $P(B|7.5)=0.875$, so the sample should be classified into c
 \item $p(x,y)$ can be approximated by dividing both $x$ and $y$ into intervals, and determining the number of samples that fall within each rectangular histogram bin with dimensions $\Delta x$ and $\Delta y$.
 \item The volume under the surface of this two-dimensional histogram is to be normalized to equal one, to yield an estimate of the density function $p(x,y)$.
 \item The histogram technique becomes impractical for spaces of high dimension.
-\item The square root rule of thumb can be generalized to produce an \textit{\color{mycolor1}equal precision rule}. When there are $n$ features, the $(n+1)st$ root is used.
+%\item The square root rule of thumb can be generalized to produce an \textit{\color{mycolor1}equal precision rule}. When there are $n$ features, the $(n+1)st$ root is used.
 \end{itemize}
 \end{frame}
 
@@ -413,7 +432,7 @@ $P(A|7.5)=0.125$ and $P(B|7.5)=0.875$, so the sample should be classified into c
 
 \begin{frame}{Example to be solved}
 \textit{\color{mycolor1}Question:} Using a triangle kernel.\\
-Consider the data set with one feature $x$ and three samples at $x=1,2$, and $4$. We have decided to use a triangular kernel with a base of three units. Plot the estimated density function $p(x)$.\nocite{duda2012pattern}\nocite{gose1997pattern}
+Consider the data set with one feature $x$ and three samples at $x=1,2$, and $4$. We have decided to use a triangular kernel with a base of three units. Plot the estimated density function $p(x)$.%\nocite{duda2012pattern}\nocite{gose1997pattern}
 \begin{figure}
 \includegraphics[scale=0.15]{hist09.JPG}
 \end{figure}
@@ -627,7 +646,7 @@ Using rectangular window of size $3\times 3$, compute $p((3.5,3)^t|A)$ and $p((3
 
 \begin{frame}{The Nearest Neighbor Classifier}
 \begin{itemize}
-\item All points in such a cell are labeled by the class of the training point, forming a {\color{mycolor2} Voronoi tesselation} of the feature space
+\item All points in such a cell are labeled by the class of the training point, forming a {\color{mycolor2} Voronoi tesselation} of the feature space.
 \end{itemize}
 \begin{figure}
 \includegraphics[scale=0.9]{knn04}
@@ -665,7 +684,7 @@ If $X_1,X_2,X_3\in \omega_1$ and $X_4,X_5,X_6,X_7\in \omega_2$, sketch the decis
 
 \begin{frame}{$k$-Nearest Neighbor Classifier}
 \begin{itemize}
-\item To classify a new input vector ${\rm x}$, examine the $k$-closest training data points to ${\rm x}$ and assign the object to the most frequently occurring class
+\item To classify a new input vector ${\rm x}$, examine the $k$-closest training data points to ${\rm x}$ and assign the object to the most frequently occurring class.
 \item In other words, a decision is made by examining the labels on the $k$-nearest neighbors and taking a vote.
 \begin{figure}
 \includegraphics[scale=0.45]{knn01}
@@ -758,7 +777,7 @@ results in$ \tilde{\rm x}$ being in the $[0,1]$ range, where ${\rm x}\in \mathbb
 \item  {\color{mycolor2}Standardization} or Linear scaling to unit variance:\\
 A feature ${\rm x}\in \mathbb{R}$ can be transformed to a random variable with zero mean and unit variance as
 \[\tilde{\rm x} = \frac{{{\rm x} - \mu }}{\sigma }\]
-where $\mu$ and $\sigma$ are the sample mean and the sample standard deviation of that feature, respectively.
+where $\mu$ and $\sigma$ are the sample mean and the sample standard deviation of that feature, respectively.\nocite{duda2012pattern}\nocite{gose1997pattern}
 \end{itemize}
 \end{frame}
 
