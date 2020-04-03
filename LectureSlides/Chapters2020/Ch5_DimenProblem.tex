@@ -1,17 +1,23 @@
 \graphicspath{{Figures/}}
 
-\title{\fontsize{33}{45}{\huge Pattern Classification (EET 3035)\newline \vspace{8pt} \Large Lecture 05\vspace{-1.1cm}}}
-\author{\vspace{-0.4cm}\\\normalsize{\bf Dr. Kundan Kumar}\\ PhD (IIT Kharagpur)\\
-Associate Professor\\Department of ECE}
+\title{\fontsize{33}{45}{\huge Pattern Classification\newline{\large Lecture 05: Component and Discriminant Analysis}\newline \vspace{8pt} \Large \vspace{-1.1cm}}}
+
+\vspace{0.5cm}
+\author{\vspace{0.4cm}\\\large{\bf Kundan Kumar\\\url{https://github.com/erkundanec/PatternClassification}}
+%Associate Professor\\Department of ECE}
+}
 % - Give the names in the same order as the appear in the paper.
 % - Use the \inst{?} command only if the authors have different
 %   affiliation.
-
+%\vspace{1cm}
 \institute[Indian Institute of Technology Kharagpur] % (optional, but mostly needed)
 {
-\includegraphics[height=.17\textheight]{SOAlogo.png}\\
- Faculty of Engineering (ITER)\\ S`O'A Deemed to be University, Bhubaneswar, India-751030\\
- \copyright\  2019 Kundan Kumar, All Rights Reserved\\
+\vspace{1.8cm}
+%\includegraphics[height=.17\textheight]{SOAlogo.png}\\
+% Faculty of Engineering (ITER)\\ S`O'A Deemed to be University, Bhubaneswar, India-751030\\
+
+
+ \copyright\  2020 Kundan Kumar, All Rights Reserved\\
   \vspace{-1.1cm}}
 % - Use the \inst command only if there are several affiliations.
 % - Keep it simple, no one is interested in your street address.
@@ -89,7 +95,7 @@ improved performance.
 
 \begin{frame}{Introduction}
 \begin{figure}
-\includegraphics[scale=0.65]{DimProb01}
+\includegraphics[scale=0.7]{DimProb01}
 \caption{There is a non-zero Bayes error in the one-dimensional $x_1$ space or the two-dimensional $x_1,x_2$ space. However, the Bayes error vanishes in the $x_1,x_2,x_3$ space because of non-overlapping densities.} 
 \end{figure}
 \end{frame}
@@ -103,9 +109,8 @@ worse rather than better performance.
 \item This is called the \textit{\color{mycolor2}curse of dimensionality}.
 \item There are two issues that we must be careful about:
 \begin{itemize}
-\item How is the classification accuracy affected by the
-dimensionality (relative to the amount of training data)?
-\item How is the complexity of the classifier affected by the
+\item How is the {\color{mycolor1}classification accuracy} affected by the dimensionality (relative to the amount of training data)?
+\item How is the {\color{mycolor1}complexity of the classifier} affected by the
 dimensionality?
 \end{itemize}
 \end{itemize}
@@ -172,7 +177,7 @@ many training samples per class as the number of features
 \section{Component Analysis}
 \subsection{}
 \begin{frame}{}
-\begin{variableblock}{\centering \Large \textbf{\vspace{4pt}\newline Dimensionality Reduction\vspace{4pt}}}{bg=slidecolor,fg=white}{bg=slidecolor,fg=white}
+\begin{variableblock}{\centering \Large \textbf{\vspace{4pt}\newline Feature/Dimensionality Reduction\vspace{4pt}}}{bg=slidecolor,fg=white}{bg=slidecolor,fg=white}
 \end{variableblock}
 \end{frame}
 
@@ -180,7 +185,7 @@ many training samples per class as the number of features
 \begin{itemize}
 \item One way of coping with the problem of high dimensionality
 is to reduce the dimensionality by combining features.
-\item Issues in feature reduction:
+\item Issues in feature/dimensionality reduction:
 \begin{itemize}
 \item Linear vs. non-linear transformations.
 \item Use of class labels or not (depends on the availability of
@@ -204,24 +209,11 @@ lower dimensional space.
 \end{itemize}
 \end{frame}
 
-%\begin{frame}{Component Analysis and Discriminants}
-%\begin{itemize}
-%\item Linear combinations are particularly attractive because they
-%are simple to compute and are analytically tractable.
-%\item Linear methods project the high-dimensional data onto a
-%lower dimensional space.
-%\item Advantages of these projections include
-%\begin{itemize}
-%\item reduced complexity in estimation and classification,
-%\item ability to visually examine the multivariate data in two or three dimensions.
-%\end{itemize}
-%\end{itemize}
-%\end{frame}
-
 \begin{frame}{Component Analysis and Discriminants}
 \begin{itemize}
 \setlength{\itemsep}{12pt}
-\item Given ${\rm x}\in \mathbb{R}^d$, the goal is to find a linear transformation ${\rm A}$ that gives ${\rm y} = {\rm A}^T{\rm x} \in \mathbb{R}^{d_0}$ where $d_0 < d$.
+\item Given ${\rm x}\in \mathbb{R}^d$, the goal is to find a linear transformation ${\rm A}$ that gives ${\rm y} = {\rm A}^T{\rm x}$, ${\rm y}\in \mathbb{R}^{d'}$ where $d' < d$.
+\vspace{1cm}
 \item Two classical approaches for finding optimal linear
 transformations are:
 \begin{itemize}
@@ -236,6 +228,11 @@ best separates the data in a least-squares sense.
 \section{PCA}
 \subsection{}
 
+\begin{frame}{}
+\begin{variableblock}{\centering \Large \textbf{\vspace{4pt}\newline Principal Component Analysis\vspace{4pt}}}{bg=slidecolor,fg=white}{bg=slidecolor,fg=white}
+\end{variableblock}
+\end{frame}
+
 \begin{frame}{Principal Component Analysis}
 \begin{itemize}
 \item Given ${\rm x}_1,{\rm x}_2,\ldots,{\rm x}_n\in \mathbb{R}^d$, the goal is to find a $d'$-dimensional subspace where the reconstruction error of ${\rm x}_i$ in this subspace is minimized.
@@ -246,7 +243,7 @@ best separates the data in a least-squares sense.
 and seek the value of ${\rm x}_0$ that minimizes $J_0$
 \item It is simple to show that the solution to this problem is given by ${\rm x}_0={\rm m}$, where ${\rm m}$ is the sample mean.
 \begin{equation}
-m = \frac{1}{n}\sum\limits_{k = 1}^n {{{\rm x}_k}}\nonumber
+{\rm m} = \frac{1}{n}\sum\limits_{k = 1}^n {{{\rm x}_k}}\nonumber
 \end{equation}
 \end{itemize}
 \end{frame}
@@ -256,10 +253,10 @@ m = \frac{1}{n}\sum\limits_{k = 1}^n {{{\rm x}_k}}\nonumber
 \item This can be easily verified by writing
 \begin{footnotesize}
 \begin{align}
-{J_0}({{\rm x}_0}) &= \sum\limits_{k = 1}^n {{{\left\| {({{\rm x}_0} - m) - ({{\rm x}_k} - m)} \right\|}^2}} \nonumber\\
-& = \sum\limits_{k = 1}^n {{{\left\| {({{\rm x}_0} - m)} \right\|}^2} - } 2\sum\limits_{k = 1}^n {{{({{\rm x}_0} - m)}^t}({{\rm x}_k} - m) + } \sum\limits_{k = 1}^n {{{\left\| {({{\rm x}_k} - m)} \right\|}^2}} \nonumber\\
-& = \sum\limits_{k = 1}^n {{{\left\| {({{\rm x}_0} - m)} \right\|}^2} - } 2{({{\rm x}_0} - m)^t}\sum\limits_{k = 1}^n {({{\rm x}_k} - m) + } \sum\limits_{k = 1}^n {{{\left\| {({{\rm x}_k} - m)} \right\|}^2}} \nonumber\\
-& = \sum\limits_{k = 1}^n {{{\left\| {({{\rm x}_0} - m)} \right\|}^2} + } \underbrace {\sum\limits_{k = 1}^n {{{\left\| {({{\rm x}_k} - m)} \right\|}^2}} }_{\text{independent of }{{\rm x}_0}}\nonumber
+{J_0}({{\rm x}_0}) &= \sum\limits_{k = 1}^n {{{\left\| {({{\rm x}_0} - {\rm m}) - ({{\rm x}_k} - {\rm m})} \right\|}^2}} \nonumber\\
+& = \sum\limits_{k = 1}^n {{{\left\| {({{\rm x}_0} - {\rm m})} \right\|}^2} - } 2\sum\limits_{k = 1}^n {{{({{\rm x}_0} - {\rm m})}^T}({{\rm x}_k} - {\rm m}) + } \sum\limits_{k = 1}^n {{{\left\| {({{\rm x}_k} - {\rm m})} \right\|}^2}} \nonumber\\
+& = \sum\limits_{k = 1}^n {{{\left\| {({{\rm x}_0} - {\rm m})} \right\|}^2} - } 2{({{\rm x}_0} - {\rm m})^T}\sum\limits_{k = 1}^n {({{\rm x}_k} - {\rm m}) + } \sum\limits_{k = 1}^n {{{\left\| {({{\rm x}_k} - {\rm m})} \right\|}^2}} \nonumber\\
+& = \sum\limits_{k = 1}^n {{{\left\| {({{\rm x}_0} - {\rm m})} \right\|}^2} + } \underbrace {\sum\limits_{k = 1}^n {{{\left\| {({{\rm x}_k} - {\rm m})} \right\|}^2}} }_{\text{independent of }{{\rm x}_0}}\nonumber
 \end{align}
 \end{footnotesize}
 \item Since the second sum is independent of ${\rm x_0}$, So the above expression is obviously minimized by the choice of ${\rm x}_0={\rm m}$.
@@ -268,7 +265,7 @@ m = \frac{1}{n}\sum\limits_{k = 1}^n {{{\rm x}_k}}\nonumber
 
 \begin{frame}{Principal Component Analysis}
 \begin{itemize}
-\item The sample mean is a zero-dimensional representation of the data set. It is simple, but it does not reveal any of the variablity in the data.
+\item The sample mean is a zero-dimensional representation of the data set. It is simple, but it does not reveal any of the variability in the data.
 \item One-dimensional representation by projecting the data onto a line running through the sample mean.
 \item Let ${\rm e}$ be a unit vector in the direction of the line. Then equation of line will be
 \begin{equation}
@@ -286,12 +283,12 @@ where $a$ is any real value, corresponds to the distance of any point ${\rm x}$ 
 \begin{align}
 {J_1}({a_1},{a_2}, \ldots ,{a_n},{\rm e}) &= \sum\limits_{k = 1}^n {{{\left\| {({\rm m} + {a_k}{\rm e}) - {{\rm x}_k}} \right\|}^2}}\nonumber\\
 &  = \sum\limits_{k = 1}^n {{{\left\| {{a_k}{\rm e} - ({{\rm x}_k} - {\rm m})} \right\|}^2}} \nonumber\\
-& = \sum\limits_{k = 1}^n {a_k^2{{\left\| {\rm e} \right\|}^2} - 2} \sum\limits_{k = 1}^n {{a_k}{{\rm e}^t}({{\rm x}_k} - {\rm m})}  + \sum\limits_{k = 1}^n {{{\left\| {({{\rm x}_k} - {\rm m})} \right\|}^2}} \nonumber
+& = \sum\limits_{k = 1}^n {a_k^2{{\left\| {\rm e} \right\|}^2} - 2} \sum\limits_{k = 1}^n {{a_k}{{\rm e}^T}({{\rm x}_k} - {\rm m})}  + \sum\limits_{k = 1}^n {{{\left\| {({{\rm x}_k} - {\rm m})} \right\|}^2}} \nonumber
 \end{align}
 \end{footnotesize}
 \item Recognize that $||e||=1$, partially differentiating with respect to $a_k$, and setting the derivative to zero, we obtain
 \begin{equation}
-a_k={\rm e}^t({\rm x}_k-{\rm m}) \nonumber
+a_k={\rm e}^T({\rm x}_k-{\rm m}) \nonumber
 \end{equation}
 \item Geometrically, this result merely says that we obtain a least-squares solution by projecting the vector ${\rm x}_k$ onto the line in the direction of ${\rm e}$ that passes through the sample mean.
 \end{itemize}
@@ -299,20 +296,20 @@ a_k={\rm e}^t({\rm x}_k-{\rm m}) \nonumber
 
 \begin{frame}{Principal Component Analysis}
 \begin{itemize}
-\item The solution to this problem involves the scatter matrix ${\rm S}$ defined by
+\item The solution to the problem involves the scatter matrix ${\rm S}$ defined by
 \begin{footnotesize}
 \begin{equation}
-{\rm S} = \sum\limits_{k = 1}^n {({{\rm x}_k} - {\rm m}){{({{\rm x}_k} - {\rm m})}^t}} \nonumber
+{\rm S} = \sum\limits_{k = 1}^n {({{\rm x}_k} - {\rm m}){{({{\rm x}_k} - {\rm m})}^T}} \nonumber
 \end{equation}
 \end{footnotesize}
-\item Scatter matrix is $n-1$ times the sample covariance matrix.
+\item Scatter matrix is $n$ times the sample covariance matrix.
 \item Substitute $a_k$ in the cost function
 \begin{footnotesize}
 \begin{align}
 {J_1}({\rm e}) &= \sum\limits_{k = 1}^n {a_k^2}  - 2\sum\limits_{k = 1}^n {a_k^2}  + \sum\limits_{k = 1}^n {{{\left\| {{{\rm x}_k} - {\rm m}} \right\|}^2}}\nonumber\\
-&=  - \sum\limits_{k = 1}^n {{{[{{\rm e}^t}({{\rm x}_k} - {\rm m})]}^2}}  + \sum\limits_{k = 1}^n {{{\left\| {{{\rm x}_k} - {\rm m}} \right\|}^2}} \nonumber\\
-&=  - \sum\limits_{k = 1}^n {{{\rm e}^t}({{\rm x}_k} - {\rm m}){{({{\rm x}_k} - {\rm m})}^t}{\rm e}}  + \sum\limits_{k = 1}^n {{{\left\| {{{\rm x}_k} - {\rm m}} \right\|}^2}} \nonumber\\
-& =  - {{\rm e}^t}{\rm S}{\rm e} + \sum\limits_{k = 1}^n {{{\left\| {{{\rm x}_k} - {\rm m}} \right\|}^2}} \nonumber
+&=  - \sum\limits_{k = 1}^n {{{[{{\rm e}^T}({{\rm x}_k} - {\rm m})]}^2}}  + \sum\limits_{k = 1}^n {{{\left\| {{{\rm x}_k} - {\rm m}} \right\|}^2}} \nonumber\\
+&=  - \sum\limits_{k = 1}^n {{{\rm e}^T}({{\rm x}_k} - {\rm m}){{({{\rm x}_k} - {\rm m})}^T}{\rm e}}  + \sum\limits_{k = 1}^n {{{\left\| {{{\rm x}_k} - {\rm m}} \right\|}^2}} \nonumber\\
+& =  - {{\rm e}^T}{\rm S}{\rm e} + \sum\limits_{k = 1}^n {{{\left\| {{{\rm x}_k} - {\rm m}} \right\|}^2}} \nonumber
 \end{align}
 \end{footnotesize}
 \end{itemize}
@@ -323,16 +320,16 @@ a_k={\rm e}^t({\rm x}_k-{\rm m}) \nonumber
 \begin{itemize}
 \item So the resulting cost function
 \begin{equation}
-{J_1}({\rm e}) =  - {{\rm e}^t}{\rm S}{\rm e} + \sum\limits_{k = 1}^n {{{\left\| {{{\rm x}_k} - {\rm m}} \right\|}^2}} \nonumber
+{J_1}({\rm e}) =  - {{\rm e}^T}{\rm S}{\rm e} + \sum\limits_{k = 1}^n {{{\left\| {{{\rm x}_k} - {\rm m}} \right\|}^2}} \nonumber
 \end{equation}
-\item Use Lagrange multipliers to maximize ${\rm e}^t{\rm S}{\rm e}$ subject to the constraint that $\left\|{\rm e}\right\|=1$. 
+\item Use Lagrange multipliers to maximize ${\rm e}^T{\rm S}{\rm e}$ subject to the constraint that $\left\|{\rm e}\right\|=1$. 
 \item Letting $\lambda$ be the undetermined multiplier, we differentiate
 \begin{align}
-u&={\rm e}^t{\rm S}{\rm e} -\lambda({\rm e}^t{\rm e}-1)\nonumber\\
+u&={\rm e}^T{\rm S}{\rm e} -\lambda({\rm e}^T{\rm e}-1)\nonumber\\
 \frac{{\partial u}}{{\partial {\rm e}}} &= 2{\rm S}{\rm e} - 2\lambda {\rm e}\nonumber\\
 {\rm S}{\rm e}&=\lambda {\rm e}\nonumber
 \end{align}
-\item In particular, because ${\rm e}^t{\rm S}{\rm e}=\lambda {\rm e}^t{\rm e}=\lambda$, it follows that to maximize ${\rm e}^t{\rm S}{\rm e}$, so select the eigenvector corresponding to the largest eigenvalue of the scatter matrix.
+\item In particular, because ${\rm e}^T{\rm S}{\rm e}=\lambda {\rm e}^T{\rm e}=\lambda$, it follows that to maximize ${\rm e}^T{\rm S}{\rm e}$, so select the eigenvector corresponding to the largest eigenvalue of the scatter matrix.
 \end{itemize}
 \end{footnotesize}
 \end{frame}
@@ -364,34 +361,97 @@ is minimized when the vector ${\rm e}_1,{\rm e}_2,\ldots,{\rm e}_{d'}$ are the $
 \end{itemize}
 \end{frame}
 
+\begin{frame}{Principal Component Analysis}
+\begin{itemize}
+\item Given ${\rm x}_1,{\rm x}_2,\ldots,{\rm x}_n\in \mathbb{R}^d$, the goal is to find a $d'$-dimensional
+subspace where the reconstruction error of ${\rm x}_i$ in this
+subspace is minimized.
+\item The squared error criterion function $J_0({\rm x}_0)$ can be minimized by selecting ${\rm x}_0={\rm m}$, where ${\rm m}$ is the sample mean.
+\item The sample mean is a zero-dimensional representation of the data set. It is simple, but it does not reveal any of the variability in the data.
+\item We must consider at least one-dimensional representation of data by choosing
+\[{\rm x}={\rm m}+a{\rm e}\]
+and compute the optimal value of $a$ such that the squared error criterion function $J_1$ is minimum.
+\item We obtained the solution as
+\begin{equation}
+a_k={\rm e}^T({\rm x}_k-{\rm m}) \nonumber
+\end{equation}
+\end{itemize}
+\end{frame}
 
-%\begin{frame}{Principal Component Analysis}
-%\begin{itemize}
-%\item Given ${\rm x}_1,{\rm x}_2,\ldots,{\rm x}_n\in \mathbb{R}^d$, the goal is to find a $d'$-dimensional
-%subspace where the reconstruction error of ${\rm x}_i$ in this
-%subspace is minimized.
-%\item The criterion function for the reconstruction error can be defined in the least squares sense as
-%\begin{equation}
-%{J_{d'}} = \sum\limits_{i = 1}^n {{{\left\| {\sum\limits_{k = 1}^{d'} {{y_{ik}}{e_k} - {x_i}} } \right\|}^2}} \nonumber
-%\end{equation}
-%where $e_1,e_2,\ldots,e_d$ are the bases for the subspace (stored as the columns of A) and ${\rm y}_i$ is the projection of ${\rm x}i$ onto that subspace.
-%\end{itemize}
-%\end{frame}
+\begin{frame}{Principal Component Analysis}
+\begin{itemize}
+\item Given ${\rm x}_1,{\rm x}_2,\ldots,{\rm x}_n\in \mathbb{R}^d$, the goal is to find a $d'$-dimensional
+subspace where the reconstruction error of ${\rm x}_i$ in this
+subspace is minimized.
+\item The criterion function for the reconstruction error can be defined in the least squares sense as
+\begin{equation}
+{J_{d'}} = \sum\limits_{k = 1}^n {{{\left\| {\left( {{\rm m} + \sum\limits_{i = 1}^{d'} {{a_{ki}}{{\rm e}_i}} } \right) - {{\rm x}_k}} \right\|}^2}} \nonumber
+\end{equation}
+where ${\rm e}_1,{\rm e}_2,\ldots,{\rm e}_{d'}$ are the bases for the subspace (stored as the columns of A) and ${a}_i$ is the projection of ${\rm x}_i$ onto that subspace.
+%\item Here, ${\rm e}_1,{\rm e}_2,\ldots,{\rm e}_{d'}$ are eigenvectors corresponding to first $d'$ largest eigenvalues of scatter matrix.
+%\[S = \sum_{k=1}^n({\rm x}_k-{\rm m})({\rm x}_k-{\rm m})^T\]
+\end{itemize}
+\end{frame}
 
-%\begin{frame}{Principal Component Analysis}
-%\begin{itemize}
-%\item It can be shown that $J_d'$ is minimized when ${\rm e}_1,{\rm e}_2,\ldots,{\rm e}_d$ are the $d'$ eigenvectors of the scatter matrix
-%\begin{equation}
-%S = \sum\limits_{i = 1}^n {({{\rm x}_i} - \mu ){{({{\rm x}_i} - \mu )}^t}} 
-%\end{equation}
-%having the largest eigenvalues.
-%\item The coefficients ${\rm y} = ({\rm y}_i,\ldots,{\rm y}_{d'})^t$ are called the principal components.
-%\item When the eigenvectors are sorted in descending order of
-%the corresponding eigenvalues, the greatest variance of the
-%data lies on the first principal component, the second
-%greatest variance on the second component, etc.
-%\end{itemize}
-%\end{frame}
+\begin{frame}{Principal Component Analysis}
+\begin{itemize}
+\item It can be shown that $J_{d'}$ is minimized when ${\rm e}_1,{\rm e}_2,\ldots,{\rm e}_{d'}$ are eigenvectors corresponding to first $d'$ largest eigenvalues of scatter matrix.
+\[S = \sum_{k=1}^n({\rm x}_k-{\rm m})({\rm x}_k-{\rm m})^T\]
+\item The coefficients ${ a} = ({a}_i,\ldots,{a}_{d'})^T$ are called the principal components.
+\item When the eigenvectors are sorted in descending order of
+the corresponding eigenvalues, the greatest variance of the
+data lies on the first principal component, the second
+greatest variance on the second component, and so on.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Example to be solved}
+\begin{footnotesize}
+\begin{itemize}
+\item[] {\color{mycolor2}Question}: Given the following sets of feature vector belonging to two classes $\omega_1$ and $\omega_2$ which is Gaussian distributed.
+$$\begin{gathered}
+  \left\{ {\left( {\begin{array}{*{20}{c}}
+  1 \\ 
+  2 
+\end{array}} \right),\left( {\begin{array}{*{20}{c}}
+  3 \\ 
+  4 
+\end{array}} \right),\left( {\begin{array}{*{20}{c}}
+  4 \\ 
+  3 
+\end{array}} \right),\left( {\begin{array}{*{20}{c}}
+  5 \\ 
+  5 
+\end{array}} \right),\left( {\begin{array}{*{20}{c}}
+  7 \\ 
+  5 
+\end{array}} \right)} \right\} \in {\omega _1} \hfill \\
+  \left\{ {\left( {\begin{array}{*{20}{c}}
+  6 \\ 
+  2 
+\end{array}} \right),\left( {\begin{array}{*{20}{c}}
+  9 \\ 
+  4 
+\end{array}} \right),\left( {\begin{array}{*{20}{c}}
+  {7} \\ 
+  3 
+\end{array}} \right),\left( {\begin{array}{*{20}{c}}
+  {11} \\ 
+  4 
+\end{array}} \right),\left( {\begin{array}{*{20}{c}}
+  {13} \\ 
+  6 
+\end{array}} \right)} \right\} \in {\omega _2} \hfill \\ 
+\end{gathered} $$
+Find out the best direction of the line of projection that best represent the data in one-dimensional feature space.\\
+\end{itemize}
+\end{footnotesize}
+\vspace{-16pt}
+\begin{figure}
+\includegraphics[width=0.38\textwidth]{scatterPlot}
+\end{figure}
+\end{frame}
+
 
 %\begin{frame}{Principal Component Analysis}
 %\begin{itemize}
@@ -402,25 +462,51 @@ is minimized when the vector ${\rm e}_1,{\rm e}_2,\ldots,{\rm e}_{d'}$ are the $
 %\end{itemize}
 %\end{frame}
 
-\begin{frame}{Examples}
-\begin{figure}
-\includegraphics[scale=0.95]{PCA03}
-\caption{Scatter plot (red dots) and the principal axes for a bivariate sample. The blue line shows the axis ${\rm e}_1$ with the greatest variance and the green line shows the axis ${\rm e}_2$ with the smallest variance. Features are now uncorrelated.}
-\end{figure}
+
+\begin{frame}{Examples: Iris dataset representation}
+\begin{itemize}
+\item "Iris" dataset is very famous dataset used for data analysis problems (classification, feature reduction, and many more)
+\item Available on the UCI machine learning repository
+\url{https://archive.ics.uci.edu/ml/datasets/Iris}.
+\item The iris dataset contains measurements for 150 iris flowers from three different species.
+\begin{itemize}
+\item Iris-setosa ($n_1=50$)
+\item Iris-versicolor ($n_2=50$)
+\item Iris-virginica ($n_3=50$)
+\end{itemize}
+\item And the four features of in Iris dataset are:
+\begin{itemize}
+\item sepal length in cm
+\item sepal width in cm
+\item petal length in cm
+\item petal width in cm
+\end{itemize}
+\end{itemize}
+\begin{tikzpicture}[remember picture,overlay]
+  \node (img1) at (10.5,2) {\includegraphics[height=3.3cm]{Figures/iris_petal_sepal.png}};
+\end{tikzpicture}
 \end{frame}
 
-\begin{frame}{Examples}
+%\begin{frame}{Examples: IRIS data representation}
+%\begin{figure}
+%\includegraphics[scale=0.95]{PCA03}
+%\caption{Scatter plot (red dots) and the principal axes for a bivariate sample. The blue line shows the axis ${\rm e}_1$ with the greatest variance and the green line shows the axis ${\rm e}_2$ with the smallest variance. Features are now uncorrelated.}
+%\end{figure}
+%\end{frame}
+
+\begin{frame}{Examples: Iris data representation}
 \begin{figure}
-\includegraphics[scale=1]{PCA02}
+\includegraphics[width=0.55\textwidth]{ScatterIris}
 \caption{Scatter plot of the iris data. Diagonal cells show the histogram for each feature. Other cells show scatters of pairs of features $x_1, x_2, x_3, x_4$ in
 top-down and left-right order. Red, green and blue points represent samples for the setosa, versicolor and virginica classes, respectively.}
 \end{figure}
 \end{frame}
 
-\begin{frame}{Example}
+\begin{frame}{Examples: Iris data representation}
 \begin{figure}
-\includegraphics[scale=1]{PCA01}
-\caption{Scatter plot of the projection of the iris data onto the first two and the first three principal axes. Red, green and blue points represent samples for the setosa, versicolor and virginica classes, respectively.}
+\includegraphics[width=0.48\textwidth]{2dPCA}~~~~
+\includegraphics[width=0.48\textwidth]{3dPCA}
+\caption{Scatter plot of the projection of the iris data onto the first two and the first three principal axes.}
 \end{figure}
 \end{frame}
 
@@ -432,35 +518,14 @@ top-down and left-right order. Red, green and blue points represent samples for 
 \end{variableblock}
 \end{frame}
 
-%\begin{frame}{Linear Discriminant Analysis}
-%\begin{itemize}
-%\item Fisher's linear discriminant
-%\begin{itemize}
-%\item preserve class separation (special case of principle component analysis)
-%\end{itemize}
-%\item Multi-dimensional scaling
-%\begin{itemize}
-%\item Preserve distance measures
-%\end{itemize}
-%\item Principal component analysis
-%\begin{itemize}
-%\item Best data representation (not necessarily best class separation)
-%\end{itemize}
-%\end{itemize}
-%\end{frame}
-
 \begin{frame}{Fisher Linear Discriminant}
 \begin{itemize}
 \item PCA seeks directions that are efficient for
 representation, \textit{\color{mycolor2}discriminant analysis} seeks directions that are efficient for discrimination.
-\item Suppose ${\rm x}_1,{\rm x}_2,\ldots,{\rm x}_n\in \mathbb{R}^d$ are divided into two subsets $\mathcal{D}_1$ ($n_1$  samples) and $\mathcal{D}_2$ ($n_2$  samples)
-corresponding to the classes $\omega_1$ and $\omega_2$ respectively, the
-goal is to find a projection onto a line defined as
-\begin{equation}
-{y}={\rm w}^T{\rm x} \nonumber
-\end{equation}
-where the points corresponding to $\mathcal{D}_1$ and $\mathcal{D}_2$ are well separated.
-\item A corresponding set of $n$ samples ${y}_1,{y}_2,\ldots,{y}_n$ divided into the subset $\mathcal{Y}_1$ and $\mathcal{Y}_2$.\nocite{duda2012pattern}
+\begin{figure}
+\includegraphics[scale=1]{Fisher01}
+\caption{Projection of the same set of samples onto two different lines in the directions marked as ${\rm w}$. The figure on the right shows greater separation between the red and black projected points}
+\end{figure}
 \end{itemize}
 \end{frame}
 
@@ -482,10 +547,25 @@ where the points corresponding to $\mathcal{D}_1$ and $\mathcal{D}_2$ are well s
 %\end{frame}
 
 \begin{frame}{Fisher Linear Discriminant}
+\begin{columns}
+\begin{column}{7cm}
+\begin{itemize}
+\item Suppose ${\rm x}_1,{\rm x}_2,\ldots,{\rm x}_n\in \mathbb{R}^d$ are divided into two subsets $\mathcal{D}_1$ ($n_1$  samples) and $\mathcal{D}_2$ ($n_2$  samples)
+corresponding to the classes $\omega_1$ and $\omega_2$ respectively, the
+goal is to find a projection onto a line defined as
+\begin{equation}
+{y}={\rm w}^T{\rm x} \nonumber
+\end{equation}
+such that the points corresponding to $\mathcal{D}_1$ and $\mathcal{D}_2$ are well separated.
+\item A corresponding set of $n$ samples ${y}_1,{y}_2,\ldots,{y}_n$ divided into the subset $\mathcal{Y}_1$ and $\mathcal{Y}_2$.\nocite{duda2012pattern}
+\end{itemize}
+\end{column}
+\begin{column}{6cm}
 \begin{figure}
-\includegraphics[scale=1.1]{Fisher01}
-\caption{Projection of the same set of samples onto two different lines in the directions marked as ${\rm w}$. The figure on the right shows greater separation between the red and black projected points}
+\includegraphics[scale=1.2]{Fisher01a}
 \end{figure}
+\end{column}
+\end{columns}
 \end{frame}
 
 \begin{frame}{Fisher Linear Discriminant}
@@ -530,9 +610,7 @@ and the \textit{\color{mycolor2}between-class scatter matrix} ${\rm S_B}$
 \begin{frame}{Fisher Linear Discriminant}
 \begin{itemize}
 \item Then, the criterion function becomes
-\begin{figure}
-\includegraphics[scale=1]{LDA08}
-\end{figure}
+\[J({\rm w}) = \frac{{{{\left| {{{\tilde m}_1} - {{\tilde m}_2}} \right|}^2}}}{{\tilde s_1^2 + \tilde s_2^2}} = \frac{{{{\rm w}^T}{S_B}{\rm w}}}{{{{\rm w}^T}{S_W}{\rm w}}}\]
 This expression is well known in mathematical physics as the generalized Rayleigh quotient.
 \item A vector ${\rm w}$ that maximizes $J(\cdot)$ must satisfy
 \begin{align}
@@ -554,6 +632,109 @@ This expression is well known in mathematical physics as the generalized Rayleig
 \end{itemize}
 \end{frame}
 
+\begin{frame}{Example to be solved}
+\begin{footnotesize}
+\begin{itemize}
+\item[] {\color{mycolor2}Question}: Given the following sets of feature vector belonging to two classes $\omega_1$ and $\omega_2$ which is Gaussian distributed.
+$$\begin{gathered}
+  \left\{ {\left( {\begin{array}{*{20}{c}}
+  1 \\ 
+  2 
+\end{array}} \right),\left( {\begin{array}{*{20}{c}}
+  3 \\ 
+  4 
+\end{array}} \right),\left( {\begin{array}{*{20}{c}}
+  4 \\ 
+  3 
+\end{array}} \right),\left( {\begin{array}{*{20}{c}}
+  5 \\ 
+  5 
+\end{array}} \right),\left( {\begin{array}{*{20}{c}}
+  7 \\ 
+  5 
+\end{array}} \right)} \right\} \in {\omega _1} \hfill \\
+  \left\{ {\left( {\begin{array}{*{20}{c}}
+  6 \\ 
+  2 
+\end{array}} \right),\left( {\begin{array}{*{20}{c}}
+  9 \\ 
+  4 
+\end{array}} \right),\left( {\begin{array}{*{20}{c}}
+  {7} \\ 
+  3 
+\end{array}} \right),\left( {\begin{array}{*{20}{c}}
+  {11} \\ 
+  4 
+\end{array}} \right),\left( {\begin{array}{*{20}{c}}
+  {13} \\ 
+  6 
+\end{array}} \right)} \right\} \in {\omega _2} \hfill \\ 
+\end{gathered} $$
+Find out the best direction of the line of projection that best separates the data in one-dimensional feature space.\\
+\end{itemize}
+\end{footnotesize}
+\vspace{-16pt}
+\begin{figure}
+\includegraphics[width=0.38\textwidth]{scatterPlotLDA}
+\end{figure}
+\end{frame}
+
+\title{\fontsize{33}{45}{\huge Pattern Classification\newline{\large Lecture 05: Component and Discriminant Analysis}\newline \vspace{8pt} \Large \vspace{-1.1cm}}}
+
+\vspace{0.5cm}
+\author{\vspace{0.4cm}\\\large{\bf Kundan Kumar\\\url{https://github.com/erkundanec/PatternClassification}}
+%Associate Professor\\Department of ECE}
+}
+% - Give the names in the same order as the appear in the paper.
+% - Use the \inst{?} command only if the authors have different
+%   affiliation.
+%\vspace{1cm}
+\institute[Indian Institute of Technology Kharagpur] % (optional, but mostly needed)
+{
+\vspace{1.8cm}
+%\includegraphics[height=.17\textheight]{SOAlogo.png}\\
+% Faculty of Engineering (ITER)\\ S`O'A Deemed to be University, Bhubaneswar, India-751030\\
+
+
+ \copyright\  2020 Kundan Kumar, All Rights Reserved\\
+  \vspace{-1.1cm}}
+% - Use the \inst command only if there are several affiliations.
+% - Keep it simple, no one is interested in your street address.
+\date{}
+% To remove page number from a perticular slide
+{
+\setbeamertemplate{logo}{}
+\makeatletter
+\setbeamertemplate{footline}{
+        \leavevmode%
+  
+  % First line.
+  \hbox{%
+  \begin{beamercolorbox}[wd=.2\paperwidth,ht=\beamer@decolines@lineup,dp=0pt]{}%
+  \end{beamercolorbox}%
+  \begin{beamercolorbox}[wd=.8\paperwidth,ht=\beamer@decolines@lineup,dp=0pt]{lineup}%
+  \end{beamercolorbox}%
+  } %
+  % Second line.
+  \hbox{%
+  \begin{beamercolorbox}[wd=\paperwidth,ht=\beamer@decolines@linemid,dp=0pt]{linemid}%
+  \end{beamercolorbox}%
+  } %
+  % Third line.
+  \hbox{%
+  \begin{beamercolorbox}[wd=.1\paperwidth,ht=\beamer@decolines@linebottom,dp=0pt]{}%
+  \end{beamercolorbox}%
+  \begin{beamercolorbox}[wd=.9\paperwidth,ht=\beamer@decolines@linebottom,dp=0pt]{linebottom}%
+  \end{beamercolorbox}%
+  }%
+        }
+\makeatother
+\begin{frame}
+\titlepage
+\end{frame}
+}
+
+
 \begin{frame}{Multiple Discriminant Analysis}
 \begin{itemize}
 \item For the $c$-class problem
@@ -561,12 +742,21 @@ This expression is well known in mathematical physics as the generalized Rayleig
 
 \item Thus, the projection is from a $d$-dimensional space to a $(c-1)$-dimensional space, and it is assumed that $d\geq c$.
 \item The criteria function is
-\begin{figure}
-\includegraphics[scale=1]{ldf07}
-\end{figure}
+\[J(W) = \frac{{\left| {{{\tilde S}_B}} \right|}}{{\left| {{{\tilde S}_W}} \right|}} = \frac{{\left| {{W^T}{S_B}W} \right|}}{{\left| {{W^T}{S_W}W} \right|}}\]
 The problem of finding a rectangular matrix ${\rm W}$ that maximizes $J(\cdot)$
 \end{itemize}
 \end{frame}
+
+
+\begin{frame}{Multiple Discriminant Analysis}
+\begin{figure}
+\includegraphics[scale=0.9]{ldf19}
+\caption{Three-dimensional distributions are projected onto two-dimensional subspaces, described by a normal vectors ${\rm W}_1$ and ${\rm W}_2$.}
+\end{figure}
+\end{frame}
+
+% Informally, multiple discriminant methods seek the optimum such subspace, i.e., the one with the greatest separation of the projected distributions for a given total within-scatter matrix, here as
+%associated with ${\rm W}_1$}.
 
 \begin{frame}{Multiple Discriminant Analysis}
 \begin{itemize}
@@ -580,7 +770,7 @@ where\\
 \includegraphics[scale=1]{ldf10}
 \end{figure}
 \item The proper generalization for ${\rm S}_B$ is not quite so obvious.
-\item Suppose that we define a \textit{\color{mycolor2}total mean vector} ${\rm m}$ and a total scatter matrix ${\rm S}_T$ by
+\item Suppose that we define a \textit{\color{mycolor2}total mean vector} ${\rm m}$ and a \textit{\color{mycolor2}total scatter matrix} ${\rm S}_T$ by
 \begin{figure}
 \includegraphics[scale=1]{ldf11}~~~~~~~
 \includegraphics[scale=1]{ldf12}
@@ -604,6 +794,8 @@ where
 \end{figure}
 \end{itemize}
 \end{frame}
+
+
 
 \begin{frame}{Multiple Discriminant Analysis}
 \begin{itemize}
@@ -637,14 +829,7 @@ where
 \end{itemize}
 \end{frame}
 
-\begin{frame}{Multiple Discriminant Analysis}
-\begin{figure}
-\includegraphics[scale=0.8]{ldf19}
-\caption{Three three-dimensional distributions are projected onto two-dimensional
-subspaces, described by a normal vectors ${\rm W}_1$ and ${\rm W}_2$ . Informally, multiple discriminant methods seek the optimum such subspace, i.e., the one with the greatest separation of the projected distributions for a given total within-scatter matrix, here as
-associated with ${\rm W}_1$}
-\end{figure}
-\end{frame}
+
 
 \begin{frame}{Multiple Discriminant Analysis: Solution}
 \begin{itemize}
@@ -794,9 +979,21 @@ clear physical meaning.
 (6,2)^t,~(9,4)^t,~(10,1)^t,~(12,3)^t, ~(13,6)^t \in \omega_2 \nonumber
 \end{equation}
 The vector are projected onto a line to represent the feature vectors by a single feature. Find out the best direction of the line of projection that maintains the separability of the two classes.\\
-\item[(b)] Assuming the mean of the projected point belonging to $\omega_1$ to be the origin of the projection line, identify the point on the projection line that optimally separates two two classes. Assume the classes to be equally probable and the projected features also follow Gaussian distribution.
+\item[(b)] Assuming the mean of the projected point belonging to $\omega_1$ to be the origin of the projection line, identify the point on the projection line that optimally separates two classes. Assume the classes to be equally probable and the projected features also follow Gaussian distribution.
 \end{itemize}
 \end{footnotesize}
+\end{frame}
+
+\begin{frame}{}
+
+\end{frame}
+
+\begin{frame}{}
+
+\end{frame}
+
+\begin{frame}{}
+
 \end{frame}
 
 \section{References}
@@ -807,7 +1004,6 @@ The vector are projected onto a line to represent the feature vectors by a singl
 \printbibliography[heading=none]
 \end{frame}
 {
-\nocite{gose1997pattern}
 \setbeamertemplate{logo}{}
 \makeatletter
 \setbeamertemplate{footline}{
