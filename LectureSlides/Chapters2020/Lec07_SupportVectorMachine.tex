@@ -258,7 +258,9 @@ The distance between ${\rm x}_n$ and the plane:
 &\mathop{\sf Minimize}\limits_{{\rm w},b}~~\frac{1}{2}||{\rm w}||^2\\
 &\text{subject to}~~y_i( {{{\rm w}^T}{{\rm x}_i} + b} ) \geq 1~~~~\text{for}~~~i=1,2,\ldots,n
 \end{align*}
+where ${\rm w}\in \Re^d$ and $b\in \Re$
 \item The above problem is {\color{mycolor1}constraint optimization problem}.
+\item {\color{mycolor2}Read about Lagrangian and inequality constraint KKT}\nocite{duda2012pattern}
 \end{itemize}
 \end{frame}
 
@@ -442,6 +444,8 @@ K({\rm x},{\rm x}') &= {(1 + {{\rm x}^T}{\rm x}')^2} = {(1 + {x_1}x'{_1} + {x_2}
 \[K({{\rm x}_i},{{\rm x}_j}) = \tanh \left( {{\gamma} {\rm x}_i^{T}{{\rm x}_j} + r} \right),{\gamma}  > 0\]
 \end{itemize}
 where, $\gamma$, $r$, and $d$  are kernel parameters. 
+\item These kernels were used in various application
+where radial basis function (RBF) kernel is widely adopted as a non-linear kernel due to its capability of mapping the feature vectors from input feature space to infinite dimensional space to handle highly non-linear feature distribution.
 \end{itemize}
 \end{frame}
 
@@ -464,28 +468,16 @@ where, $\gamma$, $r$, and $d$  are kernel parameters.
 
 \begin{frame}{The final hypothesis}
 \begin{itemize}
-\item Express $g(\rm x)=sign({\rm w}^T{\rm z}+b)$ in terms of $K(\_,\_)$
-\[w = \sum\limits_{{z_n}inSV} {{\alpha _n}{y_n}{z_n} \Rightarrow g(x) = sign\left( {\sum\limits_{{\alpha _n} > 0} {{\alpha _n}{y_n}K({x_n},x)}  + b} \right)} \]
+\item Express $g({\rm x})=\text{sign}({\rm w}^T{\rm z}+b)$ in terms of $K(\_,\_)$
+\[{\rm w} = \sum\limits_{{z_n}\text{ in SV}} {{\alpha _n}{y_n}{{\rm z}_n} ~~~~\Rightarrow~~~~ g({\rm x}) = \text{sign}\left( {\sum\limits_{{\alpha _n} > 0} {{\alpha _n}{y_n}K({{\rm x}_n},{\rm x})}  + b} \right)} \]
+where 
+\[b = {y_j} - \sum\limits_{{\alpha _i} > 0} {{\alpha _i}{y_i}K({x_i},{x_j})} \]
+for any support vector ($\alpha_i>0$)
 \end{itemize}
-\begin{figure}
-\includegraphics[width=\textwidth]{SVM17}
-\end{figure}
 \end{frame}
 
-%\begin{frame}{How do we know that $\mathcal{Z}$ exists...}
-%\begin{figure}
-%\includegraphics[width=\textwidth]{SVM18}
-%\end{figure}
-%\end{frame}
 
-%\begin{frame}{Design your own kernel}
-%\begin{figure}
-%\includegraphics[width=\textwidth]{SVM19}
-%\end{figure}
-%\end{frame}
-%
-
-\begin{frame}{Example: Linear (trivial problem)}
+\begin{frame}{Problem to be solved: Linear (trivial problem)}
 \begin{columns}
 \begin{column}{7cm}
 \begin{itemize}
@@ -545,6 +537,11 @@ where, $\gamma$, $r$, and $d$  are kernel parameters.
 
 \section{Soft Margin Classification}
 \subsection{}
+\begin{frame}{}
+\begin{variableblock}{\centering \Large \textbf{\vspace{4pt}\newline SVM: Soft Margin Formulation\vspace{4pt}}}{bg=slidecolor,fg=white}{bg=slidecolor,fg=white}
+\end{variableblock}
+\end{frame}
+
 \begin{frame}{Soft Margin Classification}
 \begin{columns}
 \begin{column}{7cm}
@@ -583,18 +580,18 @@ penalized misclassification and margin error becomes.
 
 \begin{frame}{Lagrange formulation}
 Using Lagrange multipliers, the dual problem is expressed in terms of Lagrangian coefficients as
-\end{frame}
-
-\begin{frame}{Lagrange formulation}
-\begin{figure}
-\includegraphics[width=0.9\textwidth]{SVM25}
-\end{figure}
+\[\mathcal{L}({\rm w},b,\xi ,\alpha ,\beta ) = \frac{1}{2}{{\rm w}^T}{\rm w} + C\sum\limits_{i = 1}^n {{\xi _i} - \sum\limits_{i = 1}^n {{\alpha _i}({y_i}({{\rm w}^T}{{\rm x}_i} + b) - 1 + {\xi _i}) - \sum\limits_{i = 1}^n {{\beta _i}{\xi _i}} } } \]
+Minimize w.r.t. ${\rm w}$, $b$, and $\xi$  and maximize w.r.t. each $\alpha_n\geq 0$ and $\beta_n\geq 0$
+\[{\nabla _{\rm w}}L = {\rm w} - \sum\limits_{i = 1}^n {{\alpha _i}{y_i}{{\rm x}_i} = 0} \]
+\[\frac{{\partial L}}{{\partial b}} =  - \sum\limits_{i = 1}^n {{\alpha _i}{y_i} = 0} \]
+\[\frac{{\partial L}}{{\partial {\xi _i}}} = C - {\alpha _i} - {\beta _i} = 0\]
 \end{frame}
 
 \begin{frame}{and the solution is ...}
-\begin{figure}
-\includegraphics[width=\textwidth]{SVM26}
-\end{figure}
+\[\text{Maximize}~~~ \mathcal{L}(\alpha ) = \sum\limits_{i = 1}^n {{\alpha _i} - \frac{1}{2}\sum\limits_{i = 1}^n {\sum\limits_{j = 1}^n {{y_i}{y_j}{\alpha _i}{\alpha _j}{\rm x}_i^T{{\rm x}_j}\text{           w.r.t. to }\alpha } } } \]
+\[\text{subject to }0 \leqslant {\alpha _i} \leqslant C\text{ for }n = 1, \ldots ,N\text{               and                }\sum\limits_{i = 1}^n {{\alpha _i}{y_i} = 0} \]
+\[ \Rightarrow ~~{\rm w} = \sum\limits_{i = 1}^n {{\alpha _i}{y_i}{{\rm x}_i}} \]
+\[\text{minimize}~~~~~~~\frac{1}{2}{{\rm w}^T}{\rm w} + C\sum\limits_{i = 1}^n {{\xi _i}} \]
 \end{frame}
 
 \begin{frame}{Types of support vectors}
