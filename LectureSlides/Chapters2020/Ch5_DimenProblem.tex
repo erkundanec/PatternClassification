@@ -487,13 +487,6 @@ Find out the best direction of the line of projection that best represent the da
 \end{tikzpicture}
 \end{frame}
 
-%\begin{frame}{Examples: IRIS data representation}
-%\begin{figure}
-%\includegraphics[scale=0.95]{PCA03}
-%\caption{Scatter plot (red dots) and the principal axes for a bivariate sample. The blue line shows the axis ${\rm e}_1$ with the greatest variance and the green line shows the axis ${\rm e}_2$ with the smallest variance. Features are now uncorrelated.}
-%\end{figure}
-%\end{frame}
-
 \begin{frame}{Examples: Iris data representation}
 \begin{figure}
 \includegraphics[width=0.55\textwidth]{ScatterIris}
@@ -679,72 +672,9 @@ Find out the best direction of the line of projection that best separates the da
 \end{figure}
 \end{frame}
 
-\title{\fontsize{33}{45}{\huge Pattern Classification\newline{\large Lecture 05: Component and Discriminant Analysis}\newline \vspace{8pt} \Large \vspace{-1.1cm}}}
-
-\vspace{0.5cm}
-\author{\vspace{0.4cm}\\\large{\bf Kundan Kumar\\\url{https://github.com/erkundanec/PatternClassification}}
-%Associate Professor\\Department of ECE}
-}
-% - Give the names in the same order as the appear in the paper.
-% - Use the \inst{?} command only if the authors have different
-%   affiliation.
-%\vspace{1cm}
-\institute[Indian Institute of Technology Kharagpur] % (optional, but mostly needed)
-{
-\vspace{1.8cm}
-%\includegraphics[height=.17\textheight]{SOAlogo.png}\\
-% Faculty of Engineering (ITER)\\ S`O'A Deemed to be University, Bhubaneswar, India-751030\\
-
-
- \copyright\  2020 Kundan Kumar, All Rights Reserved\\
-  \vspace{-1.1cm}}
-% - Use the \inst command only if there are several affiliations.
-% - Keep it simple, no one is interested in your street address.
-\date{}
-% To remove page number from a perticular slide
-{
-\setbeamertemplate{logo}{}
-\makeatletter
-\setbeamertemplate{footline}{
-        \leavevmode%
-  
-  % First line.
-  \hbox{%
-  \begin{beamercolorbox}[wd=.2\paperwidth,ht=\beamer@decolines@lineup,dp=0pt]{}%
-  \end{beamercolorbox}%
-  \begin{beamercolorbox}[wd=.8\paperwidth,ht=\beamer@decolines@lineup,dp=0pt]{lineup}%
-  \end{beamercolorbox}%
-  } %
-  % Second line.
-  \hbox{%
-  \begin{beamercolorbox}[wd=\paperwidth,ht=\beamer@decolines@linemid,dp=0pt]{linemid}%
-  \end{beamercolorbox}%
-  } %
-  % Third line.
-  \hbox{%
-  \begin{beamercolorbox}[wd=.1\paperwidth,ht=\beamer@decolines@linebottom,dp=0pt]{}%
-  \end{beamercolorbox}%
-  \begin{beamercolorbox}[wd=.9\paperwidth,ht=\beamer@decolines@linebottom,dp=0pt]{linebottom}%
-  \end{beamercolorbox}%
-  }%
-        }
-\makeatother
-\begin{frame}
-\titlepage
-\end{frame}
-}
-
-
-\begin{frame}{Multiple Discriminant Analysis}
-\begin{itemize}
-\item For the $c$-class problem
-\item The natural generalization of Fisher's linear discriminant involves $c-1$ discriminant functions.
-
-\item Thus, the projection is from a $d$-dimensional space to a $(c-1)$-dimensional space, and it is assumed that $d\geq c$.
-\item The criteria function is
-\[J(W) = \frac{{\left| {{{\tilde S}_B}} \right|}}{{\left| {{{\tilde S}_W}} \right|}} = \frac{{\left| {{W^T}{S_B}W} \right|}}{{\left| {{W^T}{S_W}W} \right|}}\]
-The problem of finding a rectangular matrix ${\rm W}$ that maximizes $J(\cdot)$
-\end{itemize}
+\begin{frame}{}
+\begin{variableblock}{\centering \Large \textbf{\vspace{4pt}\newline Multiple Discriminant Analysis\vspace{4pt}}}{bg=slidecolor,fg=white}{bg=slidecolor,fg=white}
+\end{variableblock}
 \end{frame}
 
 
@@ -794,8 +724,6 @@ where
 \end{figure}
 \end{itemize}
 \end{frame}
-
-
 
 \begin{frame}{Multiple Discriminant Analysis}
 \begin{itemize}
@@ -868,6 +796,7 @@ directly for the eigenvectors ${\rm w}_i.$
 
 \section{Feature Selection}
 \subsection{}
+
 \begin{frame}{}
 \begin{variableblock}{\centering \Large \textbf{\vspace{4pt}\newline Feature Selection\vspace{4pt}}}{bg=slidecolor,fg=white}{bg=slidecolor,fg=white}
 \end{variableblock}
@@ -875,10 +804,17 @@ directly for the eigenvectors ${\rm w}_i.$
 
 \begin{frame}{Feature Selection}
 \begin{itemize}
-\item An alternative to feature reduction that uses linear or
-non-linear combinations of features is feature selection that
+\item Feature reduction uses a linear or non-linear combination of features.
+\item An alternative to feature reduction is {\color{mycolor2}feature selection} that
 reduces dimensionality by selecting subsets of existing
 features.
+\item Benefits of performing feature selection:
+\begin{itemize}
+\item avoid curse of dimensionality
+\item reduce the computational cost
+\item improves accuracy
+\item avoid overfitting
+\end{itemize}
 \item The first step in feature selection is to define a criterion
 function that is often a function of the classification error.
 \item Note that, the use of classification error in the criterion function makes feature selection procedures dependent on
@@ -898,15 +834,35 @@ m
 \end{itemize}
 \item The number of subsets grows combinatorially, making the
 exhaustive search impractical.
-\item Iterative procedures are often used but they cannot
-guarantee the selection of the optimal subset.
+\item There are two main types of feature selection algorithms:
+\begin{itemize}
+\item Wrapper Feature Selection Methods.
+\item Filter Feature Selection Methods.
+\end{itemize}
 \end{itemize}
 \end{frame}
 
+\begin{frame}{Examples: Iris data representation}
+\begin{figure}
+\includegraphics[width=0.6\textwidth]{OneDimFeature}
+\caption{Histogram plot of Iris features}
+\end{figure}
+\end{frame}
+
+
+\begin{frame}{Examples: Iris data representation}
+\begin{figure}
+\includegraphics[width=0.61\textwidth]{ScatterIris}
+\caption{Scatter plot of the iris data. Off-diagonal cells show scatters of pairs of features $x_1, x_2, x_3, x_4$.}
+\end{figure}
+\end{frame}
+
 \begin{frame}{Feature Selection}
+\begin{columns}
+\begin{column}{7cm}
 \begin{itemize}
 \item \textit{\color{mycolor2}Sequential forward selection:}
-\begin{itemize}
+\begin{enumerate}
 \item First, the best single feature is selected.
 \item Then, pairs of features are formed using one of the
 remaining features and this best feature, and the best pair is
@@ -915,19 +871,20 @@ selected.
 remaining features and these two best features, and the best
 triplet is selected.
 \item This procedure continues until all or a predefined number of features are selected.
+\end{enumerate}
 \end{itemize}
-\end{itemize}
-\end{frame}
-
-\begin{frame}{Examples}
+\end{column}
+\begin{column}{7cm}
 \begin{figure}
-\includegraphics[scale=0.9]{DimProb03}
-\caption{Results of sequential forward feature selection for classification of a satellite image using 28 features. $x$-axis shows the classification accuracy (\%) and $y$-axis shows the features added at each iteration (the first iteration is
-at the bottom). The highest accuracy value is shown with a star.}
+\includegraphics[scale=0.95]{DimProb03}
 \end{figure}
+\end{column}
+\end{columns}
 \end{frame}
 
 \begin{frame}{Feature Selection}
+\begin{columns}
+\begin{column}{7cm}
 \begin{itemize}
 \item \textit{\color{mycolor2}Sequential backward selection:}
 \begin{itemize}
@@ -942,15 +899,13 @@ with $d - 2$ features.
 number of features are left.
 \end{itemize}
 \end{itemize}
-\end{frame}
-
-
-\begin{frame}{Examples}
+\end{column}
+\begin{column}{7cm}
 \begin{figure}
-\includegraphics[scale=0.9]{DimProb04}
-\caption{Results of sequential backward feature selection for classification of a satellite image using 28 features. $x$-axis shows the classification accuracy (\%) and $y$-axis shows the features removed at each iteration (the first iteration is
-at the top). The highest accuracy value is shown with a star.}
+\includegraphics[scale=0.95]{DimProb04}
 \end{figure}
+\end{column}
+\end{columns}
 \end{frame}
 
 \begin{frame}{Summary}
@@ -967,7 +922,7 @@ clear physical meaning.
 \end{itemize}
 \end{frame}
 
-\begin{frame}{Problem}
+\begin{frame}{Assignment Problem}
 \begin{footnotesize}
 \textit{\color{mycolor2}Question:}
 \begin{itemize}
@@ -982,18 +937,6 @@ The vector are projected onto a line to represent the feature vectors by a singl
 \item[(b)] Assuming the mean of the projected point belonging to $\omega_1$ to be the origin of the projection line, identify the point on the projection line that optimally separates two classes. Assume the classes to be equally probable and the projected features also follow Gaussian distribution.
 \end{itemize}
 \end{footnotesize}
-\end{frame}
-
-\begin{frame}{}
-
-\end{frame}
-
-\begin{frame}{}
-
-\end{frame}
-
-\begin{frame}{}
-
 \end{frame}
 
 \section{References}
@@ -1033,7 +976,7 @@ The vector are projected onto a line to represent the feature vectors by a singl
 
 \begin{frame}
 \centering
-\includegraphics[width=0.4\paperwidth]{queries.jpg}\\
-\includegraphics[width=0.5\paperwidth]{thank_you.png}
+\includegraphics[width=0.35\paperwidth]{queries.jpg}\\
+\includegraphics[width=0.45\paperwidth]{thank_you.png}
 \end{frame}
 }
