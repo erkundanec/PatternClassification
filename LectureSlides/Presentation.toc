@@ -4,8 +4,10 @@
 \defcounter {refsection}{0}\relax 
 \beamer@sectionintoc {1}{Introduction}{2}{0}{1}
 \defcounter {refsection}{0}\relax 
-\beamer@sectionintoc {2}{Installation And Setup}{3}{0}{2}
+\beamer@sectionintoc {2}{Linear Machine}{5}{0}{2}
 \defcounter {refsection}{0}\relax 
-\beamer@sectionintoc {3}{Install Anaconda}{5}{0}{3}
+\beamer@sectionintoc {3}{Kernel Trick}{20}{0}{3}
 \defcounter {refsection}{0}\relax 
-\beamer@sectionintoc {4}{Open Jupyter-Notebook}{13}{0}{4}
+\beamer@sectionintoc {4}{Soft Margin Classification}{29}{0}{4}
+\defcounter {refsection}{0}\relax 
+\beamer@sectionintoc {5}{References}{36}{0}{5}
