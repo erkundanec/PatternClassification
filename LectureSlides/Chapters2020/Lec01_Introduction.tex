@@ -1,16 +1,22 @@
 \graphicspath{{Figures/}}
 
-\title{\fontsize{33}{45}{\huge Pattern Classification (EET 3035)\newline \vspace{8pt} \Large Lecture 01\vspace{-1.1cm}}}
-\author{\vspace{-0.4cm}\\\normalsize{\bf Dr. Kundan Kumar}\\ PhD (IIT Kharagpur)\\
-Associate Professor\\Department of ECE}
+\title{\fontsize{33}{45}{\huge Pattern Classification\newline{\large Lecture 01: Introduction}\newline \vspace{8pt} \Large \vspace{-1.1cm}}}
+
+\vspace{0.5cm}
+\author{\vspace{0.4cm}\\\large{\bf Kundan Kumar\\\url{https://github.com/erkundanec/PatternClassification}}
+%Associate Professor\\Department of ECE}
+}
 % - Give the names in the same order as the appear in the paper.
 % - Use the \inst{?} command only if the authors have different
 %   affiliation.
-
+%\vspace{1cm}
 \institute[Indian Institute of Technology Kharagpur] % (optional, but mostly needed)
 {
-\includegraphics[height=.17\textheight]{SOAlogo.png}\\
- Faculty of Engineering (ITER)\\ S`O'A Deemed to be University, Bhubaneswar, India-751030\\
+\vspace{1.8cm}
+%\includegraphics[height=.17\textheight]{SOAlogo.png}\\
+% Faculty of Engineering (ITER)\\ S`O'A Deemed to be University, Bhubaneswar, India-751030\\
+
+
  \copyright\  2020 Kundan Kumar, All Rights Reserved\\
   \vspace{-1.1cm}}
 % - Use the \inst command only if there are several affiliations.
@@ -52,11 +58,11 @@ Associate Professor\\Department of ECE}
 \section{Text books and Syllabus}
 \subsection{}
 
-\begin{frame}[label=12]{Outline}
-\tableofcontents
-\end{frame}
+%\begin{frame}[label=12]{Outline}
+%\tableofcontents
+%\end{frame}
 
-\begin{frame}{Text Books and Credits}
+\begin{frame}{Text Books}
 %\vspace{-0.5cm}
 \begin{columns}
 \begin{column}{5cm}
@@ -73,41 +79,61 @@ Associate Professor\\Department of ECE}
 \begin{footnotesize}
 \textbf{Text Book:}
 \begin{itemize}
-\item Pattern Classification, Duda-Hart, 2nd Edition ({\color{brown}Prescribed})
+\item Pattern Classification, Duda-Hart, 2nd Edition
 \item Pattern Recognition and Image Analysis by Earl Gose
 \item Pattern Recognition by Theodoridis, 4th Edition
 \item Digital Image Processing by Gonzalez, 3rd Edition
 \end{itemize}
-\textbf{Credits:}
-\begin{itemize}
-\item 4 credits course, 4 Classes/week (1hr/Class)
-\item Prerequisite: MTH 2002 (Probability and Statistics)
-\end{itemize}
+%\textbf{Credits:}
+%\begin{itemize}
+%\item 4 credits course, 4 Classes/week (1hr/Class)
+%\item Prerequisite: MTH 2002 (Probability and Statistics)
+%\end{itemize}
 \end{footnotesize}
 \end{column}
 \end{columns}
 \end{frame}
 
-\begin{frame}{Grading Pattern and Syllabus}
+\begin{frame}{Syllabus}
 \begin{itemize}
-\item \textbf{Grading pattern}: 6
-\begin{table}[h]
-\begin{small}
-\centering
-\begin{tabular}{|L{4cm}C{0.6cm}L{2cm}|}
-\hline
-Attendance & : & 5 Marks  \\ \hline
-2 Quizzes  & : & 10 Marks   \\  \hline
-Assignments  & : & 10 Marks   \\  \hline
-Mid-term examination & : & 15 Marks   \\ \hline
-\textbf{Total Internal} & : & \textbf{40 Marks}   \\ \hline 
-\multicolumn{3}{c}{}\\\hline
-Theory examination  & : & 60 Marks   \\     \hline
-\textbf{Total External} & : & \textbf{60 Marks} \\  \hline
-\end{tabular}
-\end{small}
-\end{table}
-\item \textbf{Syllabus:} Introduction, Features, Bayesian Decision Theory, Maximum Likelihood and Bayesian Parameter Estimation, Non-parameteric Techniques, Linear Discriminant Functions, Multilayer Neural Networks, Unsupervised learning and Clustering
+%\item \textbf{Grading pattern}: 6
+%\begin{table}[h]
+%\begin{small}
+%\centering
+%\begin{tabular}{|L{4cm}C{0.6cm}L{2cm}|}
+%\hline
+%Attendance & : & 5 Marks  \\ \hline
+%2 Quizzes  & : & 10 Marks   \\  \hline
+%Assignments  & : & 10 Marks   \\  \hline
+%Mid-term examination & : & 15 Marks   \\ \hline
+%\textbf{Total Internal} & : & \textbf{40 Marks}   \\ \hline 
+%\multicolumn{3}{c}{}\\\hline
+%Theory examination  & : & 60 Marks   \\     \hline
+%\textbf{Total External} & : & \textbf{60 Marks} \\  \hline
+%\end{tabular}
+%\end{small}
+%\end{table}
+
+\item \textbf{Syllabus:} 
+\begin{itemize}
+\item Introduction
+\item Features Extraction
+\item Bayesian Decision Theory
+\begin{itemize}
+\item Continuous Features
+\item Discrete Features
+\end{itemize}
+\item Parametric and Non-parametric Estimation Techniques
+\item Component and Discriminant Analysis
+\begin{itemize}
+\item Principal Component Analysis (PCA)
+\item Fisher Linear Discriminant Analysis (FLD)
+\end{itemize}
+\item Linear Discriminant Functions 
+\item Support Vector Machine
+\item Multilayer Neural Networks
+\item Unsupervised Learning (Clustering)
+\end{itemize}
 \end{itemize}
 \end{frame}
 
@@ -155,30 +181,30 @@ Theory examination  & : & 60 Marks   \\     \hline
 %%  \end{multicols}
 %\end{frame}
 
-\begin{frame}{Google Classrooms}
-\begin{normalsize}
-\begin{itemize}
-\item All the communication will be through {\color{mycolor2}Google Classroom}:
-\begin{itemize}
-\item Course materials
-\item Assignments
-\item Announcements and Notices
-\end{itemize}
-\item join the course at {\color{blue}\url{https://classroom.google.com/}}
-\item  {\color{mycolor2}Class Code} for section C: 
-\begin{figure}
-\centering
-\includegraphics[scale=0.2]{Figures/courseCode}
-\end{figure}
-\item  {\color{mycolor2}Class Code} for section D: 
-\begin{figure}
-\centering
-\includegraphics[scale=0.2]{Figures/ClassCode_ECE-D}
-\end{figure}
-\item Would you like to {\color{mycolor1}code in Python} for the topics to be covered in Pattern Classification?
-\end{itemize}
-\end{normalsize}
-\end{frame}
+%\begin{frame}{Google Classrooms}
+%\begin{normalsize}
+%\begin{itemize}
+%\item All the communication will be through {\color{mycolor2}Google Classroom}:
+%\begin{itemize}
+%\item Course materials
+%\item Assignments
+%\item Announcements and Notices
+%\end{itemize}
+%\item join the course at {\color{blue}\url{https://classroom.google.com/}}
+%\item  {\color{mycolor2}Class Code} for section c: 
+%\begin{figure}
+%\centering
+%\includegraphics[scale=0.2]{Figures/courseCode}
+%\end{figure}
+%\item  {\color{mycolor2}Class Code} for section D: 
+%\begin{figure}
+%\centering
+%\includegraphics[scale=0.2]{Figures/ClassCode_ECE-D}
+%\end{figure}
+%\item Would you like to {\color{mycolor1}code in Python} for the topics to be covered in Pattern Classification?
+%\end{itemize}
+%\end{normalsize}
+%\end{frame}
 
 
 \section{Introduction}
@@ -188,8 +214,9 @@ Theory examination  & : & 60 Marks   \\     \hline
 \end{variableblock}
 \begin{figure}
 \centering
-\includegraphics[width=0.7\textwidth]{Figures/domain.png}
+\includegraphics[width=0.6\textwidth]{Figures/domain.png}
 \end{figure}
+%\hfill P.C.
 \end{frame}
 
 \begin{frame}{Relation with AI and ML}
@@ -239,37 +266,7 @@ what they observe, e.g.,
 \end{tikzpicture}
 \end{frame}
 
-\begin{frame}{What is Pattern Classification?}
-\begin{figure}
-\centering
-\includegraphics[scale=0.37]{AppleOrange.jpg}
-\end{figure}
-\end{frame}
-
-\begin{frame}{What is Pattern Classification?}
-\begin{itemize}
-\item Assign an unknown pattern to one of several known categories (or classes).
-\end{itemize}
-\begin{figure}
-\centering
-\includegraphics[scale=0.26]{Intro01.png}
-\end{figure}
-\end{frame}
-
-\begin{frame}{What is a Pattern?}
-\begin{itemize}
-\item A pattern could be an \textbf{\color{mycolor2}object} or \textbf{\color{mycolor2}event}.
-\end{itemize}
-\begin{table}[]
-\centering
-\begin{tabular}{lc}
-Biometric pattern & Hand gesture pattern  \\
-\includegraphics[scale=0.25]{Intro02} & \includegraphics[scale=0.45]{Intro03} \\
-\end{tabular}
-\end{table}
-\end{frame}
-
-\begin{frame}{What is Pattern Classification?}
+\begin{frame}{What is Pattern?}
 \begin{itemize}
 \item A \textbf{\color{mycolor2}pattern} is an entity, vaguely defined, that could be given a name, e.g.,
 \begin{itemize}
@@ -280,6 +277,19 @@ Biometric pattern & Hand gesture pattern  \\
 \item DNA sequence,
 \item $\ldots$
 \end{itemize}
+\item A pattern could be an \textbf{\color{mycolor2}object} or \textbf{\color{mycolor2}event}.
+\end{itemize}
+\begin{table}
+\centering
+\begin{tabular}{lc}
+Biometric pattern & Hand gesture pattern  \\
+\includegraphics[scale=0.2]{Intro02} & \includegraphics[scale=0.4]{Intro03} \\
+\end{tabular}
+\end{table}
+\end{frame}
+
+\begin{frame}{What is Pattern Classification?}
+\begin{itemize}
 \item \textbf{\color{mycolor2}Pattern classification} is the study of how machines can
 \begin{itemize}
 \item observe the environment,
@@ -287,21 +297,10 @@ Biometric pattern & Hand gesture pattern  \\
 \item make sound and reasonable decisions about the categories of the patterns.
 \end{itemize} 
 \end{itemize}
-\end{frame}
-
-\begin{frame}{Pattern Class}
-\begin{itemize}
-\item A collection of ``{\color{mycolor2} similar}'' objects.
-\end{itemize}
-\begin{table}[]
+\begin{figure}
 \centering
-\begin{tabular}{c|clll}
-Female & Male &  &  &  \\
-\includegraphics[scale=0.6]{Intro04} & \includegraphics[scale=0.6]{Intro05} &  &  &  \\
-  &   &  &  &  \\
-  &   &  &  & 
-\end{tabular}
-\end{table}
+\includegraphics[scale=0.28]{AppleOrange.jpg}
+\end{figure}
 \end{frame}
 
 \begin{frame}{How do we model a Pattern Class?}
@@ -310,8 +309,8 @@ Female & Male &  &  &  \\
 \item Probability density function (e.g., Gaussian)
 \end{itemize}
 \begin{figure}
-\includegraphics[width=6cm]{Figures/Intro06}~~~~
-\includegraphics[width=5cm]{Figures/classProb}
+\includegraphics[width=7cm]{Figures/Intro06}~~~~
+\includegraphics[width=6cm]{Figures/classProb}
 \end{figure}
 \end{frame}
 
@@ -338,7 +337,7 @@ Build a machine that can recognize patterns:
 
 \begin{frame}{Applications: Speech Recognition}
 \begin{figure}
-\includegraphics[scale=0.7]{Figures/speechProc}
+\includegraphics[scale=0.8]{Figures/speechProc}
 \end{figure}
 \end{frame}
 
@@ -361,7 +360,7 @@ Build a machine that can recognize patterns:
 \end{itemize}
 \end{multicols}
 \begin{figure}
-\includegraphics[scale=0.9]{BiometricRecognition}
+\includegraphics[scale=0.8]{BiometricRecognition}
 \end{figure}
 \end{frame}
 
@@ -384,16 +383,16 @@ Build a machine that can recognize patterns:
 \end{columns}
 \end{frame}
 
-\begin{frame}{Applications: Fingerprint identification}
+\begin{frame}{Applications: Fingerprint Identification}
 How Fingerprint scanners record identifies:
 \vspace{1.8cm}
 \begin{figure}
-\includegraphics[scale=0.32]{Figures/Finger02.png}
+\includegraphics[scale=0.3]{Figures/Finger02.png}
 \end{figure}
 \begin{tikzpicture}[remember picture,overlay]
-  \node [text width=3cm,minimum height=1cm,minimum width=2cm,execute at begin node=\setlength{\baselineskip}{10pt}] at (1.6,6.7) {{\small \textbf{1.} Inidividuals index finger is pressed onto scanner}};
-   \node [text width=4cm,minimum height=1cm,minimum width=2cm,execute at begin node=\setlength{\baselineskip}{10pt}] at (5.5,6.7) {{\small \textbf{2.} Scanner reads unique pattern plotting specific distinctions (minutiae)}};
-    \node [text width=4cm,minimum height=1cm,minimum width=2cm,execute at begin node=\setlength{\baselineskip}{10pt}] at (9.6,6.45) {{\small \textbf{3.} Points are linked forming a pattern recorded as an algorithm used for comparison}};
+  \node [text width=3cm,minimum height=1cm,minimum width=2cm,execute at begin node=\setlength{\baselineskip}{10pt}] at (2.6,6.4) {{\small \textbf{1.} Inidividuals index finger is pressed onto scanner}};
+   \node [text width=4cm,minimum height=1cm,minimum width=2cm,execute at begin node=\setlength{\baselineskip}{10pt}] at (6.5,6.4) {{\small \textbf{2.} Scanner reads unique pattern plotting specific distinctions (minutiae)}};
+    \node [text width=4cm,minimum height=1cm,minimum width=2cm,execute at begin node=\setlength{\baselineskip}{10pt}] at (10.6,6.15) {{\small \textbf{3.} Points are linked forming a pattern recorded as an algorithm used for comparison}};
 \end{tikzpicture}
 \end{frame}
 
@@ -413,11 +412,11 @@ How Fingerprint scanners record identifies:
 \begin{columns}
 \begin{column}{5cm}
 \begin{figure}
-\includegraphics[height=6.3cm]{Figures/ocr.png}\\
+\includegraphics[height=5.5cm]{Figures/ocr.png}\\
 \includegraphics[height=0.7cm]{Figures/ocr1.png}
 \end{figure}
 \end{column}
-\begin{column}{6cm}
+\begin{column}{8cm}
 \begin{figure}
 \includegraphics[height=1.5cm]{OCR02.jpg}
 \end{figure}
@@ -500,7 +499,7 @@ How Fingerprint scanners record identifies:
 
 \begin{frame}{An Example}
 \begin{columns}
-\begin{column}{6cm}
+\begin{column}{7cm}
 \begin{itemize}
 \item What can cause problems during sensing?
 \begin{itemize}
@@ -515,7 +514,7 @@ How Fingerprint scanners record identifies:
 \end{column}
 \begin{column}{5cm}
 \begin{figure}
-\includegraphics[scale=0.45]{Ch0214}
+\includegraphics[scale=0.5]{Ch0214}
 \end{figure}
 \end{column}
 \end{columns}
@@ -574,7 +573,7 @@ Task of decision theory
 \begin{columns}
 \begin{column}{6cm}
 \begin{figure}
-\includegraphics[scale=0.8]{Ch0103}
+\includegraphics[scale=0.75]{Ch0103}
 \end{figure}
 \end{column}
 \begin{column}{4cm}
@@ -650,11 +649,11 @@ Issue of generalization
 \end{figure}
 \end{frame}
 
-\section[PR Systems]{Pattern Recognition System}
+\section{PR Systems}
 \subsection{}
 
 \begin{frame}{}
-\begin{variableblock}{\centering \Large \textbf{\vspace{4pt}\newline Pattern recognition system and design cycle\vspace{4pt}}}{bg=slidecolor,fg=white}{bg=slidecolor,fg=white}
+\begin{variableblock}{\centering \Large \textbf{\vspace{4pt}\newline Pattern Recognition System and Design Cycle\vspace{4pt}}}{bg=slidecolor,fg=white}{bg=slidecolor,fg=white}
 \end{variableblock}
 \end{frame}
 
@@ -665,14 +664,12 @@ There are three main models of pattern recognition:
 \begin{itemize}
 \item {\color{mycolor1}Statistical:} 
 \begin{itemize}
-\item to identify where specific piece belongs (for example, whether it is a cake or not).
-\item use of statistics to learn from examples.
+\item To identify where specific piece belongs (for example, whether it is a cake or not).
+\item Use of statistics to learn from examples.
 \end{itemize}
-
-
 \item {\color{mycolor1}Syntactic/Structural:} 
 \begin{itemize}
-\item to define a more complex relationship between elements taking into account more complex interrelationships between attributes.
+\item To define a more complex relationship between elements taking into account more complex interrelationships between attributes.
 \item Looks at clear structure in the patterns.
 \item An example of this would be diagnosis of the heart with ECG measurements.
 \end{itemize}
@@ -686,7 +683,7 @@ There are three main models of pattern recognition:
 
 \begin{frame}{Pattern Recognition Systems}
 \begin{figure}
-\includegraphics[width=7cm]{Figures/PRsystem2}
+\includegraphics[width=6.7cm]{Figures/PRsystem2}
 \caption{Object/Process diagram of a pattern recognition system}
 \end{figure}
 \end{frame}
@@ -743,7 +740,7 @@ distortion, SNR, latency, etc.
 
 \begin{frame}{The Design Cycle}
 \begin{figure}
-\includegraphics[width=\textwidth]{designCycle}
+\includegraphics[width=\textwidth]{Figures/DesignCycle}
 \caption{Design cycle}
 \end{figure}
 \begin{itemize}
@@ -758,7 +755,7 @@ distortion, SNR, latency, etc.
 
 \begin{frame}{The Design Cycle}
 \begin{figure}
-\includegraphics[width=\textwidth]{designCycle}
+\includegraphics[width=\textwidth]{Figures/DesignCycle}
 \caption{Design cycle}
 \end{figure}
 \vspace{-20pt}
@@ -766,7 +763,6 @@ distortion, SNR, latency, etc.
 \setlength{\itemsep}{12pt}
 \item {\color{mycolor2}Feature Selection}
 \begin{itemize}
-\setlength{\itemsep}{3pt}
 \item Domain dependence and prior information.
 \item Computational cost and feasibility.
 \item Discriminative features.
@@ -784,48 +780,46 @@ deformation, and variations in environment.
 
 \begin{frame}{The Design Cycle}
 \begin{figure}
-\includegraphics[width=\textwidth]{designCycle}
+\includegraphics[width=\textwidth]{Figures/DesignCycle}
 \caption{Design cycle}
 \end{figure}
 \vspace{-20pt}
 \begin{itemize}
 \item {\color{mycolor2}Model selection}
 \begin{itemize}
-\setlength{\itemsep}{3pt}
 \item Domain dependence and prior information.
 \item Definition of design criteria.
 \item Parametric vs. non-parametric models.
 \item Handling of missing features.
 \item Computational complexity.
 \item Types of models: templates, decision-theoretic or statistical, syntactic or structural, neural, and hybrid.
-\item How can we know how close we are to the true model
-underlying the patterns?
+\item How can we know how close we are to the true model underlying the patterns?
 \end{itemize}
 \end{itemize}
 \end{frame}
 
 \begin{frame}{The Design Cycle}
 \begin{figure}
-\includegraphics[width=\textwidth]{designCycle}
+\includegraphics[width=\textwidth]{Figures/DesignCycle}
 \caption{Design cycle}
 \end{figure}
+\vspace{-12pt}
 \begin{itemize}
 \item {\color{mycolor2}Training}
 \begin{itemize}
-\setlength{\itemsep}{3pt}
+%\setlength{\itemsep}{3pt}
 \item How can we learn the rule from data?
 \item Supervised learning: a teacher provides a category label or
 cost for each pattern in the training set.
 \item Unsupervised learning: the system forms clusters or natural groupings of the input patterns.
-\item Reinforcement learning: no desired category is given but the teacher provides feedback to the system such as the
-decision is right or wrong.
+\item Reinforcement learning: no desired category is given but the teacher provides feedback to the system such as the decision is right or wrong.
 \end{itemize}
 \end{itemize}
 \end{frame}
 
 \begin{frame}{The Design Cycle}
 \begin{figure}
-\includegraphics[width=\textwidth]{designCycle}
+\includegraphics[width=\textwidth]{Figures/DesignCycle}
 \caption{Design cycle}
 \end{figure}
 \vspace{-12pt}
@@ -908,7 +902,7 @@ samples?
 \begin{frame}
 \centering
 \includegraphics[width=0.4\paperwidth]{queries.jpg}\\
-\includegraphics[width=0.5\paperwidth]{thank_you.png}
+\includegraphics[width=0.45\paperwidth]{thank_you.png}
 \end{frame}
 }
 
