@@ -433,468 +433,374 @@ as listed above, sketch the decision boundary and regions for each pattern class
 \end{small}
 \end{frame}
 
+\section{Linearly separable case}
+\subsection{}
+
+\title{\fontsize{33}{45}{\huge Pattern Classification\newline{\large Lecture 06: Linear Discriminant Functions}\newline \vspace{8pt} \Large \vspace{-1.1cm}}}
+
+\vspace{0.5cm}
+\author{\vspace{0.4cm}\\\large{\bf Kundan Kumar\\\url{https://github.com/erkundanec/PatternClassification}}
+%Associate Professor\\Department of ECE}
+}
+% - Give the names in the same order as the appear in the paper.
+% - Use the \inst{?} command only if the authors have different
+%   affiliation.
+%\vspace{1cm}
+\institute[Indian Institute of Technology Kharagpur] % (optional, but mostly needed)
+{
+\vspace{1.8cm}
+%\includegraphics[height=.17\textheight]{SOAlogo.png}\\
+% Faculty of Engineering (ITER)\\ S`O'A Deemed to be University, Bhubaneswar, India-751030\\
+
+
+ \copyright\  2020 Kundan Kumar, All Rights Reserved\\
+  \vspace{-1.1cm}}
+% - Use the \inst command only if there are several affiliations.
+% - Keep it simple, no one is interested in your street address.
+\date{}
+% To remove page number from a perticular slide
+{
+\setbeamertemplate{logo}{}
+\makeatletter
+\setbeamertemplate{footline}{
+        \leavevmode%
+  
+  % First line.
+  \hbox{%
+  \begin{beamercolorbox}[wd=.2\paperwidth,ht=\beamer@decolines@lineup,dp=0pt]{}%
+  \end{beamercolorbox}%
+  \begin{beamercolorbox}[wd=.8\paperwidth,ht=\beamer@decolines@lineup,dp=0pt]{lineup}%
+  \end{beamercolorbox}%
+  } %
+  % Second line.
+  \hbox{%
+  \begin{beamercolorbox}[wd=\paperwidth,ht=\beamer@decolines@linemid,dp=0pt]{linemid}%
+  \end{beamercolorbox}%
+  } %
+  % Third line.
+  \hbox{%
+  \begin{beamercolorbox}[wd=.1\paperwidth,ht=\beamer@decolines@linebottom,dp=0pt]{}%
+  \end{beamercolorbox}%
+  \begin{beamercolorbox}[wd=.9\paperwidth,ht=\beamer@decolines@linebottom,dp=0pt]{linebottom}%
+  \end{beamercolorbox}%
+  }%
+        }
+\makeatother
+\begin{frame}
+\titlepage
+\end{frame}
+}
+
+
+
 %\begin{frame}{Topics}
 %\begin{itemize}
-%\item Linear Discriminant Functions and Decision Surfaces
-%\item Generalized Linear Discriminant Functions
+%%\item Linear Discriminant Functions and Decision Surfaces
+%%\item Generalized Linear Discriminant Functions
 %\item The two-category linearly separable case
-%\item Perceptron Criterion
+%\item Perceptron Criterion Function
 %\item Criterion Function
 %\item Minimum Squared Error Procedures
 %\item The Ho-Kashyap Procedures
 %\end{itemize}
 %\end{frame}
-%
-%
-%\begin{frame}{Introduction}
-%\begin{itemize}
-%\item Linear Discriminant Functions and Decisions   Surfaces
-%\item Generalized Linear Discriminant Functions
-%\end{itemize}
-%\end{frame}
-%
 
-%\section{Support Vector Machine}
-%\subsection{}
-%\begin{frame}{}
-%\begin{variableblock}{\centering \Large \textbf{\vspace{4pt}\newline Support Vector Machine\vspace{4pt}}}{bg=slidecolor,fg=white}{bg=slidecolor,fg=white}
-%\end{variableblock}
-%\end{frame}
-%
-%\begin{frame}{Introduction}
+\begin{frame}{}
+\begin{variableblock}{\centering \Large \textbf{\vspace{4pt}\newline Two-category linearly separable case\vspace{4pt}}}{bg=slidecolor,fg=white}{bg=slidecolor,fg=white}
+\end{variableblock}
+\end{frame}
+
+\begin{frame}{2-category linearly separable case}
+\begin{itemize}
+\item Suppose, we have a set of $n$ samples ${\rm y}_1,\ldots,{\rm y}_n$
+some labeled $\omega_1$ and some labeled $\omega_2$.
+\item Note that all samples are augmented feature vectors.
+\item We want to use these samples to determine the weights ${\rm a}$ in a linear discriminant function $g({\rm x}) = {\rm a}^T {\rm y}$.
+\item If such ${\rm a}$ exists that
+\begin{itemize}
+\item ${\rm a}^T {\rm y}_i > 0$ for all ${\rm y}_i$ belonging to $\omega_1$, and
+\item ${\rm a}^T {\rm y}_i < 0$ for all ${\rm y}_i$ belonging to $\omega_2$
+\end{itemize}
+samples ${\rm y}_1,\ldots,{\rm y}_n$ are called {\color{mycolor2}linearly separable}.
+\item Then, it is reasonable to try to find such ${\rm a}$ that all the
+training samples are classified correctly.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{2-category linearly separable case}
+\begin{itemize}
+\item {\color{mycolor1}Normalize the samples ${\rm y}_1,\ldots,{\rm y}_n$}: replace all ${\rm y}_i$ labeled $\omega_2$ by their negatives.
+\begin{figure}
+\includegraphics[scale=0.8]{LDF060}
+\end{figure}
+\item With this normalized set of training samples, we can
+forget about labels and look for the weight vector ${\rm a}$ that
+satisfies
+\[{\rm a}^T{\rm y}_i > 0~~~~~~\text{       for all } {\rm y}_i.\]
+\item Such ${\rm a}$ is called a {\color{mycolor2}solution vector}.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Solution regions}
+\begin{itemize}
+\item A {\color{mycolor2}solution vector} - if exists - is not unique. The set of possible solution vectors, that are interpreted as points
+in $\Re^d$, is called the {\color{mycolor4}solution region}.
+\item More formally the solution region is the set
+\[\left\{ {{\rm a} ~|~{{\rm a}^T}{{\rm y}_i} > 0;~~~~~\text{  for all  } i = 1, \ldots ,n} \right\}\]
+\item There are several ways to impose additional requirements to constrain the solution vector. 
+\item One possibility is to seek a unit-length weight vector that maximizes the minimum distance from the samples to the separating plane.
+
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Solution regions}
+\begin{itemize}
+\item Another possibility is to seek the minimum-length weight vector satisfying
+\[{\rm a}^T {\rm y}_i \geq b,~~\forall~ i= 1,\ldots,n\]
+where, $b$  is a positive constant, called the {\color{mycolor2}margin}.
+\begin{figure}
+\includegraphics[scale=0.75]{LDF071}
+\end{figure}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Solving inequalities}
+\begin{itemize}
+\item To find a solution to the set of linear inequalities
+\[{\rm a}^T{\rm y}_i > 0\]
+we define a criterion function $J({\rm a})$ that is minimized if ${\rm a}$ is a solution.
+\item This kind of problem can be solved by {\color{mycolor2}gradient descent}.
+\item The idea is very simple: Start with some vector ${\rm a}(1)$.
+Generate then ${\rm a}(2)$ by taking a small step in the
+direction of $-\nabla J({\rm a}(1))$ and so on.
+\item Explanation: $-\nabla J({\rm a}(k))$ is the direction of the steepest descent.
+\item In general, ${\rm a}(k + 1)$ is obtained from ${\rm a}(k)$ by the equation
+\[{\rm a}(k + 1) = {\rm a}(k)-\eta (k)\nabla J({\rm a}(k)),\]
+where $\eta$ is a positive scale factor or {\color{mycolor2}learning rate} that sets the step size.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Basic gradient descent algorithm}
+\begin{columns}
+\begin{column}{7cm}
+\vspace{-0.7cm}
+\begin{figure}
+\includegraphics[scale=1]{LDF073}
+\end{figure}
+\vspace{-0.5cm}
 %\begin{itemize}
-%\item Support vector machines (SVMs) are a linear machines initially developed for two class problems.
-%\item SVMs are a set of supervised learning methods used for 
-%\begin{itemize}
-%\item classification, 
-%\item regression and 
-%\item outliers detection.
+%\item[1.] Initialize: ${\rm a}(1)$, threshold $\theta$,learning rate $\eta(k)$, and set $k\leftarrow 0$.
+%\item[2.] $k\leftarrow k + 1$
+%\item[3.] ${\rm a}(k + 1) = {\rm a}(k)-\eta (k)\nabla J({\rm a}(k))$
+%\item[4.] If $|\eta (k)\nabla J({\rm a}(k))|<\theta$ stop and return ${\rm a}(k)$, otherwise go to step 2.
 %\end{itemize}
-%\item The advantages of support vector machines are:
-%\begin{itemize}
-%\item Effective in high dimensional spaces.
-%\item Still effective in cases where number of dimensions is greater than the number of samples.
-%\item Uses a subset of training points in the decision function (called {\color{mycolor2}support vectors}), so it is also {\color{mycolor1}memory efficient}.
-%\item Versatile: different SVM kernels can be specified for the decision function. Common kernels are provided, but it is also possible to specify custom kernels.
-%\end{itemize}
-%\end{itemize}
-%\end{frame}
-%
-%
-%\begin{frame}{Introduction}
-%\begin{itemize}
-%\item The disadvantages of support vector machines include:
-%\begin{itemize}
-%\item If the number of features is much greater than the number of samples then choosing regularization to avoiding over-fitting is crucial. 
-%\item SVMs do not directly provide probability estimates, these are calculated using an expensive five-fold cross-validation.
-%\end{itemize}
-%\item In addition to performing linear classification, SVMs can efficiently perform a non-linear classification using what is called {\color{mycolor1}Kernel trick}.
-%\item Kernel trick implicitly maps their input into high-dimensional feature space.
-%\end{itemize}
-%\end{frame}
-%
-%\begin{frame}{Linear decision boundary}
-%\begin{itemize}
-%\item Binary classification can be viewed as the task of separating classes in feature space using decision boundary:
-%\begin{figure}
-%\includegraphics[scale=0.5]{Figures/data4.pdf}
-%\end{figure}
-%\[f({\rm x})=\text{sign}({\rm w}^T{\rm x}+b)\]
-%\end{itemize}
-%\end{frame}
-%
-%\begin{frame}{What is a good Decision Boundary?}
-%\begin{itemize}
-%\item Which of the linear separators is optimal?
-%\item Consider a two-class, linearly
-%separable classification problem
-%\item  Many decision boundaries are possible.
-%\item  The perceptron algorithm can be
-%used to find such a boundary.
-%\item Are all decision boundaries equally
-%good?
-%\end{itemize}
-%\begin{figure}
-%\includegraphics[scale=0.45]{Figures/data2.pdf}
-%\end{figure}
-%\end{frame}
-%
-%\begin{frame}{Linear SVM: Objective}
-%\begin{itemize}
-%\item Let us training data set, $\mathcal{D}$, a set of $n$ points.
-%\[\mathcal{D}=\{({\rm x}_i,y_i)~~|~~{\rm x}_i\in \Re ^d, y_i\in \{-1,1\}\}^n_{i=1}\]
-%${\rm x}_i~~\rightarrow$~~$d$-dimensional real vector
-%\item {\rm Objective}: find maximum-margin hyperplane 
-%\[{\rm w}^T{\rm x}+b=0\]
-%where ${\rm w}$ is the normal vector to the hyperplane and $b$ is the bias/intercept.
-%\begin{figure}
-%\includegraphics[scale=0.3]{data0}~~~
-%\includegraphics[scale=0.3]{data1}
-%\end{figure}
-%\end{itemize}
-%\end{frame}
-%
-%
-%\begin{frame}{Linear SVM: pictorial representation}
-%\begin{figure}
-%\includegraphics[scale=0.55]{Figures/data5}
-%\end{figure}
-%\end{frame}
-%
-%\begin{frame}{Preliminary concepts}
-%\begin{itemize}
-%\item Let ${\rm x}_n$ be the nearest data point to the plane ${\rm w}^T{\rm x}+b=0$. 
-%\item How far is it?
-%\item Normalize ${\rm w}$ and $b$ such that:
-%\[|{\rm w}^T{\rm x}_n+b|=1\]
-%\end{itemize}
-%\begin{columns}
-%\begin{column}{6cm}
-%\vspace{-12pt}
-%\begin{itemize}
-%\item Now, we need to compute the distance between ${\rm x}_n$ and the plane ${\rm w}^T{\rm x}+b=0$, where $|{\rm w}^{T}{\rm x}_n+b|=1$.
-%\item The vector ${\rm w}$ is $\perp$ to the plane in the $\mathcal{X}$ space:
-%\item Take ${\rm x}'$ and ${\rm x}''$ on the plane
-%\[{\rm w}^T{\rm x}'+b=0~~\text{and}~~{\rm w}^T{\rm x}''+b=0\]
-%\end{itemize}
-%\end{column}
-%\begin{column}{4.5cm}
-%\begin{figure}
-%\includegraphics[scale=0.15]{SVM01.png}
-%\end{figure}
-%\[\Rightarrow~~ {\rm w}^T({\rm x}'-{\rm x}'')=0\]
-%\end{column}
-%\end{columns}
-%\end{frame}
-%
-%\begin{frame}{Preliminary concepts}
-%The distance between ${\rm x}_n$ and the plane:
-%\begin{columns}
-%\begin{column}{4cm}
-%\begin{figure}
-%\includegraphics[scale=0.6]{Figures/SVM02.png}
-%\end{figure}
-%\end{column}
-%\begin{column}{6cm}
-%\begin{itemize}
-%\item Take any point ${\rm x}$ on the plane
-%\item Projection of ${\rm x}_n-{\rm x}$ on $\hat{\rm w}$
-%\[\hat{\rm w}=\frac{\rm w}{||\rm w||}\]
-%\[\Rightarrow ~~\text{distance}=|\hat{\rm w}^T({\rm x}_n-{\rm x})|\]
-%%
-%%${\rm w}^T{\rm x}+b=0$, where $|{\rm w}^{T}{\rm x}_n+b|=1$.
-%%\item The vector ${\rm w}$ is $\perp$ to the plane in the $\mathcal{X}$ space:
-%%\item Take ${\rm x}'$ and ${\rm x}''$ on the plane
-%%\[{\rm w}^T{\rm x}'+b=0~~\text{and}~~{\rm w}^T{\rm x}''+b=0\]
-%%\[\Rightarrow~~ {\rm w}^T({\rm x}'-{\rm x}'')=0\]
-%\end{itemize}
-%
-%\end{column}
-%\end{columns}
-%\[\text{distance} = \frac{1}{||{\rm w}||}|{\rm w}^T{\rm x}_n-{\rm w}^T{\rm x}|= \frac{1}{||{\rm w}||}|{\rm w}^T{\rm x}_n+b-{\rm w}^T{\rm x}-b|=\frac{1}{||{\rm w}||}\]
-%\end{frame}
-%
-%
-%\begin{frame}{Problem formulation}
-%\begin{columns}
-%\begin{column}{6cm}
-%\begin{figure}
-%\includegraphics[scale=0.43]{Figures/data5}
-%\end{figure}
-%\end{column}
-%\begin{column}{5cm}
-%
-%\begin{itemize}
-%\item Two hyperplanes
-%\begin{align*}
-%{\rm w}^T{\rm x}+b=&1\\
-%{\rm w}^T{\rm x}+b=&-1
-%\end{align*}
-%\item So the distance between the hyperplane is
-%\[\frac{b+1}{||{\rm w}||}-\frac{b-1}{||{\rm w}||}=\frac{2}{||{\rm w}||}\]
-%(need to be maximize)
-%\item Therefore, $||{\rm w}||$ need to be minimize.
-%\end{itemize}
-%\end{column}
-%\end{columns}
-%\end{frame}
-%
-%\begin{frame}{Problem formulation}
-%\begin{itemize}
-%\item Therefore, we need to minimize $||{\rm w}||$ to maximize the margin.
-%\item We also have to restrict data points from falling into the margin, so add the following constraints:
-%\begin{itemize}
-%\item ${\rm w}^T{\rm x}_i+b\geq 1$ for ${x}_i$ of the 1st class.
-%\item ${\rm w}^T{\rm x}_i+b\leq -1$ for ${x}_i$ of the 2nd class.
-%\end{itemize}
-%\item This can be written as
-%\[y_i({\rm w}^T{\rm x}_i+b)\geq 1~~~\text{for}~~~i=1,2,\ldots,n\]
-%\item Combining the above two
-%\begin{align*}
-%&\mathop{\sf Minimize}\limits_{{\rm w},b}~~||{\rm w}||\\
-%&\text{subject to}~~y_i( {{{\rm w}^T}{{\rm x}_i} + b} ) \geq 1~~~\text{for}~~~i=1,2,\ldots,n
-%\end{align*}
-%\end{itemize}
-%\end{frame}
-%
-%\begin{frame}{Problem formulation}
-%%\begin{align*}
-%%&\text{Maximize}~~\frac{1}{{\left\| {\rm w} \right\|}}\\
-%%&\text{subject to}\mathop {\min }\limits_{n = 1,2, \ldots N} \left| {{{\rm w}^T}{{\rm x}_n} + b} \right| = 1~~~~~~~~~~~~~~~~~~~~~~~~
-%%\end{align*}
-%%Notice: $\left| {{{\rm w}^T}{{\rm x}_n} + b} \right|=y_n( {{{\rm w}^T}{{\rm x}_n} + b} )$
-%\begin{itemize}
-%
-%\item Problem is difficult to solve because it depends on $||{\rm w}||$, the norm of ${\rm w}$, which involves a square root.
-%\item Substitute $||{\rm w}||$ with $\frac{1}{2}||{\rm w}||^2$ (just for mathematical convenience)
-%\item Then problem is formulated as
-%
-%\begin{align*}
-%&\mathop{\sf Minimize}\limits_{{\rm w},b}~~\frac{1}{2}||{\rm w}||^2\\
-%&\text{subject to}~~y_i( {{{\rm w}^T}{{\rm x}_i} + b} ) \geq 1~~~~\text{for}~~~i=1,2,\ldots,n
-%\end{align*}
-%\item The above problem is {\color{mycolor1}constraint optimization problem}.
-%\end{itemize}
-%\end{frame}
-%
-%
-%\begin{frame}{Problem solution: Lagrange formulation}
-%\begin{itemize}
-%\item There is no direct solution of the above constraint problem.
-%\item To obtain the dual, take positive Lagrange multiplier $\alpha_i$ multiplied by each constraint and subtract from the objective function.
-%\[{\sf Minimize}~~~\mathcal{L}({\rm w},b,\alpha)=\frac{1}{2}{\rm w}^T{\rm w} -\sum_{i=1}^{n} \alpha_i (y_i({\rm w}^T{\rm x}_i+b)-1)\]
-%w.r.t. ${\rm w}$ and $b$ and maximize w.r.t. each $\alpha_{i}\geq 0$
-%\item We can find the constraint as
-%\[\begin{gathered}
-%  {\nabla _{\rm w}}\mathcal{L} = {\rm w} - \sum\limits_{i = 1}^n {{\alpha _i}{y_i}{{\rm x}_i} = 0}  \hfill \\
-%  \frac{{\partial \mathcal{L}}}{{\partial b}} =  - \sum\limits_{i = 1}^n {{\alpha _i}{y_i} = 0}  \hfill \\ 
-%\end{gathered} \]
-%\end{itemize}
-%\end{frame}
-%
-%%\begin{frame}{Constrained optimization}
-%%\begin{figure}
-%%\includegraphics[width=\textwidth]{SVM03}
-%%\end{figure}
-%%\end{frame}
-%
-%%\begin{frame}{We saw this before}
-%%\begin{figure}
-%%\includegraphics[width=\textwidth]{SVM04}
-%%\end{figure}
-%%\end{frame}
-%
-%%\begin{frame}{Lagrange formulation}
-%%\begin{figure}
-%%\includegraphics[width=\textwidth]{SVM05}
-%%\end{figure}
-%%\end{frame}
-%
-%\begin{frame}{Problem solution: Lagrange formulation}
-%\begin{itemize}
-%\item We obtained
-%\[ {\rm w} = \sum\limits_{i = 1}^n {{\alpha _i}{y_i}{{\rm x}_i}}    ~~~~~~~ \text{and} ~~~~~~~    \sum\limits_{i = 1}^n {{\alpha _i}{y_i} = 0} \]
-%\item Substitute in Lagrangian optimization problem,
-%\[\mathcal{L}({\rm w},b,\alpha ) = \frac{1}{2}{{\rm w}^T}{\rm w} - \sum\limits_{i = 1}^n {{\alpha _i}({y_i}({{\rm w}^T}{{\rm x}_i} + b) - 1)} \]
-% we get
-% \[\mathcal{L}(\alpha ) = \sum_{n=1}^{n}\alpha_n -\frac{1}{2}\sum_{i=1}^{n} \sum\limits_{j= 1}^n y_iy_j\alpha_i\alpha_j {\rm x}_i^T{\rm x}_j\]
-% Maximize w.r.t. to $\alpha$ subject to $\alpha_i\geq 0$ for $i=1,\ldots,n$ and $\sum_{i=1}^n\alpha_iy_i =0$
-%\end{itemize}
-%\end{frame}
-%
-%\begin{frame}{The solution - quadratic programming}
-%\[\begin{gathered}
-%  \mathop {\min }\limits_\alpha ~~~ \frac{1}{2}{\alpha ^T}\left[ {\begin{array}{*{20}{c}}
-%  {{y_1}{y_1}x_1^T{x_1}}&{{y_1}{y_2}x_1^T{x_2}}&{\cdots}&{{y_1}{y_n}x_1^T{x_n}} \\ 
-%  {{y_2}{y_1}x_2^T{x_1}}&{{y_2}{y_2}x_2^T{x_2}}&{\cdots}&{{y_2}{y_n}x_2^T{x_n}} \\ 
-%  {\vdots}&{\vdots}&{\ddots}&{\vdots} \\ 
-%  {{y_n}{y_1}x_n^T{x_1}}&{{y_n}{y_2}x_n^T{x_2}}&{\cdots}&{{y_n}{y_n}x_n^T{x_n}} 
-%\end{array}} \right]\alpha  + \left( { - {1^T}} \right)\alpha  \hfill \\\\
-%  \text{subject to   }{y^T}\alpha  = 0\text{   and   }0 \leqslant \alpha  \leqslant \infty  \hfill \\ 
-%\end{gathered} \]
-%\end{frame}
-%
-%%\begin{frame}{Substituting...}
-%%\begin{figure}
-%%\includegraphics[width=\textwidth]{SVM06}
-%%\end{figure}
-%%\end{frame}
-%
-%\begin{frame}{Example: Linear (trivial problem)}
-%Suppose we are given the following positively labeled data points in $\Re^2$:
-%\[\left\{ {\left( {\begin{array}{*{20}{c}}
-%  3 \\ 
-%  1 
-%\end{array}} \right),\left( {\begin{array}{*{20}{c}}
-%  3 \\ 
-%  { - 1} 
-%\end{array}} \right),\left( {\begin{array}{*{20}{c}}
-%  6 \\ 
-%  1 
-%\end{array}} \right),\left( {\begin{array}{*{20}{c}}
-%  6 \\ 
-%  { - 1} 
-%\end{array}} \right)} \right\}\]
-%and the following negatively labeled data points in $\Re^2$
-%\[\left\{ {\left( {\begin{array}{*{20}{c}}
-%  1 \\ 
-%  0 
-%\end{array}} \right),\left( {\begin{array}{*{20}{c}}
-%  0 \\ 
-%  { 1} 
-%\end{array}} \right),\left( {\begin{array}{*{20}{c}}
-%  0 \\ 
-%  -1 
-%\end{array}} \right),\left( {\begin{array}{*{20}{c}}
-%  -1 \\ 
-%  { 0} 
-%\end{array}} \right)} \right\}\]
-%\begin{figure}
-%\includegraphics[scale=0.35]{data6.pdf}
-%\end{figure}
-%\end{frame}
-%
-%%\begin{frame}{The solution - quadratic programming}
-%%\begin{figure}
-%%\includegraphics[width=\textwidth]{SVM07}
-%%\end{figure}
-%%\end{frame}
-%
-%\begin{frame}{Solution}
-%\begin{itemize}
-%\item Since the data is linear separable, we can use a linear SVM.
-%\item By inspection, it should be obvious that there are three support vectors.
-%\begin{figure}
-%\includegraphics[scale=0.45]{data7.pdf}
-%\end{figure}
-%\end{itemize}
-%\end{frame}
-%\begin{frame}{QP hand us $\alpha$}
-%\begin{figure}
-%\includegraphics[width=\textwidth]{SVM08}
-%\end{figure}
-%\end{frame}
-%
-%
-%\begin{frame}{Support vectors}
-%\begin{figure}
-%\includegraphics[width=\textwidth]{SVM09}
-%\end{figure}
-%\end{frame}
-%
-%\begin{frame}{${\rm z}$ instead of ${\rm x}$}
-%\begin{figure}
-%\includegraphics[width=\textwidth]{SVM20}
-%\end{figure}
-%\end{frame}
-%
-%\begin{frame}{"Support vectors" in $\mathcal{X}$ space}
-%\begin{figure}
-%\includegraphics[width=\textwidth]{SVM21}
-%\end{figure}
-%\end{frame}
-%
-%\begin{frame}{Kernel Trick: What do we need from the $\mathcal{Z}$ space?}
-%\begin{figure}
-%\includegraphics[width=\textwidth]{SVM10}
-%\end{figure}
-%\end{frame}
-%
-%\begin{frame}{Generalized inner product}
-%\begin{figure}
-%\includegraphics[width=\textwidth]{SVM11}
-%\end{figure}
-%\end{frame}
-%
-%\begin{frame}{The trick}
-%\begin{figure}
-%\includegraphics[width=\textwidth]{SVM12}
-%\end{figure}
-%\end{frame}
-%
-%\begin{frame}{The polynomial kernel}
-%\begin{figure}
-%\includegraphics[width=\textwidth]{SVM13}
-%\end{figure}
-%\end{frame}
-%
-%\begin{frame}{We only need $\mathcal{Z}$ to exist!}
-%\begin{figure}
-%\includegraphics[width=\textwidth]{SVM14}
-%\end{figure}
-%\end{frame}
-%
-%\begin{frame}{This kernel in action}
-%\begin{figure}
-%\includegraphics[width=\textwidth]{SVM15}
-%\end{figure}
-%\end{frame}
-%
-%\begin{frame}{Kernel formulation of SVM}
-%\begin{figure}
-%\includegraphics[width=\textwidth]{SVM16}
-%\end{figure}
-%\end{frame}
-%
-%\begin{frame}{The final hypothesis}
-%\begin{figure}
-%\includegraphics[width=\textwidth]{SVM17}
-%\end{figure}
-%\end{frame}
-%
-%\begin{frame}{How do we know that $\mathcal{Z}$ exists...}
-%\begin{figure}
-%\includegraphics[width=\textwidth]{SVM18}
-%\end{figure}
-%\end{frame}
-%
-%\begin{frame}{Design your own kernel}
-%\begin{figure}
-%\includegraphics[width=\textwidth]{SVM19}
-%\end{figure}
-%\end{frame}
-%
-%\begin{frame}{Two types of non-separable}
-%\begin{figure}
-%\includegraphics[width=\textwidth]{SVM22}
-%\end{figure}
-%\end{frame}
-%
-%\begin{frame}{Error measure}
-%\begin{figure}
-%\includegraphics[width=\textwidth]{SVM23}
-%\end{figure}
-%\end{frame}
-%
-%\begin{frame}{The new optimization}
-%\begin{figure}
-%\includegraphics[width=\textwidth]{SVM24}
-%\end{figure}
-%\end{frame}
-%
-%\begin{frame}{Lagrange formulation}
-%\begin{figure}
-%\includegraphics[width=\textwidth]{SVM25}
-%\end{figure}
-%\end{frame}
-%
-%\begin{frame}{and the solution is ...}
-%\begin{figure}
-%\includegraphics[width=\textwidth]{SVM26}
-%\end{figure}
-%\end{frame}
-%
-%\begin{frame}{Types of support vectors}
-%\begin{figure}
-%\includegraphics[width=\textwidth]{SVM27}
-%\end{figure}
-%\end{frame}
-%
-%\begin{frame}{Two technical observations}
-%\begin{figure}
-%\includegraphics[width=\textwidth]{SVM28}
-%\end{figure}
-%\end{frame}
+\onslide<2->{\begin{itemize}
+\item The learning rate can be set
+\[\eta (k) = \frac{{{{\left\| {\nabla J({\rm a}(k))} \right\|}^2}}}{{\nabla J{{({\rm a}(k))}^T}H\nabla J({\rm a}(k))}}\]
+where $H$ is the Hessian at ${\rm a}(k)$.
+\end{itemize}}
+\end{column}
+\begin{column}{7cm}
+\vspace{-6pt}
+\begin{figure}
+\includegraphics[scale=0.4]{LDF072.png}
+\end{figure}
+\end{column}
+\end{columns}
+\end{frame}
+
+\begin{frame}{Newton’s algorithm}
+\begin{columns}
+\begin{column}{7cm}
+\begin{figure}
+\includegraphics[scale=1]{LDF074}
+\end{figure}
+\end{column}
+\begin{column}{7cm}
+\begin{figure}
+\includegraphics[scale=0.85]{LDF075}
+\end{figure}
+\end{column}
+\end{columns}
+\vspace{12pt}
+\begin{itemize}
+\item Another possibility is to set the learning rate to be a
+constant that is small enough. This makes one iteration
+of the descent algorithm much faster, but the descent
+takes with a constant learning rate more iterations.
+There is no general answer how to set the learning rate
+optimally: The best selection depends on the
+application.
+\end{itemize}
+\end{frame}
+
+
+\section{Perceptron Criteria}
+\subsection{}
+
+\title{\fontsize{33}{45}{\huge Pattern Classification\newline{\large Lecture 06: Linear Discriminant Functions}\newline \vspace{8pt} \Large \vspace{-1.1cm}}}
+
+\vspace{0.5cm}
+\author{\vspace{0.4cm}\\\large{\bf Kundan Kumar\\\url{https://github.com/erkundanec/PatternClassification}}
+%Associate Professor\\Department of ECE}
+}
+% - Give the names in the same order as the appear in the paper.
+% - Use the \inst{?} command only if the authors have different
+%   affiliation.
+%\vspace{1cm}
+\institute[Indian Institute of Technology Kharagpur] % (optional, but mostly needed)
+{
+\vspace{1.8cm}
+%\includegraphics[height=.17\textheight]{SOAlogo.png}\\
+% Faculty of Engineering (ITER)\\ S`O'A Deemed to be University, Bhubaneswar, India-751030\\
+
+
+ \copyright\  2020 Kundan Kumar, All Rights Reserved\\
+  \vspace{-1.1cm}}
+% - Use the \inst command only if there are several affiliations.
+% - Keep it simple, no one is interested in your street address.
+\date{}
+% To remove page number from a perticular slide
+{
+\setbeamertemplate{logo}{}
+\makeatletter
+\setbeamertemplate{footline}{
+        \leavevmode%
+  
+  % First line.
+  \hbox{%
+  \begin{beamercolorbox}[wd=.2\paperwidth,ht=\beamer@decolines@lineup,dp=0pt]{}%
+  \end{beamercolorbox}%
+  \begin{beamercolorbox}[wd=.8\paperwidth,ht=\beamer@decolines@lineup,dp=0pt]{lineup}%
+  \end{beamercolorbox}%
+  } %
+  % Second line.
+  \hbox{%
+  \begin{beamercolorbox}[wd=\paperwidth,ht=\beamer@decolines@linemid,dp=0pt]{linemid}%
+  \end{beamercolorbox}%
+  } %
+  % Third line.
+  \hbox{%
+  \begin{beamercolorbox}[wd=.1\paperwidth,ht=\beamer@decolines@linebottom,dp=0pt]{}%
+  \end{beamercolorbox}%
+  \begin{beamercolorbox}[wd=.9\paperwidth,ht=\beamer@decolines@linebottom,dp=0pt]{linebottom}%
+  \end{beamercolorbox}%
+  }%
+        }
+\makeatother
+\begin{frame}
+\titlepage
+\end{frame}
+}
+
+
+
+\begin{frame}{}
+\begin{variableblock}{\centering \Large \textbf{\vspace{4pt}\newline Minimizing Perceptron Criterion Function\vspace{4pt}}}{bg=slidecolor,fg=white}{bg=slidecolor,fg=white}
+\end{variableblock}
+\end{frame}
+
+
+\begin{frame}{Perceptron Criterion Function}
+\begin{itemize}
+\item Consider now the problem of {\color{mycolor2}constructing a criterion function} for solving the linear inequalities. Assume that
+the margin $b = 0$.
+\item The most obvious choice would be the {\color{mycolor2}number of
+samples misclassified} by ${\rm  a}$. However, this criterion is a piece-wise constant function and a poor candidate for a gradient search.
+\item The {\color{mycolor4}perceptron criterion function} is defined by
+\[{J_p}({\rm a}) = \sum\limits_{{\rm y} \in \mathcal{Y}} { - {{\rm a}^T}{\rm y}}, \]
+where $\mathcal{Y}$ is the set of samples misclassified by ${\rm a}$, i.e. samples for which the inner product with ${\rm a}$ is negative.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Perceptron Criterion Function}
+\begin{itemize}
+\item The gradient
+\[\nabla {J_p} = \sum\limits_{{\rm y} \in \mathcal{Y}} { - {{\rm y}}}, \]
+\item The update rule in gradient descent is 
+\[{{\rm a}}(k + 1) = {{\rm a}}(k) + \eta (k)\sum\limits_{{\rm y} \in \mathcal{Y}_k} {{\rm y}} \]
+where $\mathcal{Y}_k$ is the set of samples misclassified by ${\rm a}(k)$.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Perceptron Algorithm}
+\begin{figure}
+\includegraphics[scale=1,left]{LDF076}
+\end{figure}
+\vspace{-12pt}
+\begin{itemize}
+\item A good feature of the perceptron algorithm is that it will converge to a solution vector if training samples are linearly separable and the learning rate satisfies certain conditions.
+\item A bad feature of the perceptron algorithm is that it does not (necessarily) converge if the training samples are not linearly separable.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Other criterion functions}
+\begin{itemize}
+\item Relaxation Criterion:
+\[{J_r}({\rm a}) = \frac{1}{2}\sum\limits_{y \in \mathcal{Y}} {\frac{{{{({{\rm a}^T}{\rm y} - b)}^2}}}{{{{\left\| {\rm y} \right\|}^2}}}} \]
+where $b$ is the margin and $\mathcal{Y}({\rm a})$ is the set of samples for which ${\rm a}^T{\rm y}\leq b$.
+\item Sum-of-squared-error criterion:
+\[{J_s}({\rm a}) =||Y{\rm a}-b||^2= \sum\limits_{i = 1}^n {{{\left( {{{\rm a}^T}{{\rm y}_i} - b} \right)}^2}} \]
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Minimum Squared-Error and the Pseudoinverse}
+\begin{itemize}
+\item Let $Y$ be the $n\times \hat{d}$ matrix ($\hat{d}=d+1$), whose ith row is the vector ${\rm y}_i^T$.
+\item Treat all linear equations simultaneously.
+\[{\rm a}^T{\rm y}_i = {\rm b}~~~~~\forall i=1,\ldots,n\]
+\item Combining all linear equation in a matrix form
+\[\left[ {\begin{array}{*{20}{c}}
+  {{y_{10}}}&{{y_{11}}}& \cdots &{{y_{1d}}} \\ 
+  {{y_{20}}}&{{y_{21}}}& \cdots &{{y_{2d}}} \\ 
+   \vdots & \vdots & \ddots & \vdots  \\ 
+  {{y_{n0}}}&{{y_{n1}}}& \cdots &{{y_{nd}}} 
+\end{array}} \right]\left[ {\begin{array}{*{20}{c}}
+  {{a_0}} \\ 
+  {{a_1}} \\ 
+   \vdots  \\ 
+  {{a_d}} 
+\end{array}} \right] = \left[ {\begin{array}{*{20}{c}}
+  {{b_1}} \\ 
+  {{b_2}} \\ 
+   \vdots  \\ 
+  {{b_n}} 
+\end{array}} \right]\]
+\[\boxed{Y{\rm a}=b}\]
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Minimum Squared-Error and the Pseudoinverse}
+\vspace{-4pt}
+\begin{footnotesize}
+\begin{itemize}
+\item We seek for a weight vector ${\rm a}$ that minimizes some function of the error between $Y{\rm a}$ and ${\rm b}$.
+\[{\rm e}=Y{\rm a}-{\rm b}\]
+\item Sum-of-squared-error (SSE) criterion function:
+\[{J_s}({\rm a}) =||Y{\rm a}-b||^2= \sum\limits_{i = 1}^n {{{\left( {{{\rm a}^T}{{\rm y}_i} - b} \right)}^2}} \]
+\item Minimizing the criterion function
+\begin{align*}
+  \nabla {J_s} = \sum\limits_{i = 1}^n {2({{\rm a}^T}{{\rm y}_i} - {{\rm b}_i}){{\rm y}_i}}  = 2{Y^T}(Y{\rm a} - {\rm b}) =0 
+\end{align*}
+\begin{align*}
+  Y^TY{\rm a}&=Y^T{\rm b}\\
+  {\rm a} &= (Y^TY)^{-1}Y^T{\rm b} \\
+  {\rm a} &=Y^{\dagger} {\rm b}
+\end{align*}
+\item However, $Y^{\dagger}$ is defined more generally by $\boxed{Y^{\dagger}\equiv \mathop {\lim }\limits_{\varepsilon  \to 0} {({Y^T}Y + \varepsilon I)^{ - 1}}{Y^T}}$
+\end{itemize}
+\end{footnotesize}
+\end{frame}
+\begin{frame}{Example}
+
+{\color{mycolor2}Question:}
+
+Suppose we have the following two-dimensional point for two categories: $\omega_1$: $(1,2)^T$ and $(2,0)^T$, and $\omega_2$: $(3,1)^T$ and $(2,3)^T$. Construct a Linear Classifier by Matrix Pseudoinverse.
+\begin{figure}
+\includegraphics[scale=0.8]{LDF077}
+\end{figure}
+\end{frame}
+
 
 \section{References}
 \subsection{}
@@ -933,7 +839,7 @@ as listed above, sketch the decision boundary and regions for each pattern class
 
 \begin{frame}
 \centering
-\includegraphics[width=0.4\paperwidth]{queries.jpg}\\
-\includegraphics[width=0.5\paperwidth]{thank_you.png}
+\includegraphics[width=0.34\paperwidth]{queries.jpg}\\
+\includegraphics[width=0.45\paperwidth]{thank_you.png}
 \end{frame}
 }
