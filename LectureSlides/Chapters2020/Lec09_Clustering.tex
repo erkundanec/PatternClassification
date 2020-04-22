@@ -62,6 +62,10 @@
 \end{variableblock}
 \end{frame}
 
+%\begin{frame}
+%
+%\end{frame}
+
 \begin{frame}{Introduction}
 \begin{itemize}
 \item In previous lectures, we have seen that how samples are classified if a training set is available along with class labels to design a classifier.
@@ -76,6 +80,7 @@
 \end{itemize}
 \end{frame}
 
+
 \section{Hierarchical Clustering}
 \subsection{}
 \begin{frame}{Hierarchical Clustering}
@@ -83,10 +88,10 @@
 \item Hierarchical clustering refers to a clustering process that organizes the data into large groups, which contain smaller groups, and so on.
 \item Hierarchical clustering approach can be categorize as
 \begin{itemize}
-\item Bottom-Up approach (called \textit{\color{slidecolor}Agglomerative} clustering)
-\item Top-Down approach (called \textit{\color{slidecolor}Divisive} clustering)
+\item Bottom-Up approach (called \textit{\color{mycolor2}Agglomerative} clustering)
+\item Top-Down approach (called \textit{\color{mycolor2}Divisive} clustering)
 \end{itemize}
-\item A hierarchical clustering may be drawn as a \textit{\color{slidecolor}tree} or \textit{\color{slidecolor}dendrogram}.
+\item A hierarchical clustering may be drawn as a \textit{\color{mycolor2}tree} or \textit{\color{mycolor2}dendrogram}.
 \end{itemize}
 \end{frame}
 
@@ -126,28 +131,28 @@ D_{SL}(C_i,C_j)=\mathop {\rm avg}\limits_{a\in C_i,b\in C_j}{d(a,b)} \nonumber
 
 
 \begin{frame}{Example: Single-linkage algorithm}
-\textit{\color{slidecolor}Question 01:} Perform a hierarchical clustering of five samples using the single-linkage algorithm and two features $x$ and $y$.
+\textit{\color{mycolor2}Question 01:} Perform a hierarchical clustering of five samples using the single-linkage algorithm and two features $x$ and $y$.
 \begin{figure}
 \includegraphics[scale=0.13]{cluster08.JPG}
 \end{figure}
-\begin{itemize}
+\onslide<2->{\begin{itemize}
 \item Combine 1 and 2 in single cluster
 \begin{equation}
 \{1,2\},\{3\},\{4\},\{5\}\nonumber
 \end{equation}
-\end{itemize}
+\end{itemize}}
 \end{frame}
 
 \begin{frame}{Example: Single-linkage algorithm}
 \begin{figure}
 \includegraphics[scale=0.1]{cluster09.JPG}
 \end{figure}
-\begin{itemize}
+\onslide<2->{\begin{itemize}
 \item Minimum value is 8.0 so merge cluster $\{4\}$ and $\{5\}$.
 \begin{equation}
 \{1,2\},\{3\},\{4,5\}\nonumber
 \end{equation}
-\end{itemize}
+\end{itemize}}
 \end{frame}
 
 \begin{frame}{Example: Single-linkage algorithm}
@@ -157,45 +162,46 @@ D_{SL}(C_i,C_j)=\mathop {\rm avg}\limits_{a\in C_i,b\in C_j}{d(a,b)} \nonumber
 \includegraphics[scale=0.1]{cluster10.JPG}
 \end{figure}
 \begin{itemize}
-\item Minimum value is 8.1 so merge cluster $\{1,2\}$ and $\{3\}$.
+\onslide<2->{\item Minimum value is 8.1 so merge cluster $\{1,2\}$ and $\{3\}$.
 \begin{equation}
 \{1,2,3\},\{4,5\}\nonumber
-\end{equation}
-\item In next step will merge the two remaining clusters at a distance of 9.8.
+\end{equation}}
+\vspace{-18pt}
+\onslide<3->{\item In next step will merge the two remaining clusters at a distance of 9.8.}
 \end{itemize}
 \end{column}
 \begin{column}{5.5cm}
-\begin{figure}
+\onslide<4->{\begin{figure}
 \includegraphics[scale=0.1]{cluster14.JPG}
 \caption{Dendrogram of Hierarchical clustering using single-linkage algorithm}
-\end{figure}
+\end{figure}}
 \end{column}
 \end{columns}
 \end{frame}
 
 \begin{frame}{Example: Complete-linkage algorithm}
-\textit{\color{slidecolor}Question 02:} Perform a hierarchical clustering of five samples using the complete-linkage algorithm and two features $x$ and $y$.
+\textit{\color{mycolor2}Question 02:} Perform a hierarchical clustering of five samples using the complete-linkage algorithm and two features $x$ and $y$.
 \begin{figure}
 \includegraphics[scale=0.13]{cluster08.JPG}
 \end{figure}
-\begin{itemize}
+\onslide<2->{\begin{itemize}
 \item Combine 1 and 2 in single cluster
 \begin{equation}
 \{1,2\},\{3\},\{4\},\{5\}\nonumber
 \end{equation}
-\end{itemize}
+\end{itemize}}
 \end{frame}
 
 \begin{frame}{Example: Complete-linkage algorithm}
 \begin{figure}
 \includegraphics[scale=0.33]{cluster11.JPG}
 \end{figure}
-\begin{itemize}
+\onslide<2->{\begin{itemize}
 \item Minimum value is 8.0 so merge cluster $\{4\}$ and $\{5\}$.
 \begin{equation}
 \{1,2\},\{3\},\{4,5\}\nonumber
 \end{equation}
-\end{itemize}
+\end{itemize}}
 \end{frame}
 
 \begin{frame}{Example: Complete-linkage algorithm}
@@ -205,45 +211,46 @@ D_{SL}(C_i,C_j)=\mathop {\rm avg}\limits_{a\in C_i,b\in C_j}{d(a,b)} \nonumber
 \includegraphics[scale=0.1]{cluster12.JPG}
 \end{figure}
 \begin{itemize}
-\item Minimum value is 9.8 so merge cluster $\{4,5\}$ and $\{3\}$.
+\onslide<2->{\item Minimum value is 9.8 so merge cluster $\{4,5\}$ and $\{3\}$.
 \begin{equation}
 \{1,2\},\{3,4,5\}\nonumber
-\end{equation}
-\item In next step will merge the two remaining clusters.
+\end{equation}}
+\vspace{-20pt}
+\onslide<3->{\item In next step will merge the two remaining clusters.}
 \end{itemize}
 \end{column}
 \begin{column}{5.5cm}
-\begin{figure}
+\onslide<4->{\begin{figure}
 \includegraphics[scale=0.1]{cluster13.JPG}
 \caption{Dendrogram of Hierarchical clustering using complete-linkage algorithm}
-\end{figure}
+\end{figure}}
 \end{column}
 \end{columns}
 \end{frame}
 
 \begin{frame}{Example: Average-linkage algorithm}
-\textit{\color{slidecolor}Question 03:} Perform a hierarchical clustering of five samples using the average-linkage algorithm and two features $x$ and $y$.
+\textit{\color{mycolor2}Question 03:} Perform a hierarchical clustering of five samples using the average-linkage algorithm and two features $x$ and $y$.
 \begin{figure}
 \includegraphics[scale=0.13]{cluster08.JPG}
 \end{figure}
-\begin{itemize}
+\onslide<2->{\begin{itemize}
 \item Combine 1 and 2 in single cluster
 \begin{equation}
 \{1,2\},\{3\},\{4\},\{5\}\nonumber
 \end{equation}
-\end{itemize}
+\end{itemize}}
 \end{frame}
 
 \begin{frame}{Example: Average-linkage algorithm}
 \begin{figure}
 \includegraphics[scale=0.13]{cluster30.JPG}
 \end{figure}
-\begin{itemize}
+\onslide<2->{\begin{itemize}
 \item Minimum value is 8.0 so merge cluster $\{4\}$ and $\{5\}$.
 \begin{equation}
 \{1,2\},\{3\},\{4,5\}\nonumber
 \end{equation}
-\end{itemize}
+\end{itemize}}
 \end{frame}
 
 \begin{frame}{Example: Average-linkage algorithm}
@@ -253,36 +260,92 @@ D_{SL}(C_i,C_j)=\mathop {\rm avg}\limits_{a\in C_i,b\in C_j}{d(a,b)} \nonumber
 \includegraphics[scale=0.12]{cluster31.JPG}
 \end{figure}
 \begin{itemize}
-\item Minimum value is 9.8 so merge cluster $\{4,5\}$ and $\{3\}$.
+\onslide<2->{\item Minimum value is 9.8 so merge cluster $\{4,5\}$ and $\{3\}$.
 \begin{equation}
 \{1,2\},\{3,4,5\}\nonumber
-\end{equation}
-\item In next step will merge the two remaining clusters.
+\end{equation}}
+\vspace{-20pt}
+\onslide<3->{\item In next step will merge the two remaining clusters.}
 \end{itemize}
 \end{column}
 \begin{column}{5.5cm}
-\begin{figure}
+\onslide<4->{\begin{figure}
 \includegraphics[scale=0.1]{cluster32.JPG}
 \caption{Dendrogram of Hierarchical clustering using average-linkage algorithm}
-\end{figure}
+\end{figure}}
 \end{column}
 \end{columns}
 \end{frame}
 
 
+\title{\fontsize{33}{45}{\huge Pattern Classification\newline{\large Lecture 09: Clustering}\newline \vspace{8pt} \Large \vspace{-1.1cm}}}
+
+\vspace{0.5cm}
+\author{\vspace{0.4cm}\\\large{\bf Kundan Kumar\\\url{https://github.com/erkundanec/PatternClassification}}
+%Associate Professor\\Department of ECE}
+}
+% - Give the names in the same order as the appear in the paper.
+% - Use the \inst{?} command only if the authors have different
+%   affiliation.
+%\vspace{1cm}
+\institute[Indian Institute of Technology Kharagpur] % (optional, but mostly needed)
+{
+\vspace{1.8cm}
+%\includegraphics[height=.17\textheight]{SOAlogo.png}\\
+% Faculty of Engineering (ITER)\\ S`O'A Deemed to be University, Bhubaneswar, India-751030\\
+
+
+ \copyright\  2020 Kundan Kumar, All Rights Reserved\\
+  \vspace{-1.1cm}}
+% - Use the \inst command only if there are several affiliations.
+% - Keep it simple, no one is interested in your street address.
+\date{}
+% To remove page number from a perticular slide
+{
+\setbeamertemplate{logo}{}
+\makeatletter
+\setbeamertemplate{footline}{
+        \leavevmode%
+  
+  % First line.
+  \hbox{%
+  \begin{beamercolorbox}[wd=.2\paperwidth,ht=\beamer@decolines@lineup,dp=0pt]{}%
+  \end{beamercolorbox}%
+  \begin{beamercolorbox}[wd=.8\paperwidth,ht=\beamer@decolines@lineup,dp=0pt]{lineup}%
+  \end{beamercolorbox}%
+  } %
+  % Second line.
+  \hbox{%
+  \begin{beamercolorbox}[wd=\paperwidth,ht=\beamer@decolines@linemid,dp=0pt]{linemid}%
+  \end{beamercolorbox}%
+  } %
+  % Third line.
+  \hbox{%
+  \begin{beamercolorbox}[wd=.1\paperwidth,ht=\beamer@decolines@linebottom,dp=0pt]{}%
+  \end{beamercolorbox}%
+  \begin{beamercolorbox}[wd=.9\paperwidth,ht=\beamer@decolines@linebottom,dp=0pt]{linebottom}%
+  \end{beamercolorbox}%
+  }%
+        }
+\makeatother
+\begin{frame}
+\titlepage
+\end{frame}
+}
+
 \begin{frame}{Ward's Algorithm}
 \begin{itemize}
 \item The hierarchical clustering based on variance.
 \item also called minimum-variance method
-\item Consider $C_j$ class has $n$ no. of feature vectors ${\rm x}_1,{\rm x}_2,\ldots,{\rm x}_n$
+\item Consider $C_j$ class has $k$ no. of feature vectors ${\rm x}_1,{\rm x}_2,\ldots,{\rm x}_k$
 \item Error within $j^{th}$ cluster
 \begin{equation}
-{E_j} = \sum\limits_{i = 1}^n {{{\left\| {{{\rm x}_i} - \mu } \right\|}^2} = m{\sigma ^2}} \nonumber
+{E_j} = \sum\limits_{i = 1}^k {{{\left\| {{{\rm x}_i} - \mu } \right\|}^2} = m{\sigma ^2}} \nonumber
 \end{equation}
 we need to minimize the variance
 \item Total error
 \begin{equation}
-E=\sum\limits_{i = 1}^c E_j \nonumber
+E=\sum\limits_{j = 1}^c E_j \nonumber
 \end{equation}
 \item Computationally expensive because need to check all combination of samples.
 \end{itemize}
@@ -340,40 +403,31 @@ E=\sum\limits_{i = 1}^c E_j \nonumber
 
 \begin{frame}{Batchelor and Wilkins' Algorithm}
 \begin{itemize}
-\item Heuristic procedure for clustering also called \textit{\color{slidecolor}maximum distance algorithm}
+\item Heuristic procedure for clustering also called \textit{\color{mycolor2}maximum distance algorithm}
 \begin{figure}
 \includegraphics[scale=0.17]{cluster01.png}
 \end{figure}
 \end{itemize}
 \end{frame}
 
-\begin{frame}{Batchelor and Wilkins' Algorithm}
-\begin{scriptsize}
-\begin{itemize}
-\item[Step 1:] Arbitrarily, let ${\rm x_1}$ be the first cluster center, designated by ${\rm z}_1$.
-\item[Step 2:]Determine the pattern sample farthest from ${\rm x}_1$, which is ${\rm x}_6$. Call it cluster center ${\rm z}_6$.
-\item[Step 3:] Compute the distance from each remaining pattern sample to ${\rm z}_1$ and ${\rm z}_2$
-\item[Step 4:] Save the minimum distance for each pair of these computations.
-\item[Step 5:] Select the maximum of these minimum distances.
-\item[Step 6:] If the distance is appreciably greater than a fraction of the distance $d({\rm z}_1,{\rm z}_2)$, call the corresponding sample cluster center ${\rm z}_3$. Otherwise, the algorithm is terminated.
 
-\item[Step 7:] If this distance from each of the three established cluster centers to the remaining samples and save the minimum of every group of three distances. Again select the maximum of these minimum distances. If this distance is an appreciable fraction of the ``typical'' previous maximum distances, the corresponding sample becomes cluster center ${\rm z}_4$. Otherwise, the algorithm is terminated.
-\item[Step 8:] Repeat until the new maximum distance at a particular step fails to satisfy the condition for the creation of a new cluster center.
-\item[Step 9:] Assign each sample to its nearest cluster center.
-\end{itemize}
-\end{scriptsize}
-\end{frame}
+%\begin{frame}{Batchelor and Wilkins' Algorithm}
+%\begin{figure}
+%\includegraphics[scale=0.105]{cluster23.JPG}
+%\end{figure}
+%\end{frame}
 
-\begin{frame}{Batchelor and Wilkins' Algorithm}
-\begin{figure}
-\includegraphics[scale=0.105]{cluster23.JPG}
-\end{figure}
-\end{frame}
+\begin{frame}{Example: Batchelor and Wilkins' Algorithm}
 
-\begin{frame}{Batchelor and Wilkins' Algorithm}
-\begin{figure}
-\begin{tikzpicture}[overlay,remember picture]
+{\color{mycolor2}Question:}
+
+Perform the Batchelor and Wilkins' Algorithm to cluster the following data samples.
+
+
+\begin{figure}[!h]
+\begin{tikzpicture}
 \draw[help lines,white] (-5,-3) grid (5,3);
+\node at(1,3){\pgftext{Distance matrix}};
 \node at(-5,2.4){\pgftext{$A\rightarrow (1,1)$}};
 \node at(-5,1.9){\pgftext{$B\rightarrow (1,2)$}};
 \node at(-5,1.4){\pgftext{$C\rightarrow (3,2)$}};
@@ -386,24 +440,83 @@ E=\sum\limits_{i = 1}^c E_j \nonumber
 \node at(-5,-2.1){\pgftext{$J\rightarrow (8,2)$}};
 \node at(-5,-2.6){\pgftext{$K\rightarrow (9,1)$}};
 \node at(1,0){\pgftext{\begin{footnotesize}
-\begin{tabular}{p{0.4cm}|p{0.3cm}|p{0.3cm}|p{0.3cm}|p{0.3cm}|p{0.3cm}|p{0.3cm}|p{0.3cm}|p{0.4cm}|p{0.3cm}|p{0.3cm}|p{0.4cm}|}
+\begin{tabular}{p{0.4cm}|p{0.3cm}|p{0.3cm}|p{0.3cm}|p{0.3cm}|p{0.3cm}|p{0.3cm}|p{0.3cm}|p{0.4cm}|p{0.3cm}|p{0.4cm}|p{0.4cm}|}
 &A&B&C&D&E&F&G&H&I&J&K\\\hline
-A&0.0&1.0&2.2&2.8&7.0&7.8&7.8&8.48&6.0&7.0&8.0\\\hline
-B&1.0&0.0&2.0&2.2&6.4&7.0&7.0&7.8&6.0&7.0&8.06\\\hline
-C&&&&&&&&&&&\\\hline
-D&&&&&&&&&&&\\\hline
-E&&&&&&&&&&&\\\hline
-F&&&&&&&&&&&\\\hline
-G&&&&&&&&&&&\\\hline
-H&&&&&&&&&&&\\\hline
-I&&&&&&&&&&&\\\hline
-J&&&&&&&&&&&\\\hline
-K&&&&&&&&&&&\\\hline
+A&0.0&1.0&2.2&2.8&7.0&7.8&7.8&8.5&6.0&7.0&8.0\\\hline
+B&&0.0&2.0&2.2&6.4&7.0&7.0&7.8&6.0&7.0&8.1\\\hline
+C&&&0.0&1.0&5.0&4.9&5.6&6.4&4.1&5.0&6.1\\\hline
+D&&&&0.0&4.2&5.0&5.0&5.6&4.5&5.1&6.3\\\hline
+E&&&&&0.0&1.0&1.0&1.4&5.1&4.5&5.8\\\hline
+F&&&&&&0.0&1.4&1.0&6.1&5.4&6.7\\\hline
+G&&&&&&&0.0&1.0&5.0&4.1&5.4\\\hline
+H&&&&&&&&0.0&6.0&5.1&6.3\\\hline
+I&&&&&&&&&0.0&1.4&2.0\\\hline
+J&&&&&&&&&&0.0&1.4\\\hline
+K&&&&&&&&&&&0.0\\\hline
 \end{tabular}
 \end{footnotesize}}};
 \end{tikzpicture}
 \end{figure}
 \end{frame}
+
+\begin{frame}{Batchelor and Wilkins' Algorithm}
+
+{\color{mycolor2}Solution}
+\vspace{7cm}
+
+\begin{tikzpicture}[remember picture,overlay]
+\node at(4,5){\pgftext{\begin{scriptsize}
+\begin{tabular}{p{0.4cm}|p{0.3cm}|p{0.3cm}|p{0.3cm}|p{0.3cm}|p{0.3cm}|p{0.3cm}|p{0.3cm}|p{0.4cm}|p{0.3cm}|p{0.4cm}|p{0.4cm}|}
+&A&B&C&D&E&F&G&H&I&J&K\\\hline
+A&0.0&1.0&2.2&2.8&7.0&7.8&7.8&8.5&6.0&7.0&8.0\\\hline
+B&&0.0&2.0&2.2&6.4&7.0&7.0&7.8&6.0&7.0&8.1\\\hline
+C&&&0.0&1.0&5.0&4.9&5.6&6.4&4.1&5.0&6.1\\\hline
+D&&&&0.0&4.2&5.0&5.0&5.6&4.5&5.1&6.3\\\hline
+E&&&&&0.0&1.0&1.0&1.4&5.1&4.5&5.8\\\hline
+F&&&&&&0.0&1.4&1.0&6.1&5.4&6.7\\\hline
+G&&&&&&&0.0&1.0&5.0&4.1&5.4\\\hline
+H&&&&&&&&0.0&6.0&5.1&6.3\\\hline
+I&&&&&&&&&0.0&1.4&2.0\\\hline
+J&&&&&&&&&&0.0&1.4\\\hline
+K&&&&&&&&&&&0.0\\\hline
+\end{tabular}
+\end{scriptsize}}};
+\end{tikzpicture}
+\end{frame}
+
+\begin{frame}{Batchelor and Wilkins' Algorithm}
+\begin{columns}
+\begin{column}{8cm}
+\begin{scriptsize}
+\begin{itemize}
+\setlength{\itemsep}{0pt}
+\item[Step 1:] Arbitrarily, let ${\rm x_1}$ be the first cluster center, designated by ${\rm z}_1$.
+\item[Step 2:]Determine the pattern sample farthest from ${\rm x}_1$, which is ${\rm x}_6$. Call it cluster center ${\rm z}_2$.
+\item[Step 3:] Compute the distance from each remaining pattern sample to ${\rm z}_1$ and ${\rm z}_2$
+\item[Step 4:] Save the minimum distance for each pair of these computations.
+\item[Step 5:] Select the maximum of these minimum distances.
+\item[Step 6:] If the distance is appreciably greater than a fraction of the distance $d({\rm z}_1,{\rm z}_2)$, call the corresponding sample cluster center ${\rm z}_3$. Otherwise, the algorithm is terminated.
+
+\item[Step 7:] If this distance from each of the three established cluster centers to the remaining samples and save the minimum of every group of three distances. Again select the maximum of these minimum distances. If this distance is an appreciable fraction of the ``typical'' previous maximum distances, the corresponding sample becomes cluster center ${\rm z}_4$. Otherwise, the algorithm is terminated.
+\end{itemize}
+\end{scriptsize}
+\end{column}
+\begin{column}{5cm}
+\begin{scriptsize}
+\begin{itemize}
+\setlength{\itemsep}{0pt}
+\item[Step 8:] Repeat until the new maximum distance at a particular step fails to satisfy the condition for the creation of a new cluster center.
+\item[Step 9:] Assign each sample to its nearest cluster center.
+\end{itemize}
+\end{scriptsize}
+\vspace{-8pt}
+\begin{figure}
+\includegraphics[scale=0.14]{cluster01.png}
+\end{figure}
+\end{column}
+\end{columns}
+\end{frame}
+
 
 \begin{frame}{Batchelor and Wilkins' Algorithm}
 \begin{figure}
@@ -418,6 +531,11 @@ K&&&&&&&&&&&\\\hline
 Final clusters are $\{A,B,C,D\},\{E,F,G,H\},\{I,J,K\}$
 \end{frame}
 
+\begin{frame}{}
+\begin{variableblock}{\centering \Large \textbf{\vspace{4pt}\newline Graph Based Clustering\vspace{4pt}}}{bg=slidecolor,fg=white}{bg=slidecolor,fg=white}
+\end{variableblock}
+\end{frame}
+
 \section{Graph Based Clustering}
 \subsection{}
 \begin{frame}{Graph Based Clustering}
@@ -427,18 +545,139 @@ Final clusters are $\{A,B,C,D\},\{E,F,G,H\},\{I,J,K\}$
 G = \left\langle {V,E} \right\rangle \nonumber
 \end{equation}
 where $V$ is set of nodes or vertices and $E$ is set of Edges.
-\item There are many ways to represent a graph and one of them is similarity matrix
-\item For $n$ number of nodes, similarity matix will be of size $n\times n$.
+\item There are many ways to represent a graph and one of them is {\color{mycolor2}adjacency matrix} also called similarity matrix
+\item For $n$ number of nodes, similarity matrix will be of size $n\times n$.
+\item Similarity matrix
+\begin{itemize}
 \item The elements of similarity matrix will be either 0 or 1.
-\item $S(i,j)=1$, if $V_i$ and $V_j$ are connected in some sense. 
+\item Similarity matrix: $S(i,j)=1$, if $V_i$ and $V_j$ are connected in some sense.
+\end{itemize}
+ 
+\item Types of graph: Complete graph, Tree, Spanning tree, Weighted graph, etc.
+\item Graph based algorithms:
+\begin{itemize}
+\item Similarity Matrix based clustering
+\item Minimal Spanning Tree based clustering
+\end{itemize}
 \end{itemize}
 \end{frame}
 
 
 \begin{frame}{Similarity Matrix based clustering}
-\begin{figure}
-\includegraphics[scale=0.105]{cluster23.JPG}
+
+{\color{mycolor2}Question:}
+
+Perform the Similarity Matrix based clustering technique to cluster the following data samples.
+
+\vspace{-14pt}
+
+\begin{figure}[!h]
+\begin{tikzpicture}
+\draw[help lines,white] (-5,-3) grid (5,3);
+\node at(1,3){\pgftext{Distance matrix}};
+\node at(-5,2.4){\pgftext{$A\rightarrow (1,1)$}};
+\node at(-5,1.9){\pgftext{$B\rightarrow (1,2)$}};
+\node at(-5,1.4){\pgftext{$C\rightarrow (3,2)$}};
+\node at(-5,0.9){\pgftext{$D\rightarrow (3,3)$}};
+\node at(-5,0.4){\pgftext{$E\rightarrow (6,6)$}};
+\node at(-5,-0.1){\pgftext{$F\rightarrow (6,7)$}};
+\node at(-5,-0.6){\pgftext{$G\rightarrow (7,6)$}};
+\node at(-5,-1.1){\pgftext{$H\rightarrow (7,7)$}};
+\node at(-5,-1.6){\pgftext{$I\rightarrow (7,1)$}};
+\node at(-5,-2.1){\pgftext{$J\rightarrow (8,2)$}};
+\node at(-5,-2.6){\pgftext{$K\rightarrow (9,1)$}};
+\node at(1,0){\pgftext{\begin{footnotesize}
+\begin{tabular}{p{0.4cm}|p{0.3cm}|p{0.3cm}|p{0.3cm}|p{0.3cm}|p{0.3cm}|p{0.3cm}|p{0.3cm}|p{0.4cm}|p{0.3cm}|p{0.4cm}|p{0.4cm}|}
+&A&B&C&D&E&F&G&H&I&J&K\\\hline
+A&0.0&1.0&2.2&2.8&7.0&7.8&7.8&8.5&6.0&7.0&8.0\\\hline
+B&&0.0&2.0&2.2&6.4&7.0&7.0&7.8&6.0&7.0&8.1\\\hline
+C&&&0.0&1.0&5.0&4.9&5.6&6.4&4.1&5.0&6.1\\\hline
+D&&&&0.0&4.2&5.0&5.0&5.6&4.5&5.1&6.3\\\hline
+E&&&&&0.0&1.0&1.0&1.4&5.1&4.5&5.8\\\hline
+F&&&&&&0.0&1.4&1.0&6.1&5.4&6.7\\\hline
+G&&&&&&&0.0&1.0&5.0&4.1&5.4\\\hline
+H&&&&&&&&0.0&6.0&5.1&6.3\\\hline
+I&&&&&&&&&0.0&1.4&2.0\\\hline
+J&&&&&&&&&&0.0&1.4\\\hline
+K&&&&&&&&&&&0.0\\\hline
+\end{tabular}
+\end{footnotesize}}};
+\end{tikzpicture}
 \end{figure}
+\end{frame}
+
+\begin{frame}{Similarity Matrix based clustering}
+
+{\color{mycolor2}Question:}
+
+Perform the Similarity Matrix based clustering technique to cluster the following data samples.
+
+\vspace{-14pt}
+
+\begin{figure}[!h]
+\begin{tikzpicture}
+\draw[help lines,white] (-5,-3) grid (5,3);
+\node at(1,3){\pgftext{Distance matrix}};
+\node at(-5,2.4){\pgftext{$A\rightarrow (1,1)$}};
+\node at(-5,1.9){\pgftext{$B\rightarrow (1,2)$}};
+\node at(-5,1.4){\pgftext{$C\rightarrow (3,2)$}};
+\node at(-5,0.9){\pgftext{$D\rightarrow (3,3)$}};
+\node at(-5,0.4){\pgftext{$E\rightarrow (6,6)$}};
+\node at(-5,-0.1){\pgftext{$F\rightarrow (6,7)$}};
+\node at(-5,-0.6){\pgftext{$G\rightarrow (7,6)$}};
+\node at(-5,-1.1){\pgftext{$H\rightarrow (7,7)$}};
+\node at(-5,-1.6){\pgftext{$I\rightarrow (7,1)$}};
+\node at(-5,-2.1){\pgftext{$J\rightarrow (8,2)$}};
+\node at(-5,-2.6){\pgftext{$K\rightarrow (9,1)$}};
+\node at(1,0){\pgftext{\begin{footnotesize}
+\begin{tabular}{p{0.4cm}|p{0.3cm}|p{0.3cm}|p{0.3cm}|p{0.3cm}|p{0.3cm}|p{0.3cm}|p{0.3cm}|p{0.4cm}|p{0.3cm}|p{0.4cm}|p{0.4cm}|}
+&A&B&C&D&E&F&G&H&I&J&K\\\hline
+A&0.0&1.0&2.2&2.8&7.0&7.8&7.8&8.5&6.0&7.0&8.0\\\hline
+B&1.0&0.0&2.0&2.2&6.4&7.0&7.0&7.8&6.0&7.0&8.1\\\hline
+C&2.2&2.0&0.0&1.0&5.0&4.9&5.6&6.4&4.1&5.0&6.1\\\hline
+D&2.8&2.2&1.0&0.0&4.2&5.0&5.0&5.6&4.5&5.1&6.3\\\hline
+E&7.0&6.4&5.0&4.2&0.0&1.0&1.0&1.4&5.1&4.5&5.8\\\hline
+F&7.8&7.0&4.9&5.0&1.0&0.0&1.4&1.0&6.1&5.4&6.7\\\hline
+G&7.8&7.0&5.6&5.0&1.0&1.4&0.0&1.0&5.0&4.1&5.4\\\hline
+H&8.5&7.8&6.4&5.6&1.4&1.0&1.0&0.0&6.0&5.1&6.3\\\hline
+I&6.0&6.0&4.1&4.5&5.1&6.1&5.0&6.0&0.0&1.4&2.0\\\hline
+J&7.0&7.0&5.0&5.1&4.5&5.4&4.1&5.1&1.4&0.0&1.4\\\hline
+K&8.0&8.1&6.1&6.3&5.8&6.7&5.4&6.3&2.0&1.4&0.0\\\hline
+\end{tabular}
+\end{footnotesize}}};
+\end{tikzpicture}
+\end{figure}
+\end{frame}
+
+\begin{frame}{Similarity Matrix based clustering}
+
+\begin{tikzpicture}[remember picture,overlay]
+\node at(3,1){\includegraphics[width=0.5\textwidth]{clustering002}};
+\node at(11,-2){\includegraphics[width=0.5\textwidth]{clustering001}};
+\end{tikzpicture}
+
+%\begin{figure}[!h]
+%\begin{tikzpicture}
+%\draw[help lines,white] (-5,-3) grid (5,3);
+%\node at(1,3){\pgftext{Similarity matrix}};
+%\node at(1,0){\pgftext{\begin{footnotesize}
+%\begin{tabular}{p{0.4cm}|p{0.3cm}|p{0.3cm}|p{0.3cm}|p{0.3cm}|p{0.3cm}|p{0.3cm}|p{0.3cm}|p{0.4cm}|p{0.3cm}|p{0.4cm}|p{0.4cm}|}
+%&A&B&C&D&E&F&G&H&I&J&K\\\hline
+%A&&&&&&&&&&&\\\hline
+%B&&&&&&&&&&&\\\hline
+%C&&&&&&&&&&&\\\hline
+%D&&&&&&&&&&&\\\hline
+%E&&&&&&&&&&&\\\hline
+%F&&&&&&&&&&&\\\hline
+%G&&&&&&&&&&&\\\hline
+%H&&&&&&&&&&&\\\hline
+%I&&&&&&&&&&&\\\hline
+%J&&&&&&&&&&&\\\hline
+%K&&&&&&&&&&&\\\hline
+%\end{tabular}
+%\end{footnotesize}}};
+%\end{tikzpicture}
+%\end{figure}
 \end{frame}
 
 \begin{frame}{Similarity Matrix based clustering}
@@ -449,13 +688,15 @@ where $V$ is set of nodes or vertices and $E$ is set of Edges.
 
 \begin{frame}{Minimal Spanning Tree based clustering}
 \begin{itemize}
-\item Spanning tree is the tree representation of graph which contains all nodes present in the graph.
+\item Spanning tree is the tree representation of graph which contains all nodes present in the graph, i.e., subset of the complete connected weighted graph.
 \item Difference between tree and graph $\rightarrow$ Graph can have cycle but tree cannot have cycle.
 \item Weighted Graph have weighted edge which can be represented as
 \begin{equation}
 G = \left\langle {V,E,W} \right\rangle \nonumber
 \end{equation}
 $W\rightarrow$ weight or cost
+\item Weight is the distance (various distance measure) between two feature points.
+\item The minimal spanning tree is a spanning tree having minimum cost (sum of the weights of edges).
 \end{itemize}
 \end{frame}
 
@@ -469,7 +710,7 @@ $W\rightarrow$ weight or cost
 \begin{columns}
 \begin{column}{5cm}
 \begin{figure}
-\includegraphics[scale=0.08]{cluster02.JPG}
+\includegraphics[width=5cm]{clustering004.png}
 \end{figure}
 \end{column}
 \begin{column}{5cm}
@@ -487,21 +728,75 @@ B-D \rightarrow w_3\nonumber
 \end{itemize}
 \end{frame}
 
-\begin{frame}{Minimal Spanning Tree based clustering}
-\begin{itemize}
-\item All connected graph
-\item Weight is the distance (various distance measure) between two feature points.
-\item Spanning tree is the subset of the complete connected weighted graph.
-\item The minimal spanning tree is a spanning tree having minimum sum of the weights of edges.
-\end{itemize}
-\end{frame}
+%\begin{frame}{Minimal Spanning Tree based clustering}
+%\begin{itemize}
+%\item All connected graph
+%\item Weight is the distance (various distance measure) between two feature points.
+%\item Spanning tree is the subset of the complete connected weighted graph.
+%\item The minimal spanning tree is a spanning tree having minimum cost (sum of the weights of edges).
+%\end{itemize}
+%\end{frame}
 
 \begin{frame}{Minimal Spanning Tree based clustering}
-\begin{figure}
-\includegraphics[height=6cm]{cluster04.JPG}~~~~~
-\includegraphics[height=6cm]{cluster03.JPG}
+
+{\color{mycolor2}Question:}
+
+Perform the Minimal Spanning Tree based clustering technique to cluster the following data samples.
+
+\vspace{-5pt}
+
+\begin{figure}[!h]
+\begin{tikzpicture}
+\draw[help lines,white] (-5,-3) grid (5,3);
+\node at(1,3){\pgftext{Distance matrix}};
+\node at(-5,2.4){\pgftext{$A\rightarrow (1,1)$}};
+\node at(-5,1.9){\pgftext{$B\rightarrow (1,2)$}};
+\node at(-5,1.4){\pgftext{$C\rightarrow (3,2)$}};
+\node at(-5,0.9){\pgftext{$D\rightarrow (3,3)$}};
+\node at(-5,0.4){\pgftext{$E\rightarrow (6,6)$}};
+\node at(-5,-0.1){\pgftext{$F\rightarrow (6,7)$}};
+\node at(-5,-0.6){\pgftext{$G\rightarrow (7,6)$}};
+\node at(-5,-1.1){\pgftext{$H\rightarrow (7,7)$}};
+\node at(1,0.5){\pgftext{\begin{footnotesize}
+\begin{tabular}{p{0.4cm}|p{0.3cm}|p{0.3cm}|p{0.3cm}|p{0.3cm}|p{0.3cm}|p{0.3cm}|p{0.3cm}|p{0.4cm}|}
+&A&B&C&D&E&F&G&H\\\hline
+A&0.0&1.0&2.2&2.8&7.0&7.8&7.8&8.5\\\hline
+B&1.0&0.0&2.0&2.2&6.4&7.0&7.0&7.8\\\hline
+C&2.2&2.0&0.0&1.0&5.0&4.9&5.6&6.4\\\hline
+D&2.8&2.2&1.0&0.0&4.2&5.0&5.0&5.6\\\hline
+E&7.0&6.4&5.0&4.2&0.0&1.0&1.0&1.4\\\hline
+F&7.8&7.0&4.9&5.0&1.0&0.0&1.4&1.0\\\hline
+G&7.8&7.0&5.6&5.0&1.0&1.4&0.0&1.0\\\hline
+H&8.5&7.8&6.4&5.6&1.4&1.0&1.0&0.0\\\hline
+\end{tabular}
+\end{footnotesize}}};
+\end{tikzpicture}
 \end{figure}
 \end{frame}
+
+\begin{frame}{Ordered Edge List}
+\begin{figure}[!h]
+\begin{tikzpicture}
+\draw[help lines,white] (-5,-3) grid (5,3);
+\node at(-4,1.5){\pgftext{\begin{footnotesize}
+\begin{tabular}{p{0.4cm}|p{0.3cm}|p{0.3cm}|p{0.3cm}|p{0.3cm}|p{0.3cm}|p{0.3cm}|p{0.3cm}|p{0.4cm}|}
+&A&B&C&D&E&F&G&H\\\hline
+A&0.0&1.0&2.2&2.8&7.0&7.8&7.8&8.5\\\hline
+B&1.0&0.0&2.0&2.2&6.4&7.0&7.0&7.8\\\hline
+C&2.2&2.0&0.0&1.0&5.0&4.9&5.6&6.4\\\hline
+D&2.8&2.2&1.0&0.0&4.2&5.0&5.0&5.6\\\hline
+E&7.0&6.4&5.0&4.2&0.0&1.0&1.0&1.4\\\hline
+F&7.8&7.0&4.9&5.0&1.0&0.0&1.4&1.0\\\hline
+G&7.8&7.0&5.6&5.0&1.0&1.4&0.0&1.0\\\hline
+H&8.5&7.8&6.4&5.6&1.4&1.0&1.0&0.0\\\hline
+\end{tabular}
+\end{footnotesize}}};
+\end{tikzpicture}
+\end{figure}
+\end{frame}
+
+
+
 
 \begin{frame}{Ordered Edge List}
 \begin{figure}
@@ -523,13 +818,75 @@ B-D \rightarrow w_3\nonumber
 \end{itemize}
 \end{frame}
 
-\section{Iterative Clustering}
+\section{Partitioning Clustering}
 \subsection{}
+
 \begin{frame}{K-means clustering}
 \begin{figure}
-\includegraphics[scale=0.25]{cluster26.png}
+\includegraphics[scale=0.5]{clustering005.png}
 \end{figure}
+\footnote{}{Courtesy: https://www.edureka.co/blog/k-means-clustering/}
 \end{frame}
+
+\begin{frame}{K-mean clustering}
+\begin{footnotesize}
+Let  $ {{\rm x}_1,{\rm x}_2,{\rm x}_3,\ldots,{\rm x}_n}$ be the set of data samples.
+\end{footnotesize}
+
+\begin{itemize}
+\begin{footnotesize}
+\item {\color{mycolor2}Algorithm}:
+\end{footnotesize}
+
+\begin{itemize}
+\begin{footnotesize}
+\item[1.] Randomly select ‘$K$’ cluster centers.
+\item[2.] Calculate the distance of each data samples from each cluster centers and assign the data samples to cluster center whose distance from the cluster center is minimum of all the cluster centers.
+
+\item[4.] Recalculate the new cluster center using: 
+\[\mu_i =  \frac{1}{n_i}\sum_{i=1}^{n_i}{\rm x}_i\]
+
+where, ‘$n_i$’ represents the number of data samples in $i$th cluster.
+
+\item[5.] If the stopping criteria satisfied then stop, otherwise repeat from step 2.
+\[J=\sum_{i=1}^n\sum_{k=1}^Kw_{ik}||{\rm x}_i-\mu_k||^2\]
+where $w_{ik}=1$ for data point ${\rm x}_i$ if it belongs to cluster $k$; otherwise, $w_{ik}=0$.
+\end{footnotesize}
+\end{itemize}
+\end{itemize}
+\end{frame}
+
+
+
+%\begin{frame}{K-means clustering}
+%\begin{figure}
+%\includegraphics[scale=0.25]{cluster26.png}
+%\end{figure}
+%\end{frame}
+
+%\begin{frame}
+%
+%\end{frame}
+%
+%\begin{frame}
+%
+%\end{frame}
+%
+%\begin{frame}
+%
+%\end{frame}
+%
+%\begin{frame}
+%
+%\end{frame}
+%
+%\begin{frame}
+%
+%\end{frame}
+%
+%\begin{frame}
+%
+%\end{frame}
 
 \section{References}
 \subsection{}
@@ -539,7 +896,7 @@ B-D \rightarrow w_3\nonumber
 \printbibliography[heading=none]
 \end{frame}
 {
-\nocite{Daugman1985}\nocite{Petkov1995}\nocite{Petkov1997}\nocite{Kruizinga1999}\nocite{Grigorescu2002}\nocite{Petkov2003}\nocite{Grigorescu2003}\nocite{Jain1991}
+\nocite{duda2012pattern}\nocite{gose1997pattern}
 \setbeamertemplate{logo}{}
 \makeatletter
 \setbeamertemplate{footline}{
