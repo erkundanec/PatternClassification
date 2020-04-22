@@ -55,7 +55,7 @@
 \end{frame}
 }
 
-\section{Neural Network}
+\section{Introduction}
 \subsection{}
 
 \begin{frame}{}
@@ -65,41 +65,40 @@
 
 \begin{frame}{What is Neural Network?}
 \begin{itemize}
-\item \textit{\color{slidecolor}Neural Networks} are networks of neurons, for example, as found in real (i.e. biological) brains
+\item \textit{\color{mycolor2}Neural Networks} are networks of neurons, for example, as found in real (i.e. biological) brains (86 billion neurons).
 \begin{figure}
-\includegraphics[scale=0.18]{BioNeuron.jpg}
+\includegraphics[scale=0.33]{BioNeuron.jpg}
 \end{figure}
-\item \textit{\color{slidecolor}Artificial neurons} are crude approximation of the neurons found in real brains.
-\begin{figure}
-\includegraphics[scale=0.18]{ArtNeuron.jpeg}
-\end{figure}
+\begin{itemize}
+\item {\color{mycolor3}Dendrite}: Receives signals from other neurons
+\item {\color{mycolor3}Soma/Cell body}: Processes the information
+\item {\color{mycolor3}Axon}: Transmits the output of this neuron
+\item {\color{mycolor3}Synapse}: Point of connection to other neurons
+\end{itemize}
 \end{itemize}
 \end{frame}
 
 \begin{frame}{Artificial Neural Network (ANNs)}
 \begin{itemize}
-\item Artificial Neural Network (ANNs) are network of Artificial Neurons and hence constitute crude approximation to parts of real brains.
+\item \textit{\color{mycolor2}Artificial Neural Networks} (ANNs) are network of Artificial Neurons and hence constitute crude approximation to parts of real brains.
+\item The brain uses chemicals to transmit information; the computer uses electricity.
 \begin{figure}
-\includegraphics[scale=0.1]{ann02.JPG}
+\includegraphics[width=0.5\textwidth]{BioNeuron1.jpg}~~~~
+\includegraphics[width=0.45\textwidth]{ArtNeuron.jpeg}
 \end{figure}
 \end{itemize}
 \end{frame}
 
 \begin{frame}{Why are Artificial Neural Networks worth studying?}
 \begin{itemize}
-\item They are extremely powerful computational devices
-\item Massive parallelism makes them very efficient
-\item They can learn and generalize from training data -- so there is no need for enormous feats of programming
+\item They are extremely powerful computational devices.
+\item Massive parallelism makes them very efficient.
+\item They can learn and generalize from training data -- so there is no need for enormous programming skill.
 \end{itemize}
 \end{frame}
 
 \begin{frame}{Neural Network Applications}
 \begin{itemize}
-\item Brain Modeling
-\begin{itemize}
-\item Aid our understanding of how the brain works, how behavior emerges from the interaction of networks of neurons, what needs to “get fixed” in brain
-damaged patients
-\end{itemize}
 \item Real world application
 \begin{itemize}
 \item Financial modeling -- predicting the stock market
@@ -113,34 +112,26 @@ damaged patients
 \end{itemize}
 \end{frame}
 
-\begin{frame}{Brain vs. Computers}
-\begin{footnotesize}
-\begin{itemize}
-\item \textit{\color{slidecolor}Processing elements:} There are $10^{14}$ synapses in the brain, compared with $10^8$ transistors in the computer
-\item \textit{\color{slidecolor}Processing speed:} 100 Hz for the brain compared to $10^9$ Hz for the computer
-\item \textit{\color{slidecolor}Style of computation:} The brain computes in parallel and distributed mode, whereas the computer mostly serially and centralized.
-\item \textit{\color{slidecolor}Fault tolerant:} The brain is fault tolerant, whereas the computer is not. 
-\item \textit{\color{slidecolor}Adaptive:} The brain learns fast, whereas the computer doesn't even compare with an infant's learning capabilities
-\item \textit{\color{slidecolor}Intelligence and consciousness:} The brain is highly intelligent and
-conscious, whereas the computer shows lack of intelligence
-\item \textit{\color{slidecolor}Evolution:} The brains have been evolving for tens of millions of years,
-computers have been evolving for decades.
-\end{itemize}
-\end{footnotesize}
-\end{frame}
+%\begin{frame}{Brain vs. Computers}
+%\begin{footnotesize}
+%\begin{itemize}
+%\item \textit{\color{slidecolor}Processing elements:} There are $10^{14}$ synapses in the brain, compared with $10^8$ transistors in the computer
+%\item \textit{\color{slidecolor}Processing speed:} 100 Hz for the brain compared to $10^9$ Hz for the computer
+%\item \textit{\color{slidecolor}Style of computation:} The brain computes in parallel and distributed mode, whereas the computer mostly serially and centralized.
+%\item \textit{\color{slidecolor}Fault tolerant:} The brain is fault tolerant, whereas the computer is not. 
+%\item \textit{\color{slidecolor}Adaptive:} The brain learns fast, whereas the computer doesn't even compare with an infant's learning capabilities
+%\item \textit{\color{slidecolor}Intelligence and consciousness:} The brain is highly intelligent and
+%conscious, whereas the computer shows lack of intelligence
+%\item \textit{\color{slidecolor}Evolution:} The brains have been evolving for tens of millions of years,
+%computers have been evolving for decades.
+%\end{itemize}
+%\end{footnotesize}
+%\end{frame}
 
 \begin{frame}{Decision Boundaries for AND and OR}
 \begin{figure}
 \includegraphics[scale=0.45]{ann01}
 \end{figure}
-\end{frame}
-
-\begin{frame}{Types of Activation/Transfer Function}
-\begin{itemize}
-\item Threshold Function
-\item Piecewise-Linear Function
-\item Sigmoid Function
-\end{itemize}
 \end{frame}
 
 \begin{frame}{Basic Neural Model in A Feedforward Network}
@@ -170,15 +161,17 @@ computers have been evolving for decades.
 \end{itemize}
 \end{frame}
 
-\begin{frame}{A single neuron what can do?}
-\begin{itemize}
-\item This is basically a special case of the neuron-like processing unit.
-\begin{figure}
-\includegraphics[scale=0.9]{ann03.pdf}
-\end{figure}
-\end{itemize}
-\end{frame}
+%\begin{frame}{A single neuron what can do?}
+%\begin{itemize}
+%\item This is basically a special case of the neuron-like processing unit.
+%\begin{figure}
+%\includegraphics[scale=0.9]{ann03.pdf}
+%\end{figure}
+%\end{itemize}
+%\end{frame}
 
+\section{McCulloch and Pitts Model}
+\subsection{}
 \begin{frame}{An abstract mathematical model of a neuron}
 \begin{itemize}
 \item McCulloch and Pitts given a first attempt to form an abstract mathematical model of a neuron in 1943.
@@ -189,6 +182,9 @@ computers have been evolving for decades.
 \item computes the weighted sum $s = \sum\nolimits_{i = 1}^M {{w_i}{x_i}}$ using the weights $w_1,w_2,\ldots,w_M$
 \item thresholds $s$ and output 0 or 1 depending on whether the weighted sum is less than or greater than a given threshold value $T$.
 \end{itemize}
+\begin{figure}
+\includegraphics[scale=0.9]{ann03.pdf}
+\end{figure}
 \end{itemize}
 \end{frame}
 
@@ -197,40 +193,50 @@ computers have been evolving for decades.
 \includegraphics[scale=0.15]{ann04.JPG}~~~~~~~
 \includegraphics[scale=0.15]{ann05.JPG}
 \end{figure}
-\end{frame}
-
-
-\begin{frame}{McCulloch-Pitts model of the neuron}
-\begin{itemize}
-\item Summation is indicated by sigma and thresholding is shown by a small graph of the function.
-\item The combination of summation and thresholding is called a \textit{\color{slidecolor}node} in an artificial neural network.
-\item Nodes are denoted by open circles in the diagrams of neural networks.
-\item Node inputs with positive weights are called \textit{\color{slidecolor}excitory} and node inputs with negative weights are called \textit{\color{slidecolor}inhibitory}.
-\end{itemize}
-\end{frame}
-
-\begin{frame}{McCulloch-Pitts model of the neuron}
-\begin{itemize}
-\item The output of the model neuron is 1 if
-\begin{equation}
-w_1x_1+w_2x_2+\cdots+w_Mx_M>T\nonumber
-\end{equation}
-and 0 otherwise.
-\item For convenience we can write
-\begin{equation}
-D=w_1x_1+w_2x_2+\cdots+w_Mx_M\nonumber
-\end{equation}
-where $w_0=-T$ and $x_0=1$
-\item Output 1 if $D>0$ and output 0 if $D\leq 0$.
-\item Weight $w_0$ is called the bias weight.
-\end{itemize}
-\end{frame}
-
-\begin{frame}{McCulloch-Pitts model of the neuron with bias}
 \begin{figure}
-\includegraphics[scale=0.15]{ann05.JPG}
+\includegraphics[scale=0.4]{BasicNN}
 \end{figure}
 \end{frame}
+
+\begin{frame}{Limitations Of McCulloch-Pitts Neuron}
+\begin{itemize}
+\item What about non-boolean (say, real) inputs?
+\item Do we always need to hand code the threshold?
+\item Are all inputs equal? What if we want to assign more importance to some inputs?
+\item What about functions which are not linearly separable? Say XOR function.
+\end{itemize}
+\end{frame}
+%\begin{frame}{McCulloch-Pitts model of the neuron}
+%\begin{itemize}
+%\item Summation is indicated by sigma and thresholding is shown by a small graph of the function.
+%\item The combination of summation and thresholding is called a \textit{\color{slidecolor}node} in an artificial neural network.
+%\item Nodes are denoted by open circles in the diagrams of neural networks.
+%\item Node inputs with positive weights are called \textit{\color{slidecolor}excitory} and node inputs with negative weights are called \textit{\color{slidecolor}inhibitory}.
+%\end{itemize}
+%\end{frame}
+
+%\begin{frame}{McCulloch-Pitts model of the neuron}
+%\begin{itemize}
+%\item The output of the model neuron is 1 if
+%\begin{equation}
+%w_1x_1+w_2x_2+\cdots+w_Mx_M>T\nonumber
+%\end{equation}
+%and 0 otherwise.
+%\item For convenience we can write
+%\begin{equation}
+%D=w_1x_1+w_2x_2+\cdots+w_Mx_M\nonumber
+%\end{equation}
+%where $w_0=-T$ and $x_0=1$
+%\item Output 1 if $D>0$ and output 0 if $D\leq 0$.
+%\item Weight $w_0$ is called the bias weight.
+%\end{itemize}
+%\end{frame}
+
+%\begin{frame}{McCulloch-Pitts model of the neuron with bias}
+%\begin{figure}
+%\includegraphics[scale=0.15]{ann05.JPG}
+%\end{figure}
+%\end{frame}
 
 
 \begin{frame}{Nets without Hidden Layers}
@@ -350,6 +356,15 @@ Algorithm usually works well if the classes are well separated.
 
 \section{Activation Functions}
 \subsection{}
+
+\begin{frame}{Types of Activation/Transfer Function}
+\begin{itemize}
+\item Threshold Function
+\item Piecewise-Linear Function
+\item Sigmoid Function
+\end{itemize}
+\end{frame}
+
 \begin{frame}{Activation Function: Sigmoidal}
 \begin{itemize}
 \item It is also known as Logistic Activation Function.
